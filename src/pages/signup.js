@@ -99,7 +99,7 @@ const SignUp = () => {
                         <div className="form-group ">
                             <button type="button"
                                 onClick={() => login()}
-                                className="btn btn-primary btn-lg btn-block login-button">Log In</button>
+                                className="btn btn-primary btn-lg btn-block login-button">Submit</button>
                         </div>
 
                         <div className="login-separator-wrapper"><div className="login-separator-component split-line"><span className="separator-line"></span>
