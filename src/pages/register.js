@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import Header from "../components/header";
 import { register,notify } from '../utils/services'
+import '../Css/styles.css';
 
 const Register = () => {
     const [name, setName] = useState("")
@@ -36,7 +37,7 @@ const Register = () => {
                     </div>
                     <form className="form-horizontal mt-4" method="post" action="#">
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Name</label>
+                            <label for="username" className="col-sm-3 control-label">Name</label>
                             <div className="col-sm-10">
                                 <div className="input-group">
 
@@ -47,7 +48,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Contact no.</label>
+                            <label for="username" className="col-sm-3 control-label">Contact no.</label>
                             <div className="col-sm-10">
                                 <div className="input-group">
 
@@ -58,7 +59,7 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Email</label>
+                            <label for="username" className="col-sm-3 control-label">Email</label>
                             <div className="col-sm-10">
                                 <div className="input-group">
 
@@ -70,7 +71,7 @@ const Register = () => {
                         </div>
 
                         <div className="form-group">
-                            <label for="password" className="col-sm-2 control-label">Password</label>
+                            <label for="password" className="col-sm-3 control-label">Password</label>
                             <div className="col-sm-10">
                                 <div className="input-group">
 
@@ -81,8 +82,8 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className="form-group ">
-                            <button type="button" className="btn btn-primary btn-lg btn-block login-button"
+                        <div className="form-group ms-4">
+                            <button type="button" className="btn btn-primary btn-lg btn-block login-button "
                                 onClick={(e) => onRegister(e)}
                             >Register</button>
                         </div>

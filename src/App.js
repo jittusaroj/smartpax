@@ -10,13 +10,14 @@ import SignUp from './pages/signup'
 import Inbox from './pages/inbox'
 import Forgotpassword from './pages/forgotPassword'
 import Profile from './pages/profile'
+import Userlist from './pages/Userlist'
 
 const App = () => {
   const [categories, setCategories] = useState(null)
   const value = { categories, setCategories }
 
   return (
-    <div className="app">
+    <div className="app1">
       <CategoriesContext.Provider value={value}>
         <BrowserRouter>
           <Routes>
@@ -27,6 +28,7 @@ const App = () => {
             <Route path="/inbox" element={<Inbox />} />
             <Route path='/forgot_password' element={<Forgotpassword />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/userlist' element={<Userlist />} />
             {/* <Route path="/ticket" element={<TicketPage />} /> */}
             {/* <Route path="/ticket/:id" element={<TicketPage editMode={true} />} /> */}
           </Routes>

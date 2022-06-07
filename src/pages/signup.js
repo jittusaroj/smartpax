@@ -10,9 +10,8 @@ const SignUp = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassowrd] = useState('')
-    const navigate = useNavigate()
 
-    const login = () => {
+    const signup = () => {
 
         // console.log("EMail: " + email);
 
@@ -98,7 +97,7 @@ const SignUp = () => {
 
                         <div className="form-group ">
                             <button type="button"
-                                onClick={() => login()}
+                                onClick={() => signup()}
                                 className="btn btn-primary btn-lg btn-block login-button">Submit</button>
                         </div>
 

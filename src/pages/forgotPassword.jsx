@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/header';
+import '../Css/styles.css';
 // import './index.css';
 // import Loginhead from "./Loginhead";
 
