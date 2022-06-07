@@ -25,6 +25,9 @@ const Dashboard = () => {
                  
                      <div><p className="float-right"> <i className="bx bx-heart"></i> Send Feedback</p></div>
                      <h1 className="mt-2">Inbox</h1>
+
+                     <a href='/'> <button type="button" class="btn btn-danger">Logout</button></a>
+                     
                      <p>Catch up on updates from all your boards.<a href=""> Learn more </a>                     
                      </p>
                      <div><p className="open-text"> <b>open(1)</b>/All Update</p></div>
