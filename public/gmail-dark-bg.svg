@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Invite-new-team-member" transform="translate(-550.000000, -479.000000)">
+            <g id="Group-4" transform="translate(550.000000, 479.000000)">
+                <circle id="Oval" fill="#C5C5C5" cx="12" cy="12" r="12"></circle>
+                <g id="gmail" transform="translate(5.000000, 7.000000)" fill-rule="nonzero">
+                    <g id="Group" transform="translate(0.902344, 0.000000)" fill="#F2F2F2">
+                        <polygon id="Path" points="12.3586367 1.76246939 11.4649062 10.9724158 0.73040625 10.9724158 0.0103632812 1.94071429 6.09765625 5.43832143"></polygon>
+                        <polygon id="Path" points="12.0554766 0.0275841837 6.09765625 5.77104337 0.139835937 0.0275841837 6.09765625 0.0275841837"></polygon>
+                    </g>
+                    <path d="M1.63275,2.67965051 L1.63275,10.9724158 L0.660050781,10.9724158 C0.295640625,10.9724158 0,10.6690459 0,10.2950459 L0,1.45825765 L1.06640625,1.48808673 L1.63275,2.67965051 Z" id="Path" fill="#F14336"></path>
+                    <path d="M14,1.45825765 L14,10.295074 C14,10.6690459 13.7043594,10.9724439 13.3395938,10.9724439 L12.36725,10.9724439 L12.36725,2.67965051 L12.9057031,1.37410204 L14,1.45825765 Z" id="Path" fill="#D32E2A"></path>
+                    <path d="M14,0.704954082 L14,1.45825765 L12.36725,2.67965051 L7,6.69431378 L1.63275,2.67965051 L0,1.45825765 L0,0.704954082 C0,0.330982143 0.295640625,0.0275841837 0.660050781,0.0275841837 L1.04217969,0.0275841837 L7,4.48395918 L12.9578203,0.0275841837 L13.3395938,0.0275841837 C13.7043594,0.0275841837 14,0.330954082 14,0.704954082 Z" id="Path" fill="#F14336"></path>
+                    <polygon id="Path" fill="#D32E2A" points="1.63275 2.67965051 0 2.41985969 0 1.45825765"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
