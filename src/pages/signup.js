@@ -15,13 +15,7 @@ const SignUp = () => {
 
         // console.log("EMail: " + email);
 
-        // var data = new FormData();
-        // data.append('name', name); 
-        // data.append('email', email); 
-        // data.append('password', password); 
-        // data.append('phone', 9142627909); 
-        // data.append('created_at', new Date()); 
-
+     
         var data = {
             name:name,
             email:email,
@@ -34,7 +28,10 @@ const SignUp = () => {
             'Content-Type': 'application/json',
           }
 
-        axios.post('http://localhost:3001/users/signup', data,{
+        var url = process.env.REACT_APP_LOCAL_API;
+        axios.post(url+'/users/signup', data,{
+
+        // axios.post('http://91.134.201.104:3002/users/signup', data,{
             headers: headers
           })
                 .then(user => {

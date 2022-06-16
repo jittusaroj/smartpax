@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from "axios";
+
 import Footer from'./Footer';
 import Invite from "../components/Invite";
 import Sidebar from'../components/Sidebar';
@@ -7,9 +9,26 @@ import '../Css/Main.css';
 
 
 function Userlist ()  {
+    const [list, setList] = useState([]);
+
+    const headers = {
+        'Content-Type': 'application/json',
+      }
+    var url = process.env.REACT_APP_LOCAL_API;
+    axios.get(url+'/users/list',{
+        // axios.post('http://91.134.201.104:3002/users/login', data,{
+        headers: headers
+      })
+            .then(res => {     
+                
+                setList(res.data);
+
+            
+            })
+
     return (
         <>
-         <div classNameName="wrapper">
+         <div className="wrapper">
          
          <Sidebar/>
    <div class="page-wrapper">
@@ -36,120 +55,29 @@ function Userlist ()  {
                    <table class="table user-list-table table-responsive">
                        <thead>
                            <tr>
+                               <th>ID</th>
                                <th>Name</th>
                                <th>Email</th>
-                               <th>Title</th>
                                <th>Teams</th>
                            </tr>
                        </thead>
                        <tbody>
-                           <tr>
+
+                       {
+                       list.map((user, i) => { 
+                           return(
+                           <tr key={i}>
                                <td>
-                                   <img src="pb.png" /> Pieter Benadie <button class="btn btn-outline-primary btn-sm">Pending</button>
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
+                                </td>
+                               <td><a href="#">{i}</a></td>
+                               <td><a href="#">{user.name}</a></td>
+                               <td><a href="#">{user.email}</a></td>
                                <td>No Team</td>
                            </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td>
-                                   <img src="team_default.png" class="right-user-img" />
-                                   <img src="team_default.png" class="right-user-img" />
-                              </td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /></td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png" /> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img" /> </td>
-                           </tr>
-                           <tr>
-                               <td>
-                                   <img src="pb.png"/> Pieter Benadie
-                               </td>
-                               <td><a href="mailto:user@gmail.com">user@gmail.com</a></td>
-                               <td><a href="mailto:+91 9999999999">+91 9999999999</a></td>
-                               <td><img src="team_default.png" class="right-user-img"/></td>
-                           </tr>
+
+                           );
+                       })
+                       } 
                        </tbody>
                    </table>
                   {/* <!--user table section--> */}

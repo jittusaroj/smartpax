@@ -2,6 +2,9 @@ import React from 'react';
 
 
 function Personaltab ()  {
+
+  const data = JSON.parse(localStorage.getItem('user'));
+
     return (
         <>
         <section class="tab-pane fade show active" id="personal_info" role="tabpanel" aria-labelledby="home-tab">
@@ -14,7 +17,7 @@ function Personaltab ()  {
                                                           <i class="fa fa-user"></i>
                                                         </div>
                                                          <div class="input-field">
-                                                           <a data-bs-toggle="modal" data-bs-target="#add_title"><span>Title</span> add a title </a>
+                                                           <a data-bs-toggle="modal" data-bs-target="#add_title"><span>Name : </span> { data.name } </a>
                                                         </div>
                                                 </div>
                                                 <div class="d-flex mb-2">
@@ -22,7 +25,7 @@ function Personaltab ()  {
                                                           <i class="fa fa-envelope"></i>
                                                         </div>
                                                          <div class="input-field">
-                                                           <a data-bs-toggle="modal" data-bs-target="#add_email"><span>Email</span> user@gmail.com </a>
+                                                           <a data-bs-toggle="modal" data-bs-target="#add_email"><span>Email</span> { data.email } </a>
                                                         </div>
                                                 </div>
                                                 <div class="d-flex mb-2">
@@ -30,7 +33,7 @@ function Personaltab ()  {
                                                           <i class="fa fa-phone"></i>
                                                         </div>
                                                          <div class="input-field">
-                                                           <a data-bs-toggle="modal" data-bs-target="#add_mobile"><span>Mobile number</span> +9999999999 </a>
+                                                           <a data-bs-toggle="modal" data-bs-target="#add_mobile"><span>Mobile number</span> { data.phone } </a>
                                                         </div>
                                                 </div>
                                                 <div class="d-flex mb-2">

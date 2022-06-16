@@ -23,12 +23,19 @@ const Login = () => {
         const headers = {
             'Content-Type': 'application/json',
           }
-
-        axios.post('http://localhost:3001/users/login', data,{
+        var url = process.env.REACT_APP_LOCAL_API;
+        axios.post(url+'/users/login', data,{
+            // axios.post('http://91.134.201.104:3002/users/login', data,{
             headers: headers
           })
                 .then(user => {
-                    console.log(user.data.status);
+                    console.log(url);
+
+                    localStorage.setItem('user', JSON.stringify(user.data.data));
+
+                    // const data = JSON.parse(localStorage.getItem('user'));
+                    // console.log(data.email);
+
                     if(user.data.status){
                         nav('/dashboard')
                         notify(user.data.msg, 'success')
@@ -103,9 +110,7 @@ const Login = () => {
                             <span className="separator-line"></span>
                         </div>
 
-                        <Link to={{ pathname: '/register', }} >
-                            Don't have account ? Register
-                        </Link>
+                   
 
                     </form>
                 </div>

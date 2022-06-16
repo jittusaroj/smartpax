@@ -12,6 +12,10 @@ import {Dropdown, Form } from 'react-bootstrap';
 
 
 function Profile ()  {
+  
+  const data = JSON.parse(localStorage.getItem('user'));
+  console.log(data.email);
+
     return (
         <>
          <div classNameName="wrapper">
@@ -22,14 +26,14 @@ function Profile ()  {
             <div class="bg-blue profile-head">
                 <div class="edit-file">
                        <div class="profile-section">
-                           K
+                       { data.name.charAt(0).toUpperCase() }
                         </div>
                         
 
                         <div class="change-profile-option">
                         <Dropdown >
 
-                        <Dropdown.Toggle  id="dropdown-basic" className="btn-toggle"  >
+                        {/* <Dropdown.Toggle  id="dropdown-basic" className="btn-toggle"  >
                         <div class="icon-margin color-black" >
                                      <center>
                                      <i class="fa fa-pencil"></i> 
@@ -39,14 +43,14 @@ function Profile ()  {
                                     
                                   
                                  </div>
-  </Dropdown.Toggle>
+  </Dropdown.Toggle> */}
                              
 
-                             <Dropdown.Menu>
+                             {/* <Dropdown.Menu>
     <Dropdown.Item  className="color-black" data-bs-toggle="modal" data-bs-target="#update_profile">Upload profile picture</Dropdown.Item>
     <Dropdown.Item href="#/action-2" className="color-black">Remove profile picture</Dropdown.Item>
   
-  </Dropdown.Menu>
+  </Dropdown.Menu> */}
                               
 </Dropdown>
 </div>
@@ -54,7 +58,8 @@ function Profile ()  {
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                        <input type="text" class="form-control name-input"  value="Krishna" />
+                    
+                        <input type="text" class="form-control name-input"  value={ data.name } />
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-2"></div>
