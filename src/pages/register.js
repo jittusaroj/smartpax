@@ -33,12 +33,12 @@ const Register = () => {
                 <div className="main-login main-center">
                     <div className="text-center">
                         <h1>Registration </h1>
-                        <small>QMS</small>
+                      
                     </div>
-                    <form className="form-horizontal mt-4" method="post" action="#">
+                    <form className="form-horizontal1 mt-4" method="post" action="#">
                         <div className="form-group">
-                            <label for="username" className="col-sm-3 control-label">Name</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-2 left-20 control-label">Name</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="text" className="form-control" name="username" id="username" placeholder="Enter your Name"
@@ -48,8 +48,8 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label for="username" className="col-sm-3 control-label">Contact no.</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-3 left-20 control-label">Contact no.</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="number" className="form-control" name="username" id="username" placeholder="Enter your Contact No."
@@ -59,8 +59,8 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label for="username" className="col-sm-3 control-label">Email</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-2 left-20 control-label">Email</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="email" className="form-control" name="username" id="username" placeholder="Enter your Email"
@@ -71,8 +71,8 @@ const Register = () => {
                         </div>
 
                         <div className="form-group">
-                            <label for="password" className="col-sm-3 control-label">Password</label>
-                            <div className="col-sm-10">
+                            <label for="password" className="col-sm-2 left-13 control-label">Password</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="password" className="form-control" name="password" id="password" placeholder="Enter your Password"
@@ -82,32 +82,19 @@ const Register = () => {
                             </div>
                         </div>
 
-                        <div className="form-group ms-4">
+                        <div className="form-group ">
                             <button type="button" className="btn btn-primary btn-lg btn-block login-button "
                                 onClick={(e) => onRegister(e)}
                             >Register</button>
                         </div>
 
-                        <div className="login-separator-wrapper"><div className="login-separator-component split-line"><span className="separator-line"></span>
-                            <small>Or Sign In</small>
-                            <span className="separator-line"></span></div></div>
-
-                        <button className="btn btn-outline text-center">Google</button>
-
-                        <div className="login-separator-component">
-                            <span className="separator-line"></span>
-                        </div>
-                        <span className="signup-text">If you have an <b>@gmail.com</b> email, you can</span>
-                        <Link to={{ pathname: '/signup', }} >
-                            Signup to Login
-                        </Link>
-                        <div className="login-separator-component">
-                            <span className="separator-line"></span>
-                        </div>
+                        <span className="signup-text mt-4"> <b>Already a Member ? </b> 
                         <Link to={{ pathname: '/', }} >
-                            Login to another account
+                        <b>Log In</b>    
                         </Link>
+                        </span>
 
+                       
                     </form>
                 </div>
             </div>

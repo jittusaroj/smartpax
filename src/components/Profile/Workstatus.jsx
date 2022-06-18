@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function Workstatus ()  {
+function Workstatus (props)  {
     return (
         <>
          <section class="tab-pane fade" id="working_status" role="tabpanel" aria-labelledby="profile-tab">
@@ -11,56 +11,51 @@ function Workstatus ()  {
                                             <h5>Update your working status</h5>
                                             <p>Let everyone know your status </p>
                                             <div class="status-option">
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="in_office" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="in_office" checked={ (props.data.working_status == 'in_office')?'checked':false }  />
                                                       <label class="form-check-label" for="in_office">
                                                         In the office
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="working_form_home" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="working_form_home" checked={ (props.data.working_status == 'working_form_home')?'checked':false } />
                                                       <label class="form-check-label" for="working_form_home">
                                                         Working from home
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="Out_sick" />
+                                                    <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="Out_sick" checked={ (props.data.working_status == 'Out_sick')?'checked':false }  />
                                                       <label class="form-check-label" for="Out_sick">
                                                        Out sick
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="on_break" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="on_break" checked={ (props.data.working_status == 'on_break')?'checked':false } />
                                                       <label class="form-check-label" for="on_break">
                                                        On break
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="out_off_office" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="out_off_office" checked={ (props.data.working_status == 'out_off_office')?'checked':false } />
                                                       <label class="form-check-label" for="out_off_office">
                                                        Out of office
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="Out_sick" />
-                                                      <label class="form-check-label" for="Out_sick">
-                                                       Out Sick
-                                                      </label>
-                                                  </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="working_outside" />
+                                                  
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="working_outside" checked={ (props.data.working_status == 'working_outside')?'checked':false } />
                                                       <label class="form-check-label" for="working_outside">
                                                          Working outside
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="Fimaly_time" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="Fimaly_time" checked={ (props.data.working_status == 'Fimaly_time')?'checked':false } />
                                                       <label class="form-check-label" for="Fimaly_time">
-                                                         Fimaly time
+                                                         Family time
                                                       </label>
                                                   </div>
-                                                  <div class="form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="do_not_distrub" />
+                                                  <div class="form-check work-form-check">
+                                                      <input class="form-check-input" type="radio" name="status" id="do_not_distrub" checked={ (props.data.do_not_distrub == 'Out_sick')?'checked':false } />
                                                       <label class="form-check-label" for="do_not_distrub">
                                                         Do not distrub
                                                       </label>
@@ -87,10 +82,11 @@ function Workstatus ()  {
                                                          User Activity Indication Control
                                                       </label>
                                                     </div>
+                                                    <br/><br/>
                                                 </div>
                                             </div>
                                             </div>
-                                           <div class="col-md-3"></div>
+                                         
                                        </div>
                                     </section>
   

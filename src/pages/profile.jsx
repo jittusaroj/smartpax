@@ -1,4 +1,6 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
+import axios from "axios";
+
 import '../Css/Main.css';
 import Footer from'./Footer';
 import Sidebar from '../components/Sidebar'
@@ -9,57 +11,108 @@ import Preference from '../components/Profile/Preference';
 import Notification from '../components/Profile/Notification';
 import Sessionhistory from '../components/Profile/Sessionhistory';
 import {Dropdown, Form } from 'react-bootstrap';
+import { notify } from "../utils/services";
+
 
 
 function Profile ()  {
-  
+
+      var url = process.env.REACT_APP_LOCAL_API;
+
   const data = JSON.parse(localStorage.getItem('user'));
-  console.log(data.email);
+  const [udata, setUdata] = useState([]);
+
+  const [name, setName] = useState('')
+
+
+  useEffect(()=>{
+    // do stuff here...
+
+      axios.get(url+'/users/'+data.id,{   
+            'Content-Type': 'application/json',
+        })
+              .then(user => {
+                  console.log(user);
+
+                  setUdata(user.data);
+                  setName(user.data.name)
+                  return udata;
+
+              })
+
+            }, []) 
+
+
+
+            const updateProfile = (e) => {
+              if(e.key === 'Enter'){              
+
+                axios.put(url+'/users/'+udata.id,{
+                 name:name
+                  },{   
+                  'Content-Type': 'application/json',
+                 })
+                    .then(user => {
+                        console.log(user);  
+                        notify('Successfully updated', 'success')
+
+      
+                    })
+
+              }
+            }
 
     return (
         <>
          <div classNameName="wrapper">
          
-         {/* <Sidebar/> */}
-   <div class="page-wrapper" style={{marginLeft:"0px"}}>
+         <Sidebar/>
+   <div class="page-wrapper" >
           <div class="page-content p-0">
             <div class="bg-blue profile-head">
                 <div class="edit-file">
                        <div class="profile-section">
-                       { data.name.charAt(0).toUpperCase() }
+                         {/* <span> V</span>  */}
+                         <img src="blank-profile.png" alt="profile" className='profile-img-width'/>
+
                         </div>
                         
 
                         <div class="change-profile-option">
                         <Dropdown >
 
-                        {/* <Dropdown.Toggle  id="dropdown-basic" className="btn-toggle"  >
+                        <Dropdown.Toggle  id="dropdown-basic" className="btn-toggle"  >
                         <div class="icon-margin color-black" >
                                      <center>
                                      <i class="fa fa-pencil"></i> 
                                       <br/>
-                                      Change Photo
+                                      Change Profile Pic
                                      </center>
                                     
                                   
                                  </div>
-  </Dropdown.Toggle> */}
+  </Dropdown.Toggle>
                              
 
-                             {/* <Dropdown.Menu>
+                             <Dropdown.Menu>
     <Dropdown.Item  className="color-black" data-bs-toggle="modal" data-bs-target="#update_profile">Upload profile picture</Dropdown.Item>
     <Dropdown.Item href="#/action-2" className="color-black">Remove profile picture</Dropdown.Item>
   
-  </Dropdown.Menu> */}
+  </Dropdown.Menu>
                               
 </Dropdown>
-</div>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4">
-                    
-                        <input type="text" class="form-control name-input"  value={ data.name } />
+                        {/* <input type="text" class="form-control name-input"  value="Krishna" /> */}
+                        <Form>
+    
+    <input type="text" onChange={(e) => setName(e.target.value)} value={name} onKeyPress={(e) => updateProfile(e)} className='name-input'  />
+    
+
+</Form>
                     </div>
                     <div class="col-md-4"></div>
                     <div class="col-md-2"></div>
@@ -92,20 +145,20 @@ function Profile ()  {
                
             </div>
 
-            <div class="tab-content mt-4 mx-5" id="myTabContent">
+            <div class="tab-content mt-4 mx-5 height" id="myTabContent">
                              
-                                  <Personaltab/>
+                                  <Personaltab data={udata}/>
                                   
-                                   <Workstatus/>
+                                   <Workstatus data={udata}/>
                                   
 
-                                    <Password/>
+                                    <Password />
 
-                                    <Preference/>
+                                    <Preference data={udata} />
 
-                                    <Notification/>
+                                    <Notification />
 
-                                    <Sessionhistory/>
+                                    <Sessionhistory />
                                    
                  
                  
@@ -114,6 +167,7 @@ function Profile ()  {
             
             
             </div>
+
               </div>      
                   <Footer/>
           </div> 

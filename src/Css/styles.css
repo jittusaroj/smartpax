@@ -19,6 +19,10 @@ width: 10%;
 color: #fff;
 }
 
+.mt-8{
+  margin-top: 8px;
+}
+
 .form-group{
 margin-bottom: 15px;
 }
@@ -49,7 +53,7 @@ background-color: #fff;
 .main-center{
 margin-top: 30px;
    margin: 0 auto;
- max-width: 590px;
+ max-width: 580px;
  padding: 40px 40px;
  text-align: center;
 
@@ -69,8 +73,8 @@ width: 100%;
  display: block;
  padding-top: 10px;
  padding-left: 8px;
- border-bottom: 1px solid #e0e0e0;
- height: 65px;
+ border-bottom: 0px solid #e0e0e0;
+ height: 80px;
  background: #f7f7f7;
 }
 .title{
@@ -79,15 +83,25 @@ margin-left: 5%;
 }
 small{
 font-weight: 100;
- color: #a79a9aad;
+ color: #0c0404f0;
 }
 .text-center{
 text-align: center;
 }
-.form-group{
+/* .form-group{
 display: flex;
  justify-content: space-around;
+} */
+
+ .form-horizontal1  label{
+  display: inline-block;
+  float: left;
+  color: black !important;
+  font-weight: 600;
 }
+
+
+
 .input-group{
 height: auto;
  width: 360px;
@@ -95,8 +109,8 @@ height: auto;
 }
 input{
  width: 100%;
- height: 40px !important;
- border-radius: 4px;
+ height: 45px !important;
+ border-radius: 0.5rem !important;
  border: 1px solid #ccc;
  padding: 6px 12px;
  font-size: 16px;
@@ -142,8 +156,8 @@ width: 80%;
 }
 
 .login-button{
-width: 80%;
- margin: 0px 0px 0px 80px;
+width: 83%;
+ margin: 0px 0px 0px 20px;
  padding: 10px;
  font-size: 20px;
 }
@@ -162,8 +176,22 @@ width: 80%;
  margin: 16px;
 }
 .btn-outline{
-border: 1px solid lightgray;
-background-color: white;
+border: 1px solid lightgray !important;
+background-color: white !important;
+}
+.login-arrow{
+  font-size: 1rem !important;
+  width: 10%;
+}
+.google-img{
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.google-font{
+  font-size: 18px !important;
+  color: black !important;
 }
 
 .login-separator-component .separator-line {
@@ -181,15 +209,15 @@ background-color: white;
 .mt-4{
 margin-top: 2rem;
 }
-section{
+/* section{
 width: 100%;
 display: block;
 overflow-x: hidden;
-}
+} */
 a{
 line-height: 1.5;
 
- text-decoration: none;
+ text-decoration: none !important;
  cursor: pointer;
  color: #1f76c2;
 
@@ -198,6 +226,21 @@ line-height: 1.5;
   border-radius: 0px;
     height: 40px;
 }
+.float-right{
+  float: right !important;
+}
+.mr-2{
+  margin-right: 5% !important;
+}
+.left-20{
+  margin-left: 8%;
+}
+.left-6{
+  margin-left: 8% !important;
+}
+.left-13{
+  margin-left: 11% !important;
+}
 
 @media only screen and (max-width: 600px) {
 .input-group{
@@ -205,6 +248,18 @@ height: auto;
  width: 100%;
  margin-left: 0px;
 }
+.login-button{
+  width: 100% !important;
+   /* margin: 0px 0px 0px 80px; */
+   padding: 10px;
+   font-size: 20px;
+  }
+  .left-20{
+    margin-left: 0px !important;
+  }
+  .left-6{
+    margin-left: 0px !important;
+  }
 .col-sm-2{
 width: 100%;
 
@@ -222,8 +277,8 @@ width: 100%;
  margin: 16px;
 }
 .login-button {
-
- margin: 0px 0px 0px 20px;
+  margin: 0px 0px 0px 0px;
+ /* margin: 0px 0px 0px 20px; */
  
 }
 }

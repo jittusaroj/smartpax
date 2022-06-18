@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import '../Css/Main.css';
 import Invite from "./Invite";
-// import Notification from "././Components/Modal/Notification";
+import Usermodal from "./Usermodal";
+import Notification from "./Notification";
 import {Image } from 'react-bootstrap';
 import {useState} from 'react';
 import {Modal } from 'react-bootstrap';
@@ -24,19 +25,21 @@ function Sidebar ()  {
           
           <ul className="metismenu" id="menu">
             <li>
+          
              <Image src="slogo.png" className="logo-icon ms-2" alt="logo icon" />
+             
              </li>
 
            
             
 
              <li>
-                <a href="" >
+                <Link  className='color-white' to={{ pathname: '/Dashboard', }} >
                    <div className="parent-icon " data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="Dashboard"><i className='bx bx-category'></i>
 
                    </div>
                
-                </a>
+                </Link>
              </li>
              <li>
                 <span data-bs-toggle="modal" data-bs-target="#notification" className='color-white'>
@@ -47,7 +50,7 @@ function Sidebar ()  {
                 </span>
              </li>
              <li>
-                <a href="" className='color-white'>
+                <a href="#" className='color-white'>
                    <div class="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="Inbox"><i class='bx bx-message-alt'></i>
 
                    </div>
@@ -55,7 +58,7 @@ function Sidebar ()  {
                 </a>
              </li>
              <li>
-                <a href="" className='color-white'>
+                <a href="#" className='color-white'>
                    <div class="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="My Work"><i class='bx bx-check-square'></i>
 
                    </div>
@@ -63,16 +66,16 @@ function Sidebar ()  {
                 </a>
              </li>
 
-             <li class="mt-15">
+             {/* <li class="mt-15">
                 <a href="" className='color-white'>
                    <div class="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="App"><i class='bx bx-devices'></i>
 
                    </div>
                
                 </a>
-             </li>
+             </li> */}
 
-             <li>
+             <li  class="mt-15">
           
                 <span className='color-white' onClick={handleShow}>
                    <div className="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="Invite Members"><i className='bx bx-user-plus'></i>
@@ -92,7 +95,7 @@ function Sidebar ()  {
                 </Link>
              </li>
 
-             <li>
+             {/* <li>
                 <span data-bs-toggle="offcanvas" data-bs-target="#search" aria-controls="search" className='color-white'>
                    <div class="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="Search Everything"><i class='bx bx-search'></i>
 
@@ -107,11 +110,21 @@ function Sidebar ()  {
                    </div>
                
                 </span>
-             </li>
+             </li> */}
 
-             <li>
+             {/* <li>
                 <Link to={{ pathname: '/Profile', }} className='color-white sidebar-user-icon'>
-                  K </Link>
+                  V </Link>
+
+
+                
+             </li> */}
+
+             <li data-bs-toggle="modal" data-bs-target="#userModal" className='color-white'>
+               
+                <img src="blank-profile.png" alt="profile" className='profile-img-side'/>
+
+                  {/* </Link> */}
 
 
                 
@@ -123,9 +136,9 @@ function Sidebar ()  {
          
          
        </div>
-
+<Usermodal/>
        <Modal show={show} onHide={handleClose}  
-      size="lg">
+      size="md">
         <Modal.Header closeButton>
           <Modal.Title>  <Image src="user-invite-logo.png" /> Invite new members</Modal.Title>
         </Modal.Header>
@@ -137,7 +150,7 @@ function Sidebar ()  {
 
       
 
-{/* <Notification/> */}
+<Notification/>
   
   
   </>

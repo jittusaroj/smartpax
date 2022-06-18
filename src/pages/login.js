@@ -54,14 +54,15 @@ const Login = () => {
                 <Header />
                 <div className="main-login main-center">
                     <div className="text-center">
-                        <h1>Log <small>In</small></h1>
-                        <small>QMS</small>
+                        <h1><b>Log</b> <small>In</small></h1>
+                    
                     </div>
 
-                    <form className="form-horizontal mt-4" method="post" action="#">
+                    <form className="form-horizontal1 mt-4" method="post" action="#">
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Email</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-2 left-20 control-label">Email</label>
+                            
+                            <div className=" col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" name="username" id="username" placeholder="Enter your Email" />
@@ -70,47 +71,55 @@ const Login = () => {
                         </div>
 
                         <div className="form-group">
-                            <label for="password" className="col-sm-2 control-label">Password</label>
-                            <div className="col-sm-10">
+                            <label for="password" className="col-sm-2 left-13 control-label">Password</label>
+                            
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="password" onChange={(e) => setPassowrd(e.target.value)} className="form-control" name="password" id="password" placeholder="Enter your Password" />
                                 </div>
                             </div>
                         </div>
-                        <Link className="form-group " to={{ pathname: '/forgot_password', }} >
+                        <Link className="form-group float-right mr-2" to={{ pathname: '/forgot_password', }} >
                             Forgot your password?
+                        </Link>
+                        <Link className="form-group  mr-2" to={{ pathname: '/Dashboard', }} >
+                           Dashboard
                         </Link>
 
                         <div className="form-group ">
                             <button type="button"
                                 onClick={() => login()}
-                                className="btn btn-primary btn-lg btn-block login-button">Log In</button>
+                                className="btn btn-primary btn-lg btn-block login-button">Log In <i class="fa fa-arrow-right login-arrow"></i></button>
                         </div>
 
                         <div className="login-separator-wrapper"><div className="login-separator-component split-line"><span className="separator-line"></span>
-                            <small>Or Sign In</small>
+                            <small><b>Or Sign In</b></small>
                             <span className="separator-line"></span></div></div>
 
-                        <button className="btn btn-outline text-center">Google</button>
+                        <button className="btn btn-outline text-center google-font"> <img className="google-img" src="google.jpg" alt="Google image"/> Google</button>
 
-                        <div className="login-separator-component">
+                        {/* <div className="login-separator-component">
                             <span className="separator-line"></span>
-                        </div>
+                        </div> */}
 
 
 
-                        <span className="signup-text">If you have an <b>@gmail.com</b> email, you can</span>
-                        {/* <a href="" className="form-group ">Signup to Login</a> */}
+                        <span className="signup-text mt-3"> <b>New Member ? </b> 
                         <Link to={{ pathname: '/signup', }} >
-                            Signup to Login
+                        <b>Sign Up</b>    
                         </Link>
+                        </span>
+                        {/* <a href="" className="form-group ">Signup to Login</a> */}
+                        
 
-                        <div className="login-separator-component">
+                        {/* <div className="login-separator-component">
                             <span className="separator-line"></span>
                         </div>
 
-                   
+                        <Link to={{ pathname: '/register', }} >
+                            Don't have account ? Register
+                        </Link> */}
 
                     </form>
                 </div>

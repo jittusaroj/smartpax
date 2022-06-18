@@ -2797,7 +2797,7 @@ border-radius: 30px;
 margin-left: 10px;
 }
 .mt-15{
-margin-top: 7rem !important;
+margin-top: 15rem !important;
 }
 ::-webkit-scrollbar {
 width: 10px;
@@ -2846,12 +2846,15 @@ padding: 1.5rem 0.2rem 0.2rem 1.5rem !important;
 }
 }
 @media screen and (min-width: 768px){
+	.account-width{
+		width: 18% !important;
+	}
 /*.modal.show .modal-dialog {*/
 .custom-dialog{
 transform: none !important;
 position: relative !important;
-right: 27% !important;
-top: 18% !important;
+right: 36% !important;
+top: 24% !important;
 /*max-width: 600px !important;*/
 }
 }
@@ -3000,7 +3003,8 @@ border-color: #dee0e2 !important;
 	  background: orange;
 	  color: white;
 	  font-size: 50px;
-	  line-height: 153px;
+	  /* line-height: 153px; */
+	  line-height: 133px;
 	  margin-left: auto;
 	  margin-right: auto;
 	  text-align: center;
@@ -3252,6 +3256,9 @@ border-color: #dee0e2 !important;
 }
 }
 @media screen and (max-width: 600px) {
+	.account-width{
+		width: 50%;
+	}
   .user-list-table {
 	display: block;
 	 overflow-x: scroll;
@@ -3286,4 +3293,113 @@ border-color: #dee0e2 !important;
     border: 1px solid #ffffff00 !important;
     transition: all .3s ease-out !important;
 }
+.height{
+	min-height: 500px;
+}
+.work-form-check {
+    display: inline-block !important;
+   
+    padding: 24px !important;
+}
+
+.work-form-check label{
+	color: black;
+	font-weight: 600;
+}
+.f-12{
+	font-size: 12px;
+}
+.br-8{
+	border-radius: 8px;
+}
+.btn-padding{
+	padding: 0.25rem 1.5rem !important;
+}
+.btn{
+	border-radius: 8px !important;
+}
+.thead-bg{
+	background:#f8f8f8e8;
+}
+.text-black{
+	color: #000 !important;
+}
+.team-font{
+	font-size: 15px;
+    /* font-weight: 600; */
+    margin-bottom: 0.7rem;
+}
+.team-font i{
+	font-size: 15px !important;
+}
+.custom-user-sidebar{
+	margin-top: -26px !important;
+    margin-left: -10px !important;
+}
+#dropdown-button-drop-end {
+	background-color: transparent !important;
+	color: #000 !important;
+	border:0px solid #000 !important;
+}
+#dropdown-button-drop-end:focus {
+	background-color: transparent !important;
+	color: #000 !important;
+	border:0px solid #000 !important;
+	box-shadow: 0 0 0 0rem rgb(130 138 145 / 0%) !important;
+}
+
+.dropend .dropdown-menu{
+	margin-left: 50% !important;
+	border: 0px !important;
+}
+.profile-img-width{
+	border-radius:50%;
+	width:150px;
+}
+.profile-img-side{
+	border-radius:50%;
+	width:40px;
+	margin-left: 5px;
+}
+.Userdrop{
+	margin-top: -13px;
+    margin-left: -10px;
+    font-weight: 600;
+}
+.show>.btn-secondary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0rem rgb(130 138 145 / 50%) !important;
+}
+.right-26{
+	margin-right: 23% !important;
+}
+.left-search {
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+	border-radius: 4px !important;
+}
+.search-input {
+    width: 90%;
+}
+.search-input input {
+    height: 36px !important;
+    border: 0px!important;
+    border-radius: 0px!important;
+    box-shadow: none!important;
+    outline: 0px!important;
+    /* padding: 2px 8px; */
+    width: 100%;
+    outline-offset: 0px;
+}
+.btn:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%) !important;
+}
+.modal-backdrop.show {
+    opacity: .5;
+    display: contents !important;
+}
+.text-blue{
+	color: blue;
+}
+
 

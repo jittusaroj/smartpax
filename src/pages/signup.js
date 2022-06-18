@@ -54,14 +54,15 @@ const SignUp = () => {
                 <Header />
                 <div className="main-login main-center">
                     <div className="text-center">
-                        <h1>Signup <small>Up</small></h1>
-                        <small>QMS</small>
+                        <h1><b>Sign</b> <small>Up</small></h1>
+                        <p>Sign up with your working email address</p>
+                      
                     </div>
 
-                    <form className="form-horizontal mt-4" method="post" action="#">
+                    <form className="form-horizontal1 mt-4" method="post" action="#">
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Name</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-2 control-label left-20">Name</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="name" onChange={(e) => setName(e.target.value)} className="form-control"  id="username" placeholder="Enter your Name" />
@@ -70,52 +71,49 @@ const SignUp = () => {
                         </div>
 
                         <div className="form-group">
-                            <label for="username" className="col-sm-2 control-label">Email</label>
-                            <div className="col-sm-10">
+                            <label for="username" className="col-sm-2 control-label left-20">Email</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
-                                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" id="username" placeholder="Enter your Email" />
+                                    <input type="email" onChange={(e) => setEmail(e.target.value)} className="form-control" id="username" placeholder="Enter your working Email" />
                                 </div>
                             </div>
                         </div>
 
                         <div className="form-group">
-                            <label for="password" className="col-sm-2 control-label">Password</label>
-                            <div className="col-sm-10">
+                            <label for="password" className="col-sm-2 control-label left-13">Password</label>
+                            <div className="col-sm-10 left-20">
                                 <div className="input-group">
 
                                     <input type="password" onChange={(e) => setPassowrd(e.target.value)} className="form-control" name="password" id="password" placeholder="Enter your Password" />
                                 </div>
                             </div>
                         </div>
-                        <Link className="form-group " to={{ pathname: '/forgot_password', }} >
+                        <Link className="form-group float-right mr-2 " to={{ pathname: '/forgot_password', }} >
                             Forgot your password?
                         </Link>
 
                         <div className="form-group ">
                             <button type="button"
                                 onClick={() => signup()}
-                                className="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                                className="btn btn-primary btn-lg btn-block login-button">Sign Up <i class="fa fa-arrow-right login-arrow"></i></button>
                         </div>
 
                         <div className="login-separator-wrapper"><div className="login-separator-component split-line"><span className="separator-line"></span>
                             <small>Or Sign In</small>
                             <span className="separator-line"></span></div></div>
 
-                        <button className="btn btn-outline text-center">Google</button>
+                        <button className="btn btn-outline text-center google-font">  <img className="google-img" src="google.jpg" alt="Google image"/> Google</button>
 
-                        <div className="login-separator-component">
-                            <span className="separator-line"></span>
-                        </div>
+                      
 
 
 
-                        <span className="signup-text">If you already Signed Up,
-
-<Link to={{ pathname: '/', }} >
-    Log-in here
-</Link>
-</span>
+                        <span className="signup-text mt-4"> <b>Already a Member ? </b> 
+                        <Link to={{ pathname: '/', }} >
+                        <b>Log In</b>    
+                        </Link>
+                        </span>
 
                        
 
