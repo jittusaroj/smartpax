@@ -53,7 +53,9 @@ function Personaltab (props)  {
       })
         .then(user => {
           console.log(user);
-          return title;
+          window.location.reload();
+
+         // return title;
           //  notify('Successfully updated', 'success')
         });
 
@@ -163,7 +165,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
     Submit
   </Button>
 </Form>
@@ -208,7 +210,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
   Change Email Address
   </Button>
 </Form>
@@ -253,7 +255,7 @@ function Personaltab (props)  {
   </Form.Group>
 
     
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
  Save
   </Button>
 </Form>
@@ -279,7 +281,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
    Save
   </Button>
 </Form>
@@ -305,7 +307,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
    Save
   </Button>
 </Form>
@@ -335,7 +337,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
    Save
   </Button>
 </Form>
@@ -362,7 +364,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
    Save
   </Button>
 </Form>
@@ -390,7 +392,7 @@ function Personaltab (props)  {
   </Form.Group>
 
   
-  <Button variant="primary float-right" type="submit" onClick={(e) => updateProfile()}>
+  <Button variant="primary float-right" type="button" onClick={(e) => updateProfile()}>
    Save
   </Button>
 </Form>

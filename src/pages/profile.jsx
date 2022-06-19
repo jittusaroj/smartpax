@@ -62,6 +62,30 @@ function Profile ()  {
               }
             }
 
+            const [uploadFile, setUploadFile] = useState('');
+
+            const submitFile = (event) => {
+              event.preventDefault();
+          
+              const data = new FormData();
+              data.append("avatar", uploadFile);
+          console.log(data);
+              axios
+              .post(url+'/users/upload/avatar/'+udata.id, data, {
+                  headers: {
+                    "Content-Type": "multipart/form-data"
+                  }
+                })
+                .then((data) => {
+                  console.log(data);  
+                        notify('Avatar Successfully updated', 'success')
+                        window.location.reload();
+                })
+                .catch((error) => {
+                  // error response
+                });
+            };
+
     return (
         <>
          <div classNameName="wrapper">
@@ -73,7 +97,7 @@ function Profile ()  {
                 <div class="edit-file">
                        <div class="profile-section">
                          {/* <span> V</span>  */}
-                         <img src="blank-profile.png" alt="profile" className='profile-img-width'/>
+                         <img hidden={ udata.avatar ?  false : true } src={ process.env.REACT_APP_LOCAL_API+'/users/media/'+udata.avatar} alt="profile" className='profile-img-width'/>
 
                         </div>
                         
@@ -181,21 +205,21 @@ function Profile ()  {
                     <h5 class="modal-title" id="exampleModalLabel"> Update Profile Photo</h5>
                     <button type="button" class="btn-close custum-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <form action="" method="">
+                  <form onSubmit={submitFile}>
                           <div class="modal-body">
-                          <div className="name-first-word">
+                          {/* <div className="name-first-word">
                                       K
-                                  </div>
+                                  </div> */}
                                   
                                  
                                     <label for="profile_img" class="update_image_label btn btn-primary">Upload image</label>
-                                    <input type="file" name="" id="profile_img" value="" class="update_profile_img"/>
+                                    <input type="file" name="avatar" id="profile_img" value="" class="update_profile_img" onChange={(e) => setUploadFile(e.target.files[0])} />
                                 
                               
                                 </div>
                           <div class="modal-footer borde-top-0">
                        
-                            <button type="button" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                           </div>
                   </form>
                 </div>
