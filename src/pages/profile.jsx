@@ -86,6 +86,28 @@ function Profile ()  {
                 });
             };
 
+            const removeAvatar = (event) => {
+              
+          
+              const data = new FormData();
+              data.append("avatar", uploadFile);
+          console.log(data);
+              axios
+              .post(url+'/users/remove/avatar/'+udata.id, data, {
+                  headers: {
+                    "Content-Type": "multipart/form-data"
+                  }
+                })
+                .then((data) => {
+                  console.log(data);  
+                        notify('Avatar Successfully removed', 'success')
+                        window.location.reload();
+                })
+                .catch((error) => {
+                  // error response
+                });
+            };
+
     return (
         <>
          <div classNameName="wrapper">
@@ -120,7 +142,7 @@ function Profile ()  {
 
                              <Dropdown.Menu>
     <Dropdown.Item  className="color-black" data-bs-toggle="modal" data-bs-target="#update_profile">Upload profile picture</Dropdown.Item>
-    <Dropdown.Item href="#/action-2" className="color-black">Remove profile picture</Dropdown.Item>
+    <Dropdown.Item href="#" onClick={(e) => removeAvatar()} className="color-black">Remove profile picture</Dropdown.Item>
   
   </Dropdown.Menu>
                               
@@ -176,7 +198,7 @@ function Profile ()  {
                                    <Workstatus data={udata}/>
                                   
 
-                                    <Password />
+                                    <Password data={udata}  />
 
                                     <Preference data={udata} />
 
