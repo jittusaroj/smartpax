@@ -4,7 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/header";
 import { notify } from "../utils/services";
+import platform from 'platform';
+import useNavigator from "react-browser-navigator";
+
+
 const Login = () => {
+
+    let { getCurrentPosition } = useNavigator();
+
     const nav = useNavigate();
 
     const [email, setEmail] = useState('')
@@ -32,16 +39,14 @@ const Login = () => {
                     console.log(url);
 
                     localStorage.setItem('user', JSON.stringify(user.data.data));
-
-                    // const data = JSON.parse(localStorage.getItem('user'));
-                    // console.log(data.email);
-
                     if(user.data.status){
-                        nav('/dashboard')
-                        notify(user.data.msg, 'success')
+
+
+                        notify(user.data.msg, 'success');
+                        nav('/dashboard');
 
                     }else{
-            notify('Something went wrong!', 'error')
+                    notify('Something went wrong!', 'error')
 
                     }
                 })

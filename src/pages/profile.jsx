@@ -16,7 +16,9 @@ import { notify } from "../utils/services";
 
 
 function Profile ()  {
-
+  //let { networkStatus } = useNavigator();
+ // let { userAgent } = useNavigator();
+ 
       var url = process.env.REACT_APP_LOCAL_API;
 
   const data = JSON.parse(localStorage.getItem('user'));
@@ -26,7 +28,10 @@ function Profile ()  {
 
 
   useEffect(()=>{
-    // do stuff here...
+    
+    // if (userAgent) {
+    //   console.log("userAgent", userAgent);
+    // }
 
       axios.get(url+'/users/'+data.id,{   
             'Content-Type': 'application/json',
@@ -40,7 +45,8 @@ function Profile ()  {
 
               })
 
-            }, []) 
+            }//, [userAgent]
+            ) 
 
 
 
