@@ -1,8 +1,31 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
+import axios from "axios";
 import { Table} from 'react-bootstrap';
 
 
-function Sessionhistory ()  {
+function Sessionhistory (props)  {
+    var url = process.env.REACT_APP_LOCAL_API;
+console.log(props.data.id);
+    const [udata, setUdata] = useState([]);
+    const [date, setDate] = useState([]);
+ 
+    useEffect(()=>{
+      
+
+        axios.get(url+'/history/list/'+props.data.id,{   
+              'Content-Type': 'application/json',
+          })
+                .then(user => {
+                    console.log(user);
+  
+                    setUdata(user.data);
+                    setDate(user.data[0].created_at)
+                    return udata;
+  
+                })
+  
+              }, [props.data.id]) 
+
     return (
         <>
 
@@ -14,10 +37,10 @@ function Sessionhistory ()  {
                                         <div className="col-md-10">
                                           <div className="row mb-2">
                                               <div className="col-md-6 col-6">
-                                                  <p>15 Sessions</p>
+                                                  <p>{udata.length} Sessions</p>
                                               </div>
                                               <div className="col-md-6 col-12">
-                                                 <div style={{float:'right'}}> <i className="fa fa-clock-o"></i> Recent Session : May 25, 2022 01:15 PM</div>
+                                                 <div style={{float:'right'}}> <i className="fa fa-clock-o"></i> Recent Session : { date }</div>
                                               </div>
                                           </div>
                                           <Table className=" session-table">
@@ -33,82 +56,36 @@ function Sessionhistory ()  {
                                               </thead>
 
                                               <tbody>
-                                                  <tr>
-                                                      <td colSpan={2}>
-                                                          <div className="row">
-                                                              <div className="col-auto p-2">
-                                                                   <span className="f-20"><i className="fa fa-desktop" aria-hidden="true"></i> </span> 
-                                                              </div>
-                                                              <div className="col-auto">
-                                                                    <span className="extra-font">Windows</span> <br/> Chorme
-                                                              </div>
-                                                          </div>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           Lucknow, Uttar Pradesh, IN
-                                                           <br/>
-                                                           <small>2409:4063:4202:8ad5:902c:bf99:9fc9:6873</small>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           May 25, 2022 01:15 PM
-                                                           <br/>
-                                                           <small>11 M</small>
-                                                       </td>
-                                                       <td >
-                                                           <a className="log_out">Logout</a>
-                                                       </td>
-                                                  </tr>
+                                             
+                                              {
+                       udata.map((data, i) => { 
+                           return(
+                            <tr key={i} >
+                            <td colSpan={2}>
+                                <div className="row">
+                                    <div className="col-auto p-2">
+                                         <span className="f-20"><i className="fa fa-desktop" aria-hidden="true"></i> </span> 
+                                    </div>
+                                    <div className="col-auto">
+                                          <span className="extra-font">{ (data.device).split(',')[0] }</span> <br/> { (data.device).split(',')[1] }
+                                    </div>
+                                </div>
+                             </td>
+                             <td colSpan={3}>
+                             { data.location }
+                             </td>
+                             <td colSpan={3}>
+                             { data.created_at }
+                             </td>
+                             <td >
+                                 <a className="log_out">Logout</a>
+                             </td>
+                        </tr>
 
-                                                  <tr>
-                                                      <td colSpan={2}>
-                                                          <div className="row">
-                                                              <div className="col-auto p-2">
-                                                                   <span className="f-20"><i className="fa fa-desktop" aria-hidden="true"></i> </span> 
-                                                              </div>
-                                                              <div className="col-auto">
-                                                                    <span className="extra-font">Windows</span> <br/> Chorme
-                                                              </div>
-                                                          </div>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           Lucknow, Uttar Pradesh, IN
-                                                           <br/>
-                                                           <small>2409:4063:4202:8ad5:902c:bf99:9fc9:6873</small>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           May 25, 2022 01:15 PM
-                                                           <br/>
-                                                           <small>11 M</small>
-                                                       </td>
-                                                       <td >
-                                                           <a className="log_out">Logout</a>
-                                                       </td>
-                                                  </tr>
-                                                  <tr>
-                                                      <td colSpan={2}>
-                                                          <div className="row">
-                                                              <div className="col-auto p-2">
-                                                                   <span className="f-20"><i className="fa fa-desktop" aria-hidden="true"></i> </span> 
-                                                              </div>
-                                                              <div className="col-auto">
-                                                                    <span className="extra-font">Windows</span> <br/> Chorme
-                                                              </div>
-                                                          </div>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           Lucknow, Uttar Pradesh, IN
-                                                           <br/>
-                                                           <small>2409:4063:4202:8ad5:902c:bf99:9fc9:6873</small>
-                                                       </td>
-                                                       <td colSpan={3}>
-                                                           May 25, 2022 01:15 PM
-                                                           <br/>
-                                                           <small>11 M</small>
-                                                       </td>
-                                                       <td >
-                                                           <a className="log_out">Logout</a>
-                                                       </td>
-                                                  </tr>
+                           );
+                       })
+                       } 
+                                                 
                                                  
                                               </tbody>
                                           </Table>

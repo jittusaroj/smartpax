@@ -1,7 +1,31 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
+import axios from "axios";
+
+import { notify } from "../../utils/services";
 
 
-function Notification ()  {
+function Notification (props)  {
+
+    var url = process.env.REACT_APP_LOCAL_API;
+
+  const updateProfile = (status) => {
+        //  props.data.status = status;
+        //  console.log(status);
+
+        axios.put(url + '/users/' + props.data.id, {
+          notification: status
+         
+        }, {
+          'Content-Type': 'application/json',
+        })
+          .then(data => {
+            console.log(data);
+          //  window.location.reload();  
+
+             notify('Settings updated', 'success')
+
+          });
+  }
   
     return (
         <>
@@ -24,7 +48,7 @@ function Notification ()  {
                                                                <p className='f-12'>Receive notifications directly on my Windows</p>
                                                            </div>
                                                            <div class="col-md-3 col-12">
-                                                               <button class="btn btn-primary btn-sm mt-2 btn-padding" style={{ float:'right'}}>Enable </button>
+                                                               <button class="btn btn-primary btn-sm mt-2 btn-padding" style={{ float:'right'}} onClick={(e) => updateProfile(1)}>Enable </button>
                                                            </div>
                                                        </div>
                                                    </div>

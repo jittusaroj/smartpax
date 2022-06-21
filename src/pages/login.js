@@ -41,6 +41,17 @@ const Login = () => {
                     localStorage.setItem('user', JSON.stringify(user.data.data));
                     if(user.data.status){
 
+                        axios.post(url+'/history/save', {
+                            device:platform.os+' , '+platform.name,
+                            user_id:user.data.data.id,
+                            location:'N/A',
+                            lat:getCurrentPosition?.coords.latitude,
+                            long:getCurrentPosition?.coords.longitude,
+                            isActive: 0,
+                            created_at:new Date()
+                        },{
+                            headers: headers
+                          });
 
                         notify(user.data.msg, 'success');
                         nav('/dashboard');

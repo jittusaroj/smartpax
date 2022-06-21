@@ -45,8 +45,7 @@ function Profile ()  {
 
               })
 
-            }//, [userAgent]
-            ) 
+            }, []) 
 
 
 
@@ -125,7 +124,7 @@ function Profile ()  {
                 <div class="edit-file">
                        <div class="profile-section">
                          {/* <span> V</span>  */}
-                         <img hidden={ udata.avatar ?  false : true } src={ process.env.REACT_APP_LOCAL_API+'/users/media/'+udata.avatar} alt="profile" className='profile-img-width'/>
+                         <img src={ (udata.avatar)?process.env.REACT_APP_LOCAL_API+'/users/media/'+udata.avatar:'blank-profile.png' } alt="profile" className='profile-img-width'/>
 
                         </div>
                         
@@ -208,9 +207,9 @@ function Profile ()  {
 
                                     <Preference data={udata} />
 
-                                    <Notification />
+                                    <Notification data={udata}  />
 
-                                    <Sessionhistory />
+                                    <Sessionhistory data={udata} />
                                    
                  
                  
