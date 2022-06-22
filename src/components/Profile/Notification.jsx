@@ -20,7 +20,7 @@ function Notification (props)  {
         })
           .then(data => {
             console.log(data);
-          //  window.location.reload();  
+           window.location.reload();  
 
              notify('Settings updated', 'success')
 

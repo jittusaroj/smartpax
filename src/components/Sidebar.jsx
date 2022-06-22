@@ -1,24 +1,47 @@
-import React from 'react';
+import {React,useEffect,useState} from 'react';
+import axios from "axios";
+
 import { Link } from "react-router-dom";
 import '../Css/Main.css';
 import Invite from "./Invite";
 import Usermodal from "./Usermodal";
 import Notification from "./Notification";
 import {Image } from 'react-bootstrap';
-import {useState} from 'react';
 import {Modal } from 'react-bootstrap';
 
 
 
 function Sidebar (props)  {
 
-   const data = JSON.parse(localStorage.getItem('user'));
+  
+  // alert(window.location.pathname)
 
+  const cdata = JSON.parse(localStorage.getItem('user'));
+
+   
    const [show, setShow] = useState(false);
 
    const handleClose = () => setShow(false);
    const handleShow = () => setShow(true);
-    
+
+
+   var url = process.env.REACT_APP_LOCAL_API;
+    const [data, setData] = useState([]);
+ 
+    useEffect(()=>{
+      
+
+        axios.get(url + '/users/' + cdata.id, { 
+              'Content-Type': 'application/json',
+          })
+                .then(user => {
+                    console.log(user);
+  
+                    setData(user.data);
+  
+                })
+  
+              }, []) 
     return (
         <>
         
