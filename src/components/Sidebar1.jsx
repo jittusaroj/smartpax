@@ -10,7 +10,7 @@ import {Modal } from 'react-bootstrap';
 
 
 
-function Sidebar (props)  {
+function Sidebar ()  {
 
    const [show, setShow] = useState(false);
 
@@ -123,57 +123,6 @@ function Sidebar (props)  {
              <li data-bs-toggle="modal" data-bs-target="#userModal" className='color-white'>
                
                 <img src="blank-profile.png" alt="profile" className='profile-img-side'/>
-                <div className='profile-sidebar-icon'>
-               
-                { props.data.working_status == 'in_office' &&
-                
-                       <i class="fa fa-building" aria-hidden="true"></i>
-
-                       }
-
-              { props.data.working_status == 'working_from_home' &&
-                
-                      <i class="fa fa-home" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'Out_sick' &&
-                
-                     <i class="fa fa-plus" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'on_break' &&
-                
-                      <i class="fa fa-bed" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'out_off_office' &&
-                
-                      <i class="fa fa-cloud" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'working_outside' &&
-                
-                     <i class="fa fa-cloud" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'family_time' &&
-                
-                     <i class="fa fa-heart" aria-hidden="true"></i>
-
-                       }
-
-{ props.data.working_status == 'do_not_distrub' &&
-                
-                      <i class="fa fa-bell" aria-hidden="true"></i> 
-
-                       }
-
-                </div>
 
                   {/* </Link> */}
 

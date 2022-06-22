@@ -117,16 +117,79 @@ function Profile ()  {
         <>
          <div classNameName="wrapper">
          
-         <Sidebar/>
+         <Sidebar data={udata}/>
    <div class="page-wrapper" >
           <div class="page-content p-0">
             <div class="bg-blue profile-head">
                 <div class="edit-file">
+
+    
+
+                { udata.working_status == 'in_office' &&
+                <div className='profile-icon'>
+                       <i class="fa fa-building" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+              { udata.working_status == 'working_from_home' &&
+                <div className='profile-icon'>
+                      <i class="fa fa-home" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'Out_sick' &&
+                <div className='profile-icon'>
+                     <i class="fa fa-plus" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'on_break' &&
+                <div className='profile-icon'>
+                      <i class="fa fa-bed" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'out_off_office' &&
+                <div className='profile-icon'>
+                      <i class="fa fa-cloud" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'working_outside' &&
+                <div className='profile-icon'>
+                     <i class="fa fa-cloud" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'family_time' &&
+                <div className='profile-icon'>
+                     <i class="fa fa-heart" aria-hidden="true"></i>
+                        </div>
+
+                       }
+
+{ udata.working_status == 'do_not_distrub' &&
+                <div className='profile-icon'>
+                      <i class="fa fa-bell" aria-hidden="true"></i> 
+                        </div>
+
+                       }
+                 
+
+                       
+
                        <div class="profile-section">
                          {/* <span> V</span>  */}
                          <img src={ (udata.avatar)?process.env.REACT_APP_LOCAL_API+'/users/media/'+udata.avatar:'blank-profile.png' } alt="profile" className='profile-img-width'/>
 
                         </div>
+                       
                         
 
                         <div class="change-profile-option">

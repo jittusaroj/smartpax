@@ -1,5 +1,5 @@
-import {React,useEffect,useState} from 'react';
-
+import React from 'react';
+import  { useState } from 'react';
 import axios from "axios";
 import Footer from'./Footer';
 import Invite from "../components/Invite";
@@ -12,10 +12,7 @@ import { Link } from 'react-router-dom';
 
 
 function Userlist ()  {
-
     const [list, setList] = useState([]);
-
-  useEffect(()=>{
 
     const headers = {
         'Content-Type': 'application/json',
@@ -32,7 +29,6 @@ function Userlist ()  {
             
             })
   
-          }, []) 
    
     return (
         <>
@@ -132,7 +128,8 @@ function Userlist ()  {
                        list.map((user, i) => { 
                            return(
                            <tr key={i}>
-                               
+                               <td>
+                                </td>
                                <td><a href="#">{i}</a></td>
                                <td><a href="#">{user.name}</a></td>
                                <td><a href="#">{user.email}</a></td>

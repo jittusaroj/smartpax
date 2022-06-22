@@ -37,50 +37,51 @@ function Workstatus (props)  {
                                                   <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="in_office" checked={ (props.data.working_status == 'in_office')? 'true':false } onClick={(e) => updateProfile('in_office')} />
                                                       <label class="form-check-label" for="in_office">
-                                                        In the office <i class="fa fa-building" aria-hidden="true"></i>
+                                                        In the office
                                                       </label>
                                                   </div>
                                                   <div class="form-check work-form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="working_from_home" checked={ (props.data.working_status == 'working_from_home')? 'true':false } onClick={(e) => updateProfile('working_from_home')}/>
+                                                      <input class="form-check-input" type="radio" name="status" id="working_form_home" checked={ (props.data.working_status == 'working_form_home')? 'true':false } onClick={(e) => updateProfile('working_form_home')}/>
                                                       <label class="form-check-label" for="working_form_home">
-                                                        Working from home <i class="fa fa-home" aria-hidden="true"></i>
+                                                        Working from home
                                                       </label>
                                                   </div>
                                                     <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="Out_sick" checked={ (props.data.working_status == 'Out_sick')? 'true':false } onClick={(e) => updateProfile('Out_sick')} />
                                                       <label class="form-check-label" for="Out_sick">
-                                                       Out sick <i class="fa fa-plus" aria-hidden="true"></i>
+                                                       Out sick
                                                       </label>
                                                   </div>
                                                   <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="on_break" checked={ (props.data.working_status == 'on_break')? 'true':false } onClick={(e) => updateProfile('on_break')} />
                                                       <label class="form-check-label" for="on_break">
-                                                       On break <i class="fa fa-bed" aria-hidden="true"></i>
+                                                       On break
                                                       </label>
                                                   </div>
                                                   <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="out_off_office" checked={ (props.data.working_status == 'out_off_office')? 'true':false } onClick={(e) => updateProfile('out_off_office')} />
                                                       <label class="form-check-label" for="out_off_office">
-                                                       Out of office <i class="fa fa-cloud" aria-hidden="true"></i>
+                                                       Out of office
                                                       </label>
                                                   </div>
                                                   
                                                   <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="working_outside" checked={ (props.data.working_status == 'working_outside')? 'true':false } onClick={(e) => updateProfile('working_outside')} />
                                                       <label class="form-check-label" for="working_outside">
-                                                         Working outside<i class="fa fa-cloud" aria-hidden="true"></i>
+                                                         Working outside
                                                       </label>
                                                   </div>
                                                   <div class="form-check work-form-check">
-                                                      <input class="form-check-input" type="radio" name="status" id="family_time" checked={ (props.data.working_status == 'family_time')? 'true':false } onClick={(e) => updateProfile('family_time')} />
-                                                      <label class="form-check-label" for="family_time">
-                                                         Family time<i class="fa fa-heart" aria-hidden="true"></i>
+                                                      <input class="form-check-input" type="radio" name="status" id="Fimaly_time" checked={ (props.data.working_status == 'Fimaly_time')? 'true':false } onClick={(e) => updateProfile('Fimaly_time')} />
+                                                      <label class="form-check-label" for="Fimaly_time">
+                                                         Family time
                                                       </label>
                                                   </div>
                                                   <div class="form-check work-form-check">
                                                       <input class="form-check-input" type="radio" name="status" id="do_not_distrub" checked={ (props.data.working_status == 'do_not_distrub')? 'true':false } onClick={(e) => updateProfile('do_not_distrub')} />
                                                       <label class="form-check-label" for="do_not_distrub">
-                                                        Do not distrub <i class="fa fa-bell" aria-hidden="true"></i>                                               </label>
+                                                        Do not distrub - { (props.data.working_status == 'do_not_distrub')? 'true':false }
+                                                      </label>
                                                   </div>
                                             </div>
                                             <div class="row">
