@@ -48,8 +48,15 @@ function Notification (props)  {
                                                                <p className='f-12'>Receive notifications directly on my Windows</p>
                                                            </div>
                                                            <div class="col-md-3 col-12">
+                                                           { props.data.notification == 0 &&
                                                                <button class="btn btn-primary btn-sm mt-2 btn-padding" style={{ float:'right'}} onClick={(e) => updateProfile(1)}>Enable </button>
-                                                           </div>
+                                                           }
+                                                            { props.data.notification == 1 &&
+                                                               <button class="btn btn-danger btn-sm mt-2 btn-padding" style={{ float:'right'}} onClick={(e) => updateProfile(0)}>
+                                                                                                                         
+                                                      Disable </button>
+                                                                  }
+                                                                </div>
                                                        </div>
                                                    </div>
                                                       
