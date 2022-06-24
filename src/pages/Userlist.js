@@ -120,9 +120,9 @@ function Userlist ()  {
                    <table class="table user-list-table table-responsive">
                        <thead>
                            <tr>
+                               <th>S.No</th>
                                <th>Name</th>
                                <th>Email</th>
-                               <th>Title</th>
                                <th>Teams</th>
                            </tr>
                        </thead>

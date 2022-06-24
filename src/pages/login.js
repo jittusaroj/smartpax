@@ -99,9 +99,9 @@ const Login = () => {
                         <Link className="form-group float-right mr-2" to={{ pathname: '/forgot_password', }} >
                             Forgot your password?
                         </Link>
-                        <Link className="form-group  mr-2" to={{ pathname: '/Dashboard', }} >
+                        {/* <Link className="form-group  mr-2" to={{ pathname: '/Dashboard', }} >
                            Dashboard
-                        </Link>
+                        </Link> */}
 
                         <div className="form-group ">
                             <button type="button"

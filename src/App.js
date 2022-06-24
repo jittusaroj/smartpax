@@ -11,6 +11,7 @@ import Inbox from './pages/inbox'
 import Forgotpassword from './pages/forgotPassword'
 import Profile from './pages/profile'
 import Userlist from './pages/Userlist'
+import Workspace from './pages/Workspace'
 
 const App = () => {
   const [categories, setCategories] = useState(null)
@@ -29,6 +30,7 @@ const App = () => {
             <Route path='/forgot_password' element={<Forgotpassword />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/userlist' element={<Userlist />} />
+            <Route path='/Workspace' element={<Workspace />} />
             {/* <Route path="/ticket" element={<TicketPage />} /> */}
             {/* <Route path="/ticket/:id" element={<TicketPage editMode={true} />} /> */}
           </Routes>

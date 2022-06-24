@@ -45,6 +45,7 @@ function Sidebar (props)  {
     return (
         <>
         
+
      
       <div className="sidebar-wrapper" data-simplebar="true">
           
@@ -75,12 +76,14 @@ function Sidebar (props)  {
                 </span>
              </li>
              <li>
-                <a href="#" className='color-white'>
+                {/* <a href="#" className='color-white'> */}
+                < Link className='color-white' to={{ pathname: '/Workspace', }} >
                    <div class="parent-icon" data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="Inbox"><i class='bx bx-message-alt'></i>
 
                    </div>
+                   </Link>
                
-                </a>
+                {/* </a> */}
              </li>
              <li>
                 <a href="#" className='color-white'>
