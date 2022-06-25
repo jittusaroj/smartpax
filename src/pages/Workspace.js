@@ -1,4 +1,7 @@
 import {React,useEffect,useState} from 'react';
+import axios from "axios";
+import { notify } from "../utils/services";
+
 import Footer from'./Footer';
 import Sidebar from'../components/Sidebar';
 // import '../Css/Main.css';
@@ -16,9 +19,32 @@ import Worksidebar from '../components/Workspace/Worksidebar';
 
 
 function Workspace ()  {
-  
-
     const [open, setOpen] = useState(false);
+    const data = JSON.parse(localStorage.getItem('user'));
+    const [name, setName] = useState('')
+
+    const saveData = (e) => {
+      if(e.key === 'Enter'){              
+
+        axios.post(process.env.REACT_APP_LOCAL_API+'/group/save',{
+         name:name,
+         user_id:data.id,
+         workspace_id:1,
+         isActive:1
+          },{   
+          'Content-Type': 'application/json',
+         })
+            .then(user => {
+                console.log(user);  
+                notify('Successfully updated', 'success');
+                window.location.reload();
+
+
+            })
+
+      }
+    }
+  
    
     return (
         <>
@@ -386,7 +412,7 @@ function Workspace ()  {
                                           </div>
                                           <div   className="head-section  d-flex">
                                              <div   className="head first-head">
-                                                <span   className="value first-col first-text pink-text font-16" style={{textAlign:'left'}}> New Group</span>
+                                                <span   className="value first-col first-text pink-text font-16" style={{textAlign:'left'}}> <input type="text" placeholder='Enter group name' onChange={(e) => setName(e.target.value)} onKeyPress={(e) => saveData(e)} /></span>
                                              </div>
                                              <div   className="head">
                                                 <span   className="value">Testing Date</span>

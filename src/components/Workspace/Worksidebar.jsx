@@ -1,11 +1,22 @@
-import {React} from 'react';
+import {React,useEffect,useState} from 'react';
+import axios from "axios";
 import Dropdown from 'react-bootstrap/Dropdown';
 import {Form} from 'react-bootstrap';
 
 
 function Worksidebar ()  {
 
-   
+  const data = JSON.parse(localStorage.getItem('user'));
+  const [list, setList] = useState([]);
+  useEffect(()=>{
+
+    axios.get(process.env.REACT_APP_LOCAL_API+'/workspace/list/'+data.id,{
+      'Content-Type': 'application/json',
+    }).then(res => {                   
+              setList(res.data);           
+            })
+  
+          }, []) 
    
     return (
         <>
@@ -18,8 +29,18 @@ function Worksidebar ()  {
 <Form.Select aria-label="Default select example">
     
   <option>Data Sets</option>
-  <option value="1">Favoriate</option>
-  <option value="2">My Workspace</option>
+  <option >Favoriate</option>
+  <option >My Workspace</option>
+                   
+                     {
+                       list.map((wspace, i) => { 
+                           return(
+                           <option >{wspace.name}</option>
+                          
+                           );
+                       })
+                       } 
+
   
   <hr/>
   <br/>

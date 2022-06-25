@@ -13,23 +13,13 @@ import { Link } from 'react-router-dom';
 
 function Userlist ()  {
 
-    const [list, setList] = useState([]);
-
+ const [list, setList] = useState([]);
   useEffect(()=>{
 
-    const headers = {
-        'Content-Type': 'application/json',
-      }
-    var url = process.env.REACT_APP_LOCAL_API;
-    axios.get(url+'/users/list',{
-        // axios.post('http://91.134.201.104:3002/users/login', data,{
-        headers: headers
-      })
-            .then(res => {     
-                
-                setList(res.data);
-
-            
+    axios.get(process.env.REACT_APP_LOCAL_API+'/users/list',{
+      'Content-Type': 'application/json',
+    }).then(res => {                   
+              setList(res.data);           
             })
   
           }, []) 
@@ -133,7 +123,7 @@ function Userlist ()  {
                            return(
                            <tr key={i}>
                                
-                               <td><a href="#">{i}</a></td>
+                               <td><a href="#">{i+1}</a></td>
                                <td><a href="#">{user.name}</a></td>
                                <td><a href="#">{user.email}</a></td>
                                <td>No Team</td>
