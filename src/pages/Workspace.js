@@ -21,9 +21,20 @@ import Worksidebar from '../components/Workspace/Worksidebar';
 function Workspace ()  {
     const [open, setOpen] = useState(false);
     const data = JSON.parse(localStorage.getItem('user'));
+    const gName = localStorage.getItem('groupName');
+
     const [name, setName] = useState('')
 
-    const saveData = (e) => {
+    useEffect(()=>{
+
+      setName(gName);
+ 
+  
+  }, [
+   gName
+  ]) 
+
+    const saveData = (e) => {      
       if(e.key === 'Enter'){              
 
         axios.post(process.env.REACT_APP_LOCAL_API+'/group/save',{
@@ -34,8 +45,12 @@ function Workspace ()  {
           },{   
           'Content-Type': 'application/json',
          })
-            .then(user => {
-                console.log(user);  
+            .then(data => {
+                console.log(data);  
+                localStorage.setItem('groupName', name);
+                
+
+
                 notify('Successfully updated', 'success');
                 window.location.reload();
 
@@ -412,7 +427,7 @@ function Workspace ()  {
                                           </div>
                                           <div   className="head-section  d-flex">
                                              <div   className="head first-head">
-                                                <span   className="value first-col first-text pink-text font-16" style={{textAlign:'left'}}> <input type="text" placeholder='Enter group name' onChange={(e) => setName(e.target.value)} onKeyPress={(e) => saveData(e)} /></span>
+                                                <span   className="value first-col first-text pink-text font-16" style={{textAlign:'left'}}> <input type="text" placeholder='Enter group name' onChange={(e) => setName(e.target.value)} value={name} onKeyPress={(e) => saveData(e)} /></span>
                                              </div>
                                              <div   className="head">
                                                 <span   className="value">Testing Date</span>
