@@ -1,23 +1,22 @@
-
 import {React,useEffect,useState} from 'react';
-
-import axios from "axios";
 import Footer from'./Footer';
-import Invite from "../components/Invite";
 import Sidebar from'../components/Sidebar';
 // import '../Css/Main.css';
 import '../Css/Workspace.css';
 import {Form} from 'react-bootstrap';
 
 import Collapse from 'react-bootstrap/Collapse';
-import Dropdown from 'react-bootstrap/Dropdown'
+import Dropdown from 'react-bootstrap/Dropdown';
 import Workspacetable from '../components/Workspace/Workspacetable';
 import Topheader from '../components/Workspace/Topheader';
+import Worspacemodal from '../components/Workspace/Worspacemodal';
+import Worksidebar from '../components/Workspace/Worksidebar';
 
 
 
 
 function Workspace ()  {
+  
 
     const [open, setOpen] = useState(false);
    
@@ -26,10 +25,18 @@ function Workspace ()  {
          <div   classNameNameName="wrapper">
          
          <Sidebar/>
-   <div   className="page-wrapper">
+   <div   className="page-wrapper ">
 
   
-       <div   classNameName='page-content'>
+       <div   classNameName='page-content' style={{marginLeft:'2%'}}>
+       <div class="row">
+       <div class="col-12 col-lg-2 col-md-2 col-sm-12 bg-lightgray custom-user-sidebar" style={{background:'rgb(233 236 240 / 25%)'}}>
+    <Worksidebar/>
+</div>
+
+           
+          
+               <div class="col-12 col-lg-10 col-md-10 col-sm-12">
 
        <div   className="row">
                <div   className="col-12 col-lg-12 col-md-12 col-sm-12 inbox">
@@ -478,14 +485,16 @@ function Workspace ()  {
                   </div>
                </div>
             </div>
+            </div>
+            </div>
     
     
     </div>
     </div>
-
+    
 
    
-            {/* <Workspacemodal/> */}
+    <Worspacemodal/>
            
    
 

@@ -1,16 +1,14 @@
 
 import {React} from 'react';
+import {Form} from 'react-bootstrap';
+import Worspacemodal from './Worspacemodal';
 
 // import '../Css/Workspace.css';
 
 
 
 
-
-function Workspacetable ()  {
-
-  
-   
+function Workspacetable () { 
     return (
         <>
 
@@ -971,18 +969,32 @@ function Workspacetable ()  {
                                  </div>
                                  {/* <!--body-section-->
                                  <!--last column--> */}
+                                
                                  <div   className="d-flex">
                                     <div   className="dropdown-sec">
                                     </div>
-                                    <div   className="d-flex body-section blue-section" style={{width:'100%'}}>
-                                       {/* <div   className="body1 last-head">
+                                    {/* <div   className="d-flex body-section blue-section" style={{width:'100%'}}>
+                                       <div   className="body1 last-head">
                                           <span   className="value first-col add-item"> + Add item </span>
-                                       </div> */}
-                                    </div>
+                                       </div>
+                                    </div> */}
+                                     <div   className="body-section pink-section" style={{width:'100%'}}>
+                                             <div   className="body1 last-head" style={{width:'100%'}}>
+                                                {/* <input type="text"   className="form-control" value="" name="" placeholder="+ Add item"/> */}
+                                                <Form.Control type="text" className="form-control" placeholder="+ Add item" />
+                                             </div>
+                                          </div>
+                                          <button   className="btn custum-add-button bg-pink border-pink text-white">Add</button>
+                                       
                                  </div>
+
+
                                  {/* <!--last column-->
                                  <!--table section design--> */}
                               </div>
+
+                           
+                        
         
 
         
@@ -992,4 +1004,4 @@ function Workspacetable ()  {
   </>
   );
   }
-  export default Workspacetable
+  export default Workspacetable;

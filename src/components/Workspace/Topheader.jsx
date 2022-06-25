@@ -15,9 +15,10 @@ function Topheader ()  {
         <>
         <div   className="top-card-section">
                         <div   className="row">
-                           <div   className="col-md-7">
+                           <div   className="col-md-5">
                               <div   className="heading">
-                                 <span   className="heading-icon"><i   className="fa fa-lock"></i> &nbsp;</span> SL Compac 2A Q-Check 2021 Packhouse Hygiene 
+                                 <span   className="heading-icon"><i className="fa fa-lock"></i> &nbsp;</span> 
+                                 <span className='fs-6'>SL Compac 2A Q-Check 2021 Packhouse Hygiene </span>
                                  <div   className="other-option">
                                     <span>
                                     <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -27,11 +28,11 @@ function Topheader ()  {
                                     </span>
                                  </div>
                               </div>
-                              <div   className="collapse show" id="collapseExample">
+                              <div   className="collapse " id="collapseExample">
                                  <p   className="pb-0">Board description show here..</p>
                               </div>
                            </div>
-                           <div   className="col-md-5">
+                           <div   className="col-md-7">
                               <div   className="right-option">
                                  <ul   className="ul-menu">
                                     <li>

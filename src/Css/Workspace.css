@@ -230,7 +230,7 @@
     }
     .heading{
     display:flex;
-    font-size:28px;
+    font-size:23px;
     }
     .other-option{
     font-size:20px;
@@ -270,7 +270,7 @@
     background: orange;
     color: white;
     border-radius: 50%;
-    padding: 5px 8px;
+    padding: 3px 8px;
     }
     .other-option span{
     display:flex;
