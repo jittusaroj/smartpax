@@ -25,12 +25,13 @@ function Worksidebar ()  {
     
 
 <p className='fs-6 mt-5'><b>WORKSPACE</b> </p>
-  
+<div>
+  <Form>
 <Form.Select aria-label="Default select example">
     
-  <option>Data Sets</option>
-  <option >Favoriate</option>
-  <option >My Workspace</option>
+  <option className='mt-2'>Data Sets</option>
+  {/* <option className='mt-2' >Favoriate</option>
+  <option  className='mt-2'>My Workspace</option> */}
                    
                      {
                        list.map((wspace, i) => { 
@@ -41,14 +42,12 @@ function Worksidebar ()  {
                        })
                        } 
 
-  
-  <hr/>
-  <br/>
-  <option value="3"><a data-bs-toggle="modal" data-bs-target="#userModal">Add Workspace</a></option>
-  <br/>
-  
+
   
 </Form.Select>
+
+</Form>
+</div>
       <p className='team-font mt-2'>
      
       <Dropdown className="d-inline mx-2">
@@ -58,18 +57,18 @@ function Worksidebar ()  {
 
     <Dropdown.Menu>
       <Dropdown.Item href="#">New Board</Dropdown.Item>
-      <Dropdown.Item href="#">New Docs</Dropdown.Item>
-      <Dropdown.Item href="#">New Dashboard</Dropdown.Item>
+      {/* <Dropdown.Item href="#">New Docs</Dropdown.Item>
+      <Dropdown.Item href="#">New Dashboard</Dropdown.Item> */}
     </Dropdown.Menu>
   </Dropdown>
       </p>
-      <p className='team-font'>
+      <p className='team-font ms-3'>
       <i className='bx bx-filter-alt'></i>  Filter 
       </p>
-      <p className='team-font'>
+      <p className='team-font ms-3'>
       <i className='bx bx-search'></i> Search 
       </p>
-      <p className='team-font'>
+      <p className='team-font ms-3'>
       <i className='bx bx-add'></i> <a data-bs-toggle="modal" data-bs-target="#addworkspace">Add Workspace</a>
       </p>
 

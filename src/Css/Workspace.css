@@ -1,220 +1,4 @@
-.sidebar-wrapper {
-    width: 70px;
-    background: #292f4c;
-    }
-    .text-circle{
-    background: black;
-    border-radius: 50%;
-    padding: 10px;
-    color: white;
-    font-size: 20px;
-    font-weight: 600;
-    }
-    .overflow-550{
-    height: 550px;
-    overflow-y: scroll;
-    }
-    .f-40{
-    font-size: 40px;
-    position: relative;
-    left: 261px;
-    top: -12px;
-    }
-    .notification-modal{
-    height: fit-content;
-    top:-28px;
-    }
-    .notification-card{
-    padding: 15px;
-    margin-top: 10px;
-    }
-    .notification-card:hover{
-    background: #d2eaff;
-    border-radius: 4px;
-    display: block !important;
-    }
-    .noti-bg{
-    background: #d2eaff;
-    border-radius: 4px;  
-    }
-    .notification-icon{
-    display: none;
-    }
-    .notification-icon i{
-    font-size: 20px;
-    margin-left: 8px;
-    }
-    .notification-card:hover .notification-icon{
-    display: block !important;
-    }
-    .nav {
-    margin: 15px 25px 0px;
-    }
-    .nav-link {
-    color:#282a2cd1;
-    }
-    .nav-item .active{
-    background: #c1cdd9d1;
-    border-radius: 5px;
-    padding: 5px 15px;
-    }
-    .sidebar-wrapper .metismenu a {
-    color: #fff8f8;
-    }
-    .page-wrapper {
-    height: 100%;
-    margin-top: 0px;
-    margin-bottom: 30px;
-    margin-left: 110px;
-    }
-    body {
-    font-size: 14px;
-    color: #4c5258;
-    letter-spacing: .5px;
-    background: #fff;
-    }
-    .sidebar-wrapper .metismenu {
-    margin-top: -50px;
-    }
-    .account{
-    display: flex;
-    flex-direction: column;
-    }
-    .account a{
-    color: black;
-    font-size: 15px;
-    margin-top: 9px;
-    padding: 3px;
-    }
-    .account a:hover{
-    background: lightgray;
-    border-radius: 5px;
-    }
-    .account i{
-    color: black;
-    font-size: 15px;
-    margin-right: 5px;
-    }
-    .btn-primary-outline{
-    background: white;
-    border: 1px solid blue;
-    font-size: 10px;
-    color: blue;
-    }
-    .float-right{
-    float: right;
-    }
-    .m-auto{
-    margin: auto;
-    }
-    
-    .inbox-card{
-    border: 1px solid lightgray;
-    }
-    .inbox-card img{
-    border-radius: 50%;
-    height: 200px;
-    width: 200px;
-    }
-    .mt-8{
-    margin-top: 4rem;
-    }
-    .open-text{
-    position: absolute;
-    right: 38%;
-    }
-    .w-50{
-    width: 50%;
-    }
-    .btn-like{
-    text-align: center;
-    border: 1px solid lightgray;
-    width: 100%;
-    padding: 10px;
-    background: white;
-    }
-    .username{
-    border-radius: 50%;
-    background: #fa5151;
-    height: 35px;
-    width: 35px;
-    }
-    .usertext{
-    border-radius: 30px;
-    background: #d3d3d35c;
-    padding: 5px;
-    height: auto;
-    }
-    .pl-20{
-    padding-left: 20px;
-    }
-    .input{
-    width: 87%;
-    border-radius: 30px;
-    margin-left: 10px;
-    }
-    .mt-15{
-    margin-top: 12rem !important;
-    }
-    ::-webkit-scrollbar {
-    width:4px;
-    }
-    ::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-    }
-    ::-webkit-scrollbar-thumb {
-    background: #888; 
-    border-radius:10px;
-    }
-    .sidebar-wrapper .metismenu li:first-child {
-    margin-top: 50px;
-    }
-    .crose-icon{
-    padding:8px;
-    }
-    .float-right{
-    float:right;
-    }
-    @media screen and (max-width: 1024px){
-    .sidebar-wrapper {
-    box-shadow: none;
-    left: auto;
-    }
-    }
-    @media screen and (max-width: 600px){
-    .f-40{
-    font-size: 40px;
-    position: relative;
-    left: 130px !important;
-    top: -12px;
-    }
-   
-    .page-wrapper {
-    margin-left: 49px !important;
-    }
-    .inbox-card{
-    width: 100%;
-    }
-    .inbox{
-    height: auto;
-    overflow-y: hidden;
-    }
-    .page-content {
-    padding: 1.5rem 0.2rem 0.2rem 1.5rem !important;
-    }
-    }
-    @media screen and (min-width: 768px){
-    .modal.show .modal-dialog {
-    transform: none;
-    position: relative;
-    right: 27%;
-    top: 18%;
-    }
-    .modal.show .modal-dialog-centered{
-    right: auto!important;
-    top:auto!important;
-    }
-    }
+
   
   /*work space section css*/
   .modal-right-fixed .nav {
@@ -488,12 +272,12 @@
     color:white;
     }
     .search-field {
-    border: 1px solid lightgray;
+    border: 0px solid lightgray;
     height: 30px;
     border-radius: 5px;
     width: 180px;
     box-shadow: none!important;
-    outline: 0px!important;
+    outline: 1px solid lightgrey!important;
     }
     .search-field input{
     border:0px;
@@ -939,3 +723,16 @@
     margin-left:0px;
     }
     /*work space section css*/
+
+    .body-section .body1 {
+      text-align: center;
+      width: 162px !important;
+      display: block;
+      flex: 0 0 162px !important;
+    }
+    .head-section .head {
+      width: 162px !important;
+      padding: 8px 10px;
+      /* text-align: center; */
+      flex: 0 0 162px !important;
+  }

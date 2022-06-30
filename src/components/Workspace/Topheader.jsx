@@ -18,7 +18,7 @@ function Topheader ()  {
                            <div   className="col-md-5">
                               <div   className="heading">
                                  <span   className="heading-icon"><i className="fa fa-lock"></i> &nbsp;</span> 
-                                 <span className='fs-6'>SL Compac 2A Q-Check 2021 Packhouse Hygiene </span>
+                                 <span className='fs-6'>Duplicate of SL Datasets '2022</span>
                                  <div   className="other-option">
                                     <span>
                                     <a data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -111,17 +111,17 @@ function Topheader ()  {
                                        </a>
                                        <ul   className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                           <li><a   className="dropdown-item" href="#">Table</a></li>
-                                          <li><a   className="dropdown-item" href="#">Dashboard</a></li>
+                                          {/* <li><a   className="dropdown-item" href="#">Dashboard</a></li> */}
                                           <li><a   className="dropdown-item" href="#">Chart</a></li>
-                                          <li><a   className="dropdown-item" href="#">Karban</a></li>
+                                          {/* <li><a   className="dropdown-item" href="#">Karban</a></li>
                                           <li><a   className="dropdown-item" href="#">Gantt</a></li>
                                           <li><a   className="dropdown-item" href="#">Cards</a></li>
                                           <li><a   className="dropdown-item" href="#">Forms</a></li>
-                                          <li><a   className="dropdown-item" href="#">Fils Gallery</a></li>
-                                          <li>
+                                          <li><a   className="dropdown-item" href="#">Fils Gallery</a></li> */}
+                                          {/* <li>
                                              <hr   className="dropdown-divider" />
                                           </li>
-                                          <li><a   className="dropdown-item" href="#">Apps</a></li>
+                                          <li><a   className="dropdown-item" href="#">Apps</a></li> */}
                                        
                                        </ul>
                                     </div>

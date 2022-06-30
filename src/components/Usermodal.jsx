@@ -6,7 +6,7 @@ function Usermodal ()  {
     return (
         <>
        <div class="modal " id="userModal" tabindex="-1" aria-hidden="true" >
-                                  <div class="modal-dialog custom-dialog modal-dialog-centered account-width" >
+                                  <div class="modal-dialog custom-dialog modal-dialog-centered account-width"  >
                                      <div class="modal-content">
                                         <div class="modal-header">
                                            <h5 class="modal-title blue">Account</h5>

@@ -2756,6 +2756,7 @@ border-radius: 50%;
 height: 200px;
 width: 200px;
 }
+
 .mt-8{
 margin-top: 4rem;
 }
@@ -3024,9 +3025,7 @@ border-color: #dee0e2 !important;
 	  color: white;
 	  font-weight: 700;
   }
-  .change-profile-option a{
-	  /* color:white!important; */
-  }
+ 
   .icon-margin{
 	  padding-top:40px;
   }
@@ -3395,7 +3394,7 @@ border-color: #dee0e2 !important;
     box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%) !important;
 }
 .modal-backdrop.show {
-    opacity: .5;
+    opacity: .2;
     display: contents !important;
 }
 .text-blue{
