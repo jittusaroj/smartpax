@@ -253,12 +253,12 @@ function Workspace() {
 
 
                          
-                          <Workspacetable />
+                          <Workspacetable workspace_id="1" />
 
                           <br />
 
                           {/* <!--card section --> */}
-                          <Workspacetable />
+                          <Workspacetable workspace_id="2" />
 
                           {/* <!--card section -->
                               <!--add group section--> */}
