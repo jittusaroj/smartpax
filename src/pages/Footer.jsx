@@ -1,21 +1,17 @@
-import React from 'react';
+import React from "react";
 
-
-
-function Footer  ()  {
-    return (
-        <>
-       
-      
-      
-       <footer className="page-footer">
-          <p className="mb-0">Copyright © 2022. All rights reserved. Powered BY Binplus Technologies Pvt. Limited </p>
-       </footer>
-
- 
-  
-  
-  </>
+function Footer() {
+  return (
+    <>
+      <footer className="page-footer">
+        <center>
+          <p className="mb-0">
+            Copyright © 2022. All rights reserved.
+            {/* Powered BY Binplus Technologies Pvt. Limited  */}
+          </p>
+        </center>
+      </footer>
+    </>
   );
-  }
-  export default Footer 
+}
+export default Footer;

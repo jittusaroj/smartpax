@@ -7,7 +7,7 @@ import CategoriesContext from './context'
 import Login from './pages/login'
 import Register from './pages/register'
 import SignUp from './pages/signup'
-import Inbox from './pages/inbox'
+// import Inbox from './pages/inbox'
 import Forgotpassword from './pages/forgotPassword'
 import Profile from './pages/profile'
 import Userlist from './pages/Userlist'
@@ -26,7 +26,7 @@ const App = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/inbox" element={<Inbox />} />
+       
             <Route path='/forgot_password' element={<Forgotpassword />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/userlist' element={<Userlist />} />

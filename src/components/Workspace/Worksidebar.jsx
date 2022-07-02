@@ -1,78 +1,71 @@
-import {React,useEffect,useState} from 'react';
+import { React, useEffect, useState } from "react";
 import axios from "axios";
-import Dropdown from 'react-bootstrap/Dropdown';
-import {Form} from 'react-bootstrap';
+import Dropdown from "react-bootstrap/Dropdown";
+import { Form } from "react-bootstrap";
 
-
-function Worksidebar ()  {
-
-  const data = JSON.parse(localStorage.getItem('user'));
+function Worksidebar() {
+  const data = JSON.parse(localStorage.getItem("user"));
   const [list, setList] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/workspace/list/" + data.id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setList(res.data);
+      });
+  }, []);
 
-    axios.get(process.env.REACT_APP_LOCAL_API+'/workspace/list/'+data.id,{
-      'Content-Type': 'application/json',
-    }).then(res => {                   
-              setList(res.data);           
-            })
-  
-          }, []) 
-   
-    return (
-        <>
-       
-  
-    
+  return (
+    <>
+      <p className="fs-6 mt-5">
+        <b>WORKSPACE</b>
+      </p>
+      <div>
+        <Form>
+          <Form.Select aria-label="Default select example">
+            <option className="mt-2">Data Sets</option>
+           
 
-<p className='fs-6 mt-5'><b>WORKSPACE</b> </p>
-<div>
-  <Form>
-<Form.Select aria-label="Default select example">
-    
-  <option className='mt-2'>Data Sets</option>
-  {/* <option className='mt-2' >Favoriate</option>
-  <option  className='mt-2'>My Workspace</option> */}
-                   
-                     {
-                       list.map((wspace, i) => { 
-                           return(
-                           <option >{wspace.name}</option>
-                          
-                           );
-                       })
-                       } 
+            {list.map((wspace, i) => {
+              return <option key={i}>{wspace.name}</option>
+            })}
+          </Form.Select>
+        </Form>
+      </div>
+      <div className="team-font mt-2">
+        <Dropdown className="d-inline mx-2">
+          <Dropdown.Toggle
+            id="dropdown-autoclose-true"
+            style={{
+              backgroundColor: "transparent",
+              border: "0px solid",
+              color: "black",
+            }}
+          >
+            <i className="bx bx-plus"></i> Add
+          </Dropdown.Toggle>
 
-
-  
-</Form.Select>
-
-</Form>
-</div>
-      <p className='team-font mt-2'>
-     
-      <Dropdown className="d-inline mx-2">
-    <Dropdown.Toggle id="dropdown-autoclose-true" style={{backgroundColor:'transparent', border:'0px solid', color:'black' }}>
-    <i className='bx bx-plus'></i>      Add
-    </Dropdown.Toggle>
-
-    <Dropdown.Menu>
-      <Dropdown.Item href="#">New Board</Dropdown.Item>
-      {/* <Dropdown.Item href="#">New Docs</Dropdown.Item>
+          <Dropdown.Menu>
+            <Dropdown.Item href="#">New Board</Dropdown.Item>
+            {/* <Dropdown.Item href="#">New Docs</Dropdown.Item>
       <Dropdown.Item href="#">New Dashboard</Dropdown.Item> */}
-    </Dropdown.Menu>
-  </Dropdown>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div>
+      <p className="team-font ms-3">
+        <i className="bx bx-filter-alt"></i> Filter
       </p>
-      <p className='team-font ms-3'>
-      <i className='bx bx-filter-alt'></i>  Filter 
+      <p className="team-font ms-3">
+        <i className="bx bx-search"></i> Search
       </p>
-      <p className='team-font ms-3'>
-      <i className='bx bx-search'></i> Search 
+      <p className="team-font ms-3">
+        <i className="bx bx-add"></i>{" "}
+        <a data-bs-toggle="modal" data-bs-target="#addworkspace">
+          Add Workspace
+        </a>
       </p>
-      <p className='team-font ms-3'>
-      <i className='bx bx-add'></i> <a data-bs-toggle="modal" data-bs-target="#addworkspace">Add Workspace</a>
-      </p>
-
-        </>
-        );
+    </>
+  );
 }
-export default Worksidebar
+export default Worksidebar;
