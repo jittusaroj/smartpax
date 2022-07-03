@@ -9,9 +9,10 @@ function Worspacemodal() {
   const data = JSON.parse(localStorage.getItem("user"));
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
+  const workspace_icon = name[0]??"N";
 
   const saveData = () => {
-    axios
+    name!="" && axios
       .post(
         process.env.REACT_APP_LOCAL_API + "/workspace/save",
         {
@@ -24,7 +25,6 @@ function Worspacemodal() {
         }
       )
       .then((data) => {
-        console.log(data);
         notify("Successfully updated", "success");
         window.location.reload();
       });
@@ -223,7 +223,7 @@ function Worspacemodal() {
                     background: "#ff9800",
                   }}
                 >
-                  <span style={{ color: "white", fontSize: "60px" }}>N</span>
+                  <span style={{ color: "white", fontSize: "60px" }}>{workspace_icon.toUpperCase()}</span>
                 </div>
               </center>
 
@@ -231,6 +231,7 @@ function Worspacemodal() {
               <Form.Control
                 type="text"
                 placeholder="Workspace Name"
+                required="required"
                 onChange={(e) => setName(e.target.value)}
               />
 

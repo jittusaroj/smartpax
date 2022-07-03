@@ -6,27 +6,59 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 
 function Column(props) {
-    const [open, setOpen] = useState(false);
-    const data = JSON.parse(localStorage.getItem("user"));
-    
+    const data = JSON.parse(localStorage.getItem("user"));    
     const workspace_id = props.workspace_id;
-    const gName = localStorage.getItem("groupName" + workspace_id) ;
+    const gName = props.group_data.name;//localStorage.getItem("groupName" + workspace_id) ;
   
     const [name, setName] = useState("");
-  
+    //localStorage.setItem("columns" + workspace_id, 4);
+    const total_columns = localStorage.getItem("columns" + workspace_id)??0;
+    // const [total_columns, settotal_columns] = useState("");
+
     useEffect(() => {
       setName(gName);
     }, [gName]);
-  
-    const saveData = (e) => {
+    // useEffect(() => {
+    //   settotal_columns(total_column);
+    // }, [total_column]);
+    const saveGroup = (e) => {
       if (e.key === "Enter") {
         axios
-          .post(
-            process.env.REACT_APP_LOCAL_API + "/group/save",
+          .put(
+            process.env.REACT_APP_LOCAL_API + "/group/"+props.group_id,
             {
               name: name,
               user_id: data.id,
-              workspace_id: props.workspace_id,
+              workspace_id: workspace_id,
+              isActive: 1,
+            },
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((data) => {
+            console.log(data);
+            // localStorage.setItem("groupName" + workspace_id, name);
+            notify("Successfully updated", "success");
+            window.location.reload();
+          });
+      }
+    };
+
+    const addNewColumn = () => {
+      localStorage.setItem("columns" + workspace_id, parseInt(total_columns)+1);
+      // settotal_columns(parseInt(total_columns)+1);
+      window.location.reload();
+    };
+
+    const getData = (e) => {
+        axios
+          .get(
+            process.env.REACT_APP_LOCAL_API + "/group/data",
+            {
+              name: name,
+              user_id: data.id,
+              workspace_id: workspace_id,
               isActive: 1,
             },
             {
@@ -36,14 +68,14 @@ function Column(props) {
           .then((data) => {
             console.log(data);
             localStorage.setItem("groupName" + workspace_id, name);
-  
             notify("Successfully updated", "success");
             window.location.reload();
           });
-      }
-    };
- 
+    }; 
 
+    const columnCallback = (cb) => {
+      return cb();
+    };
   return (
     <>
      <div className="d-flex">
@@ -119,7 +151,7 @@ function Column(props) {
                                           setName(e.target.value)
                                         }
                                         defaultValue={name}
-                                        onKeyPress={(e) => saveData(e)}
+                                        onKeyPress={(e) => saveGroup(e)}
                                       />
                                     </span>
             </div>
@@ -129,25 +161,31 @@ function Column(props) {
             <div className="head">
               <span className="value">Week</span>
             </div>
-            <div className="head">
-              <span className="value"> Column1</span>
-            </div>
-            <div className="head">
-              <span className="value"> Column2</span>
-            </div>
 
-            <div className="head">
-              <span className="value">
-                Column3
-                <a
+            {
+              columnCallback(() => {
+                  const row = [];
+                  for (var i = 1; i <= total_columns; i++) {
+                    row.push(<div className="head" key={i}><span className="value"> Column {i}</span></div>);
+                  }
+                  return row;
+                })
+              }
+
+            <a
+              onClick={addNewColumn}
+              className="plus-right1"
+            >
+              <i className="fa fa-plus-circle"></i>
+            </a>
+
+                {/* <a
                   className="plus-right"
                   data-bs-toggle="modal"
                   data-bs-target="#column-modal"
                 >
                   <i className="fa fa-plus-circle"></i>
-                </a>
-              </span>
-            </div>
+                </a> */}
           </div>
 
         </div>

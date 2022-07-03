@@ -54,7 +54,7 @@ const Login = () => {
           notify(user.data.msg, "success");
           nav("/dashboard");
         } else {
-          notify("Something went wrong!", "error");
+          notify("Invalid Username or password.", "error");
         }
       });
   };
@@ -71,7 +71,7 @@ const Login = () => {
 
           <form className="form-horizontal1 mt-4" method="post" action="#">
             <div className="form-group">
-              <label for="username" className="col-sm-2 left-20 control-label">
+              <label htmlFor="username" className="col-sm-2 left-20 control-label">
                 Email
               </label>
 
@@ -90,7 +90,7 @@ const Login = () => {
             </div>
 
             <div className="form-group">
-              <label for="password" className="col-sm-2 left-13 control-label">
+              <label htmlFor="password" className="col-sm-2 left-13 control-label">
                 Password
               </label>
 
@@ -123,7 +123,7 @@ const Login = () => {
                 onClick={() => login()}
                 className="btn btn-primary btn-lg btn-block login-button"
               >
-                Log In <i class="fa fa-arrow-right login-arrow"></i>
+                Log In <i className="fa fa-arrow-right login-arrow"></i>
               </button>
             </div>
 

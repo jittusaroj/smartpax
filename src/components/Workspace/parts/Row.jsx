@@ -3,9 +3,12 @@ import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 
-function Row() {
- 
-
+function Row(props) {
+  const workspace_id = props.workspace_id;
+  const total_columns = localStorage.getItem("columns" + workspace_id); 
+  const rowCallback = (cb) => {
+    return cb();
+  };
   return (
     <>
     <div className="d-flex">
@@ -76,21 +79,20 @@ function Row() {
               <div className="body1">
                 <span className="value">week 22</span>
               </div>
-              <div className="body1">
-                <span className="value">
-                  <button className="crose-btn value-remove">
-                    <i className="fa fa-times"></i>
-                  </button>
-                  <input className="" name="" id="textfield1" defaultValue="1" />
-                </span>
-              </div>
+              {
+              rowCallback(() => {
+                  const row = [];
+                  for (var i = 1; i <= total_columns; i++) {
+                    row.push(<div key={i} className="body1">
+                    <span className="value">
+                      <input className="" name="" id="textfield1" defaultValue="1" />
+                    </span>
+                  </div>);
+                  }
+                  return row;
+                })
+              }
 
-              <div className="body1">
-                <span className="value">1</span>
-              </div>
-              <div className="body1">
-                <span className="value">1</span>
-              </div>
             </div>
           </div>
     

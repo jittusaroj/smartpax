@@ -16,41 +16,40 @@ import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
 
 function Workspace() {
-  const [open, setOpen] = useState(false);
-  const data = JSON.parse(localStorage.getItem("user"));
-  const gName = localStorage.getItem("groupName");
-
-  const [name, setName] = useState("");
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  
+  localStorage.setItem("workspace", 1);
+  const workspace_id = 1;
+  const [list, setList] = useState([]);
   useEffect(() => {
-    setName(gName);
-  }, [gName]);
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/"+ user.id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setList(res.data);
+      });
+  }, []);
 
-  const saveData = (e) => {
-    if (e.key === "Enter") {
-      axios
-        .post(
-          process.env.REACT_APP_LOCAL_API + "/group/save",
-          {
-            name: name,
-            user_id: data.id,
-            workspace_id: 1,
-            isActive: 1,
-          },
-          {
-            "Content-Type": "application/json",
-          }
-        )
-        .then((data) => {
-          console.log(data);
-          localStorage.setItem("groupName", name);
-
-          notify("Successfully updated", "success");
-          window.location.reload();
-        });
-    }
+  const saveData = () => {
+    axios
+      .post(
+        process.env.REACT_APP_LOCAL_API + "/group/save",
+        {
+          // name: "",
+          workspace_id: workspace_id,
+          user_id: user.id,
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        console.log(data);
+        notify("New Item Group added.", "success");
+        window.location.reload();
+      });
   };
-
   return (
     <>
       <div className="wrapper">
@@ -89,12 +88,9 @@ function Workspace() {
 
                                   <Dropdown.Menu>
                                     <Dropdown.Item
-                                      
+                                     onClick={saveData} 
                                     >
                                       New group of Items
-                                    </Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">
-                                      Import Items
                                     </Dropdown.Item>
                                   </Dropdown.Menu>
                                 </Dropdown>
@@ -113,7 +109,7 @@ function Workspace() {
                                   </div>
                                   <input
                                     className="form-control"
-                                    defaultValue="search.."
+                                    defaultValue=""
                                     placeholder="search.."
                                     name=""
                                     style={{ marginTop: "-10px" }}
@@ -251,17 +247,11 @@ function Workspace() {
                        
                           <br />
 
-
-                         
-                          <Workspacetable workspace_id="1" />
-
-                          <br />
-
-                          {/* <!--card section --> */}
-                          <Workspacetable workspace_id="2" />
-
-                          {/* <!--card section -->
-                              <!--add group section--> */}
+                          {list.map((workspace_id, i) => {
+                            return (
+                              <Workspacetable key={i} workspace_id={workspace_id.workspace_id} group_id={workspace_id.id} group_data={workspace_id} />
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
