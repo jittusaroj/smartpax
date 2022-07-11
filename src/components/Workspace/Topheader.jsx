@@ -90,51 +90,7 @@ function Topheader() {
                   >
                     + Add to board
                   </button>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton2"
-                  >
-                    <li>
-                      <a className="dropdown-item active" href="#">
-                        Group
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Column
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        View
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Integrations
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Automations
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Apps
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Import Items
-                      </a>
-                    </li>
-                  </ul>
+               
                 </li>
                 <li>
                   <button
@@ -146,65 +102,7 @@ function Topheader() {
                   >
                     <i className="fa fa-ellipsis-h"></i>
                   </button>
-                  <ul
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton2"
-                  >
-                    <li>
-                      <a className="dropdown-item active" href="#">
-                        Board members
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Board activity
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Integrations center
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Automations center
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Apps marketplace
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Board permissions
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Board Setting
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        More Action
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Delete / Archive board
-                      </a>
-                    </li>
-                  </ul>
+                 
                 </li>
               </ul>
             </div>
@@ -278,21 +176,13 @@ function Topheader() {
                         Table
                       </a>
                     </li>
-                    {/* <li><a   className="dropdown-item" href="#">Dashboard</a></li> */}
+                  
                     <li>
                       <a className="dropdown-item" href="#">
                         Chart
                       </a>
                     </li>
-                    {/* <li><a   className="dropdown-item" href="#">Karban</a></li>
-                                          <li><a   className="dropdown-item" href="#">Gantt</a></li>
-                                          <li><a   className="dropdown-item" href="#">Cards</a></li>
-                                          <li><a   className="dropdown-item" href="#">Forms</a></li>
-                                          <li><a   className="dropdown-item" href="#">Fils Gallery</a></li> */}
-                    {/* <li>
-                                             <hr   className="dropdown-divider" />
-                                          </li>
-                                          <li><a   className="dropdown-item" href="#">Apps</a></li> */}
+    
                   </ul>
                 </div>
               </li>

@@ -7,9 +7,6 @@ function Notification(props) {
   var url = process.env.REACT_APP_LOCAL_API;
 
   const updateProfile = (status) => {
-    //  props.data.status = status;
-    //  console.log(status);
-
     axios
       .put(
         url + "/users/" + props.data.id,

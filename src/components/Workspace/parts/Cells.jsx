@@ -3,7 +3,7 @@ import { React,  } from "react";
 
 
 
-function Cell() {
+function Cells() {
    
       
        
@@ -18,4 +18,4 @@ function Cell() {
     </>
        );
     }
-    export default Cell;
+    export default Cells;

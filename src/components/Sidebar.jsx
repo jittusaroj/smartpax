@@ -69,7 +69,6 @@ function Sidebar(props) {
             </span>
           </li>
           <li>
-          
             <Link className="color-white" to={{ pathname: "/Workspace" }}>
               <div
                 className="parent-icon"
@@ -81,8 +80,6 @@ function Sidebar(props) {
                 <i className="bx bx-message-alt"></i>
               </div>
             </Link>
-
-       
           </li>
           <li>
             <a href="#" className="color-white">
@@ -97,7 +94,6 @@ function Sidebar(props) {
               </div>
             </a>
           </li>
-
 
           <li className="mt-15">
             <span className="color-white" onClick={handleShow}>
@@ -126,8 +122,6 @@ function Sidebar(props) {
               </div>
             </Link>
           </li>
-
-         
 
           <li
             data-bs-toggle="modal"

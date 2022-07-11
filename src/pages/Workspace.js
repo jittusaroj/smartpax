@@ -1,14 +1,10 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../utils/services";
-
 import Footer from "./Footer";
 import Sidebar from "../components/Sidebar";
 import "../Css/Main.css";
 import "../Css/Workspace.css";
-import { Form } from "react-bootstrap";
-
-import Collapse from "react-bootstrap/Collapse";
 import Dropdown from "react-bootstrap/Dropdown";
 import Workspacetable from "../components/Workspace/Workspacetable";
 import Topheader from "../components/Workspace/Topheader";
@@ -17,13 +13,13 @@ import Worksidebar from "../components/Workspace/Worksidebar";
 
 function Workspace() {
   const user = JSON.parse(localStorage.getItem("user"));
-  
+
   localStorage.setItem("workspace", 1);
   const workspace_id = 1;
   const [list, setList] = useState([]);
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_LOCAL_API + "/group/list/"+ user.id, {
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user.id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
@@ -87,9 +83,7 @@ function Workspace() {
                                   </Dropdown.Toggle>
 
                                   <Dropdown.Menu>
-                                    <Dropdown.Item
-                                     onClick={saveData} 
-                                    >
+                                    <Dropdown.Item onClick={saveData}>
                                       New group of Items
                                     </Dropdown.Item>
                                   </Dropdown.Menu>
@@ -142,11 +136,13 @@ function Workspace() {
                                 {/* <a
                                  
                                 > */}
-                                  <span  data-bs-toggle="modal"
-                                  data-bs-target="#sort">
-                                    <i className="fa fa-filter font-20"></i>
-                                  </span>{" "}
-                                  Sort
+                                <span
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#sort"
+                                >
+                                  <i className="fa fa-filter font-20"></i>
+                                </span>{" "}
+                                Sort
                                 {/* </a> */}
                               </li>
                               <li>
@@ -244,12 +240,17 @@ function Workspace() {
                               </li>
                             </ul>
                           </div>
-                       
+
                           <br />
 
                           {list.map((workspace_id, i) => {
                             return (
-                              <Workspacetable key={i} workspace_id={workspace_id.workspace_id} group_id={workspace_id.id} group_data={workspace_id} />
+                              <Workspacetable
+                                key={i}
+                                workspace_id={workspace_id.workspace_id}
+                                group_id={workspace_id.id}
+                                group_data={workspace_id}
+                              />
                             );
                           })}
                         </div>

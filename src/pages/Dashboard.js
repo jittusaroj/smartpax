@@ -102,7 +102,7 @@ const Dashboard = () => {
                         K{" "}
                       </span>
                     </span>
-                    {/* <!--  <span className="usertext">Lot Stuart happy birthday to you Michael, wish you all the best this day unfolds for you</span> --> */}
+
                     <input
                       type="text "
                       className="form-control input"

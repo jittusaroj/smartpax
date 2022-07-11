@@ -32,7 +32,7 @@ function Usermodal() {
                     <span
                       data-bs-toggle="modal"
                       data-bs-target="#invite-member"
-                      className="mb-2" 
+                      className="mb-2"
                     >
                       <i className="bx bx-plus"></i> Invite{" "}
                     </span>

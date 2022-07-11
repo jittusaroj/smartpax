@@ -3,31 +3,30 @@ import axios from "axios";
 import { notify } from "../../utils/services";
 import { Form } from "react-bootstrap";
 
-// import '../Css/Workspace.css';
-
 function Worspacemodal() {
   const data = JSON.parse(localStorage.getItem("user"));
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
-  const workspace_icon = name[0]??"N";
+  const workspace_icon = name[0] ?? "N";
 
   const saveData = () => {
-    name!="" && axios
-      .post(
-        process.env.REACT_APP_LOCAL_API + "/workspace/save",
-        {
-          name: name,
-          isActive: status,
-          user_id: data.id,
-        },
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((data) => {
-        notify("Successfully updated", "success");
-        window.location.reload();
-      });
+    name != "" &&
+      axios
+        .post(
+          process.env.REACT_APP_LOCAL_API + "/workspace/save",
+          {
+            name: name,
+            isActive: status,
+            user_id: data.id,
+          },
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((data) => {
+          notify("Successfully updated", "success");
+          window.location.reload();
+        });
   };
 
   return (
@@ -223,7 +222,9 @@ function Worspacemodal() {
                     background: "#ff9800",
                   }}
                 >
-                  <span style={{ color: "white", fontSize: "60px" }}>{workspace_icon.toUpperCase()}</span>
+                  <span style={{ color: "white", fontSize: "60px" }}>
+                    {workspace_icon.toUpperCase()}
+                  </span>
                 </div>
               </center>
 

@@ -13,14 +13,6 @@ function Newfolder() {
     );
 
     return (
-      //   <button
-      //     type="button"
-      //     style={{ backgroundColor: 'pink' }}
-      //     onClick={decoratedOnClick}
-      //   >
-      //     {children}
-      //   </button>
-
       <Form>
         {/* <FaChevronDown size='15'/> */}
         <Form.Control
@@ -60,27 +52,6 @@ function Newfolder() {
           </Accordion.Collapse>
         </>
       </Accordion>
-
-      {/* <div className="team-font mt-2">
-        <Dropdown className="d-inline mx-2">
-          <Dropdown.Toggle
-            id="dropdown-autoclose-true"
-            style={{
-              backgroundColor: "transparent",
-              border: "0px solid",
-              color: "black",
-            }}
-          >
-            <Form.Control type="text" placeholder="New Folder" className="border-0" style={{background:'transparent', color:'black',}} />
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu>
-          <Dropdown.Item href="#">New Folder</Dropdown.Item>
-            <Dropdown.Item href="#">New Board</Dropdown.Item>
-   
-          </Dropdown.Menu>
-        </Dropdown>
-      </div> */}
     </>
   );
 }

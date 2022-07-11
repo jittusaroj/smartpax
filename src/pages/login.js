@@ -15,8 +15,6 @@ const Login = () => {
   const [password, setPassowrd] = useState("");
 
   const login = () => {
-    // console.log("EMail: " + email);
-
     var data = {
       email: email,
       password: password,
@@ -27,7 +25,6 @@ const Login = () => {
     var url = process.env.REACT_APP_LOCAL_API;
     axios
       .post(url + "/users/login", data, {
-        // axios.post('http://91.134.201.104:3002/users/login', data,{
         headers: headers,
       })
       .then((user) => {
@@ -71,7 +68,10 @@ const Login = () => {
 
           <form className="form-horizontal1 mt-4" method="post" action="#">
             <div className="form-group">
-              <label htmlFor="username" className="col-sm-2 left-20 control-label">
+              <label
+                htmlFor="username"
+                className="col-sm-2 left-20 control-label"
+              >
                 Email
               </label>
 
@@ -90,7 +90,10 @@ const Login = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="password" className="col-sm-2 left-13 control-label">
+              <label
+                htmlFor="password"
+                className="col-sm-2 left-13 control-label"
+              >
                 Password
               </label>
 
@@ -113,9 +116,6 @@ const Login = () => {
             >
               Forgot your password?
             </Link>
-            {/* <Link className="form-group  mr-2" to={{ pathname: '/Dashboard', }} >
-                           Dashboard
-                        </Link> */}
 
             <div className="form-group ">
               <button
@@ -147,10 +147,6 @@ const Login = () => {
               Google
             </button>
 
-            {/* <div className="login-separator-component">
-                            <span className="separator-line"></span>
-                        </div> */}
-
             <span className="signup-text mt-3">
               {" "}
               <b>New Member ? </b>
@@ -158,15 +154,6 @@ const Login = () => {
                 <b>Sign Up</b>
               </Link>
             </span>
-            {/* <a href="" className="form-group ">Signup to Login</a> */}
-
-            {/* <div className="login-separator-component">
-                            <span className="separator-line"></span>
-                        </div>
-
-                        <Link to={{ pathname: '/register', }} >
-                            Don't have account ? Register
-                        </Link> */}
           </form>
         </div>
       </div>

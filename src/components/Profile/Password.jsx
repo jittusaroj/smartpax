@@ -7,9 +7,7 @@ function Password(props) {
   const [cpwd, setCpwd] = useState("");
   const [npwd, setNpwd] = useState("");
 
-  useEffect(() => {
-    //  setCpwd(props.data.password);
-  }, [props.data.password]);
+  useEffect(() => {}, [props.data.password]);
 
   const updateProfile = (e) => {
     if (props.data.password != cpwd) {
