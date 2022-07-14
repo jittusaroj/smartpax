@@ -133,9 +133,6 @@ function Workspace() {
                                 </a>
                               </li>
                               <li>
-                                {/* <a
-                                 
-                                > */}
                                 <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
@@ -143,7 +140,6 @@ function Workspace() {
                                   <i className="fa fa-filter font-20"></i>
                                 </span>{" "}
                                 Sort
-                                {/* </a> */}
                               </li>
                               <li>
                                 <a
@@ -209,7 +205,6 @@ function Workspace() {
                                     </li>
                                   </ul>
                                 </div>
-                                {/* <!--<a>Search 123</a>--> */}
                               </li>
                               <li>
                                 <a

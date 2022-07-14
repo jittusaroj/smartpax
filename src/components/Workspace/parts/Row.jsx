@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
+import Cells from "./Cells";
 
 function Row(props) {
   const workspace_id = props.workspace_id;
@@ -85,7 +86,8 @@ function Row(props) {
                   for (var i = 1; i <= total_columns; i++) {
                     row.push(<div key={i} className="body1">
                     <span className="value">
-                      <input className="" name="" id="textfield1" defaultValue="1" />
+                      <Cells/>
+                      {/* <input className="" name="" id="textfield1" defaultValue="1" /> */}
                     </span>
                   </div>);
                   }

@@ -17,7 +17,7 @@ function Newfolder() {
         {/* <FaChevronDown size='15'/> */}
         <Form.Control
           type="text"
-          placeholder="New Folder"
+          placeholder="New Folder" defaultValue="New Folder"
           className="border-0"
           onClick={decoratedOnClick}
           style={{ background: "transparent", color: "black" }}
@@ -38,7 +38,7 @@ function Newfolder() {
             <>
               <Form.Control
                 type="text"
-                placeholder="New Folder"
+                placeholder="New Folder" 
                 className="border-0 ms-2"
                 style={{ background: "transparent", color: "black" }}
               />
