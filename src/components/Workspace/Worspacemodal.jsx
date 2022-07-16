@@ -2,32 +2,38 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../../utils/services";
 import { Form } from "react-bootstrap";
-
-// import '../Css/Workspace.css';
+import Text from "./Columnmodal/Text";
+import Column from "./parts/Column";
+import Person from "./Columnmodal/Person";
+import Status from "./Columnmodal/Status";
+import Number from "./Columnmodal/Number";
 
 function Worspacemodal() {
   const data = JSON.parse(localStorage.getItem("user"));
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
-  const workspace_icon = name[0]??"N";
+  const workspace_icon = name[0] ?? "N";
+
+
 
   const saveData = () => {
-    name!="" && axios
-      .post(
-        process.env.REACT_APP_LOCAL_API + "/workspace/save",
-        {
-          name: name,
-          isActive: status,
-          user_id: data.id,
-        },
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((data) => {
-        notify("Successfully updated", "success");
-        window.location.reload();
-      });
+    name != "" &&
+      axios
+        .post(
+          process.env.REACT_APP_LOCAL_API + "/workspace/save",
+          {
+            name: name,
+            isActive: status,
+            user_id: data.id,
+          },
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((data) => {
+          notify("Successfully updated", "success");
+          window.location.reload();
+        });
   };
 
   return (
@@ -58,7 +64,7 @@ function Worspacemodal() {
                   <span className="essen-icon bg-light-gn">
                     <img src="status.svg" alt="status" />
                   </span>
-                  Status
+                  <Status/>
                 </div>
                 <div className="col-md-6 col-6">
                   <span
@@ -71,12 +77,14 @@ function Worspacemodal() {
                 </div>
                 <div className="col-md-6 col-6">
                   <span
-                    className="essen-icon"
+                    className="essen-icon "
                     style={{ background: "rgb(0, 169, 255)" }}
                   >
                     <img src="text.svg" alt="text" />
+                   
                   </span>
-                  Text
+                  <Text/>
+                
                 </div>
                 <div className="col-md-6 col-6">
                   <span
@@ -94,7 +102,7 @@ function Worspacemodal() {
                   >
                     {/* <img src="assets/images/essen/person.svg"> */}
                   </span>
-                  Person
+                  <Person/>
                 </div>
                 <div className="col-md-6 col-6">
                   <span
@@ -103,14 +111,17 @@ function Worspacemodal() {
                   >
                     {/* <img src="assets/images/essen/numeric.svg"> */}
                   </span>
-                  Numbers
+                  <Number/>
                 </div>
+
+                
                 <div className="row">
                   <div className="col-md-12">
                     <br />
                     <h6>Super Useful</h6>
                     <br />
                   </div>
+                 
                   <div className="col-md-6 col-6">
                     <span
                       className="essen-icon"
@@ -118,71 +129,9 @@ function Worspacemodal() {
                     >
                       {/* <img src="assets/images/essen/subitem.svg"> */}
                     </span>
-                    Subitems
+                    Formula
                   </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(163, 88, 223)" }}
-                    >
-                      {/* <img src="assets/images/essen/timeline.svg"> */}
-                    </span>
-                    Timeline
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(0, 169, 255)" }}
-                    >
-                      {/* <img src="assets/images/essen/subitem.svg"> */}
-                    </span>
-                    Subitems
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(163, 88, 223)" }}
-                    >
-                      {/* <img src="assets/images/essen/timeline.svg"> */}
-                    </span>
-                    Timeline
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(0, 169, 255)" }}
-                    >
-                      {/* <img src="assets/images/essen/subitem.svg"> */}
-                    </span>
-                    Subitems
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(163, 88, 223)" }}
-                    >
-                      {/* <img src="assets/images/essen/timeline.svg"> */}
-                    </span>
-                    Timeline
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(0, 169, 255)" }}
-                    >
-                      {/* <img src="assets/images/essen/subitem.svg"> */}
-                    </span>
-                    Subitems
-                  </div>
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(163, 88, 223)" }}
-                    >
-                      {/* <img src="assets/images/essen/timeline.svg"> */}
-                    </span>
-                    Timeline
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -223,7 +172,9 @@ function Worspacemodal() {
                     background: "#ff9800",
                   }}
                 >
-                  <span style={{ color: "white", fontSize: "60px" }}>{workspace_icon.toUpperCase()}</span>
+                  <span style={{ color: "white", fontSize: "60px" }}>
+                    {workspace_icon.toUpperCase()}
+                  </span>
                 </div>
               </center>
 

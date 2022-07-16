@@ -3,6 +3,7 @@ import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 import { notify } from "../../utils/services";
+import Newfolder from "./parts/Newfolder";
 
 function Worksidebar() {
   const data = JSON.parse(localStorage.getItem("user"));
@@ -54,9 +55,10 @@ function Worksidebar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
+          <Dropdown.Item href="#">New Folder</Dropdown.Item>
             <Dropdown.Item href="#">New Board</Dropdown.Item>
-            {/* <Dropdown.Item href="#">New Docs</Dropdown.Item>
-      <Dropdown.Item href="#">New Dashboard</Dropdown.Item> */}
+           
+      {/* <Dropdown.Item href="#">New Dashboard</Dropdown.Item>  */}
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -72,6 +74,8 @@ function Worksidebar() {
           Add Workspace
         </a>
       </p>
+      <Newfolder id="folder_id"/>
+      <Newfolder/>
     </>
   );
 }

@@ -217,7 +217,8 @@ function Personaltab(props) {
                   <Form.Control
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
-                    defaultValue={title} placeholder="Text"
+                    defaultValue={title}
+                    placeholder="Text"
                   />
                 </Form.Group>
 
@@ -271,7 +272,8 @@ function Personaltab(props) {
                     <Form.Control
                       type="email"
                       onChange={(e) => setEmail(e.target.value)}
-                      defaultValue={email} placeholder="Email"
+                      defaultValue={email}
+                      placeholder="Email"
                     />
                   </Form.Text>
                 </Form.Group>
@@ -323,15 +325,14 @@ function Personaltab(props) {
 
             <div className="modal-body">
               <Form>
-         
-
                 <Form.Group className="mb-2 row" controlId="formBasicEmail">
                   <Form.Label className="col-sm-5">Mobile</Form.Label>
                   <Form.Text className="col-sm-7">
                     <Form.Control
                       type="number"
                       onChange={(e) => setPhone(e.target.value)}
-                      defaultValue={phone} placeholder="Mobile no."
+                      defaultValue={phone}
+                      placeholder="Mobile no."
                     />
                   </Form.Text>
                 </Form.Group>
@@ -384,7 +385,8 @@ function Personaltab(props) {
                   <Form.Control
                     type="text"
                     onChange={(e) => setSkype(e.target.value)}
-                    defaultValue={skype} placeholder="Skype"
+                    defaultValue={skype}
+                    placeholder="Skype"
                   />
                 </Form.Group>
 
@@ -429,7 +431,8 @@ function Personaltab(props) {
                   <Form.Control
                     type="text"
                     onChange={(e) => setLocation(e.target.value)}
-                    defaultValue={location} placeholder="Location"
+                    defaultValue={location}
+                    placeholder="Location"
                   />
                 </Form.Group>
 
@@ -525,7 +528,8 @@ function Personaltab(props) {
                   <Form.Control
                     type="date"
                     onChange={(e) => setBirthday(e.target.value)}
-                    defaultValue={birthday} placeholder="Birthday"
+                    defaultValue={birthday}
+                    placeholder="Birthday"
                   />
                 </Form.Group>
 
@@ -571,7 +575,8 @@ function Personaltab(props) {
                   <Form.Control
                     type="date"
                     onChange={(e) => setWorka(e.target.value)}
-                    defaultValue={worka} placeholder=""
+                    defaultValue={worka}
+                    placeholder=""
                   />
                 </Form.Group>
 

@@ -14,9 +14,6 @@ import { Dropdown, Form } from "react-bootstrap";
 import { notify } from "../utils/services";
 
 function Profile() {
-  //let { networkStatus } = useNavigator();
-  // let { userAgent } = useNavigator();
-
   var url = process.env.REACT_APP_LOCAL_API;
 
   const data = JSON.parse(localStorage.getItem("user"));
@@ -25,10 +22,6 @@ function Profile() {
   const [name, setName] = useState("");
 
   useEffect(() => {
-    // if (userAgent) {
-    //   console.log("userAgent", userAgent);
-    // }
-
     axios
       .get(url + "/users/" + data.id, {
         "Content-Type": "application/json",
@@ -357,10 +350,6 @@ function Profile() {
             </div>
             <form onSubmit={submitFile}>
               <div className="modal-body">
-                {/* <div className="name-first-word">
-                                      K
-                                  </div> */}
-
                 <label
                   htmlFor="profile_img"
                   className="update_image_label btn btn-primary"
