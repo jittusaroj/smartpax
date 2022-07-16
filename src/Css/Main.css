@@ -3432,3 +3432,15 @@ border-color: #dee0e2 !important;
     /* box-shadow: blanchedalmond; */
     box-shadow: 1px 1px 11px rgb(131 117 117 / 93%) !important;
 }
+.bg-red{
+	background-color: red !important;
+}
+.bg-green{
+	background-color: green !important;
+}
+.bg-orange{
+	background-color: orange !important;
+}
+.bg-gray{
+background-color: gray !important;
+}
