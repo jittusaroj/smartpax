@@ -18,8 +18,7 @@ import Worksidebar from "../components/Workspace/Worksidebar";
 function Workspace() {
   const user = JSON.parse(localStorage.getItem("user"));
   
-  localStorage.setItem("workspace", 1);
-  const workspace_id = 1;
+  const workspace_id_tbl = localStorage.getItem("workspace")??1;
   const [list, setList] = useState([]);
   useEffect(() => {
     axios
@@ -37,7 +36,7 @@ function Workspace() {
         process.env.REACT_APP_LOCAL_API + "/group/save",
         {
           // name: "",
-          workspace_id: workspace_id,
+          workspace_id: workspace_id_tbl,
           user_id: user.id,
         },
         {

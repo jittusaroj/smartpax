@@ -32,7 +32,7 @@ const Login = () => {
       })
       .then((user) => {
         console.log(url);
-
+        localStorage.clear();
         localStorage.setItem("user", JSON.stringify(user.data.data));
         if (user.data.status) {
           axios.post(

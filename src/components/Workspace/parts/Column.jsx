@@ -8,19 +8,15 @@ import { Form } from "react-bootstrap";
 function Column(props) {
     const data = JSON.parse(localStorage.getItem("user"));    
     const workspace_id = props.workspace_id;
-    const gName = props.group_data.name;//localStorage.getItem("groupName" + workspace_id) ;
+    const gName = props.group_data.name;
   
     const [name, setName] = useState("");
-    //localStorage.setItem("columns" + workspace_id, 4);
     const total_columns = localStorage.getItem("columns" + workspace_id)??0;
-    // const [total_columns, settotal_columns] = useState("");
 
     useEffect(() => {
       setName(gName);
     }, [gName]);
-    // useEffect(() => {
-    //   settotal_columns(total_column);
-    // }, [total_column]);
+
     const saveGroup = (e) => {
       if (e.key === "Enter") {
         axios
@@ -38,7 +34,6 @@ function Column(props) {
           )
           .then((data) => {
             console.log(data);
-            // localStorage.setItem("groupName" + workspace_id, name);
             notify("Successfully updated", "success");
             window.location.reload();
           });
@@ -47,7 +42,6 @@ function Column(props) {
 
     const addNewColumn = () => {
       localStorage.setItem("columns" + workspace_id, parseInt(total_columns)+1);
-      // settotal_columns(parseInt(total_columns)+1);
       window.location.reload();
     };
 

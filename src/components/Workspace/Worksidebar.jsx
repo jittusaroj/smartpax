@@ -7,6 +7,7 @@ import { notify } from "../../utils/services";
 function Worksidebar() {
   const data = JSON.parse(localStorage.getItem("user"));
   const [list, setList] = useState([]);
+  const workspace_id_tbl = localStorage.getItem("workspace")??1;
 
   useEffect(() => {
     axios
@@ -18,15 +19,10 @@ function Worksidebar() {
       });
   }, []);
 
-  const changeData = (workspace_id) => {
-      localStorage.setItem("workspace", 1);
-      // localStorage.setItem("workspace", workspace_id);
-      // console.log(workspace_id);
-      // var value = this.state.optionsdata.filter(function(item) {
-      //   return item.key == workspace_id.value
-      // })
-      notify("Workspace Successfully changed to "+workspace_id.value, "success");
-      // window.location.reload();
+  const changeData = (event) => {
+      localStorage.setItem("workspace", event.target.value);
+      notify("Workspace Successfully changed.", "success");
+      window.location.reload();
   };
 
   return (
@@ -36,10 +32,10 @@ function Worksidebar() {
       </p>
       <div>
         <Form>
-          <Form.Select aria-label="Default select example" onChange={(e) => changeData(e.target)}>
-            <option className="mt-2">Data Sets</option>
+          <Form.Select aria-label="Default select example" onChange={changeData} value={workspace_id_tbl}>
+            <option className="mt-2" value="">Select</option>
             {list.map((wspace, i) => {
-              return <option id={wspace.id} key={i}>{wspace.name}</option>
+              return <option value={wspace.id} key={i}>{wspace.name}</option>
             })}
           </Form.Select>
         </Form>
