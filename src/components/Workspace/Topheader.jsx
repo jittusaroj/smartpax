@@ -2,7 +2,7 @@ import { React } from "react";
 
 // import '../Css/Workspace.css';
 
-function Topheader() {
+function Topheader(props) {
   return (
     <>
       <div className="top-card-section">
@@ -12,9 +12,9 @@ function Topheader() {
               <span className="heading-icon">
                 <i className="fa fa-lock"></i> &nbsp;
               </span>
-              <span className="fs-6">Duplicate of SL Datasets '2022</span>
+              <span className="fs-6">{props.workspace.name}</span>
               <div className="other-option">
-                <span>
+                {/* <span>
                   <a
                     data-bs-toggle="collapse"
                     href="#collapseExample"
@@ -31,7 +31,7 @@ function Topheader() {
                     {" "}
                     <i className="fa fa-star-o" aria-hidden="true"></i>
                   </a>
-                </span>
+                </span> */}
               </div>
             </div>
             {/* <div className="collapse " id="collapseExample">

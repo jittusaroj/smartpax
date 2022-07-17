@@ -1,21 +1,32 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../../../utils/services";
-
+import ColumnModal from "./ColumnModal";
+import ColumnData from "./ColumnData";
 
 function Column(props) {
-  const data = JSON.parse(localStorage.getItem("user"));
+  const user_data = props.user_data;
   const workspace_id = props.workspace_id;
+  // const total_columns = localStorage.getItem("columns" + workspace_id) ?? 0;
+
+  // For columns.
+  const [columns, setColumns] = useState([]);
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setColumns(res.data);
+      });
+  }, []);
+
+  // For Group Name.
   const gName = props.group_data.name;
-
   const [name, setName] = useState("");
-
-  const total_columns = localStorage.getItem("columns" + workspace_id) ?? 0;
-
   useEffect(() => {
     setName(gName);
   }, [gName]);
-
   const saveGroup = (e) => {
     if (e.key === "Enter") {
       axios
@@ -23,7 +34,7 @@ function Column(props) {
           process.env.REACT_APP_LOCAL_API + "/group/" + props.group_id,
           {
             name: name,
-            user_id: data.id,
+            user_id: user_data.id,
             workspace_id: workspace_id,
             isActive: 1,
           },
@@ -35,42 +46,11 @@ function Column(props) {
           console.log(data);
 
           notify("Successfully updated", "success");
-          window.location.reload();
+          //window.location.reload();
         });
     }
   };
 
-  const addNewColumn = () => {
-    localStorage.setItem("columns" + workspace_id, parseInt(total_columns) + 1);
-
-    window.location.reload();
-  };
-
-  const getData = (e) => {
-    axios
-      .get(
-        process.env.REACT_APP_LOCAL_API + "/group/data",
-        {
-          name: name,
-          user_id: data.id,
-          workspace_id: workspace_id,
-          isActive: 1,
-        },
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((data) => {
-        console.log(data);
-        localStorage.setItem("groupName" + workspace_id, name);
-        notify("Successfully updated", "success");
-        window.location.reload();
-      });
-  };
-
-  const columnCallback = (cb) => {
-    return cb();
-  };
   return (
     <>
       <div className="d-flex">
@@ -110,7 +90,7 @@ function Column(props) {
                   Add Group
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a
                   className="dropdown-item"
                   href="#"
@@ -119,7 +99,7 @@ function Column(props) {
                 >
                   Another Drop
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a className="dropdown-item" href="#">
                   Rename Group
@@ -148,30 +128,18 @@ function Column(props) {
               />
             </span>
           </div>
-          <div className="head">
-            <span className="value">Testing Date</span>
-          </div>
-          <div className="head">
-            <span className="value">Week</span>
-          </div>
-
-          {columnCallback(() => {
-            const row = [];
-            for (var i = 1; i <= total_columns; i++) {
-              row.push(
-                <div className="head" key={i}>
-                  <span className="value"> Column {i}</span>
-                </div>
-              );
-            }
-            return row;
+          {columns.map((column, i) => {
+            return (
+              <ColumnData columnData={column} workspace_id={workspace_id} column_id={column.id} key={i} />
+            );
           })}
-{/* onClick={addNewColumn} */}
+
           <a  data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
             <i className="fa fa-plus-circle"></i>
           </a>
         </div>
       </div>
+      <ColumnModal workspace_id={workspace_id} />
     </>
   );
 }

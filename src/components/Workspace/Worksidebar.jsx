@@ -5,10 +5,10 @@ import { Form } from "react-bootstrap";
 import { notify } from "../../utils/services";
 import Newfolder from "./parts/Newfolder";
 
-function Worksidebar() {
+function Worksidebar(props) {
   const data = JSON.parse(localStorage.getItem("user"));
   const [list, setList] = useState([]);
-  const workspace_id_tbl = localStorage.getItem("workspace")??1;
+  const workspace_id_tbl = props.workspace.id;
 
   useEffect(() => {
     axios
@@ -33,8 +33,8 @@ function Worksidebar() {
       </p>
       <div>
         <Form>
-          <Form.Select aria-label="Default select example" onChange={changeData} value={workspace_id_tbl}>
-            <option className="mt-2" value="">Select</option>
+          <Form.Select aria-label="Workspace selection" onChange={changeData} value={workspace_id_tbl}>
+            {/* <option className="mt-2" value="">Select</option> */}
             {list.map((wspace, i) => {
               return <option value={wspace.id} key={i}>{wspace.name}</option>
             })}

@@ -3,15 +3,14 @@ import axios from "axios";
 import { notify } from "../../../utils/services";
 
 
-function Person() {
+function Number(props) {
     return (
         <>
-
-          <a    className="plus-right1">
+          <a onClick={(e) => props.addNewColumn("Number")} className="plus-right1">
            <span>Number</span>
           </a>
       
     </>
   );
 }
-export default Person;
+export default Number;

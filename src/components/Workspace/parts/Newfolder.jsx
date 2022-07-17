@@ -3,8 +3,8 @@ import { Form, Text } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import Card from "react-bootstrap/Card";
-import { FaChevronDown } from "react-icons/fa";
+// import Card from "react-bootstrap/Card";
+// import { FaChevronDown } from "react-icons/fa";
 
 function Newfolder() {
   function CustomToggle({ children, eventKey }) {

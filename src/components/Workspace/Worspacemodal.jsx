@@ -2,19 +2,12 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../../utils/services";
 import { Form } from "react-bootstrap";
-import Text from "./Columnmodal/Text";
-import Column from "./parts/Column";
-import Person from "./Columnmodal/Person";
-import Status from "./Columnmodal/Status";
-import Number from "./Columnmodal/Number";
 
 function Worspacemodal() {
   const data = JSON.parse(localStorage.getItem("user"));
   const [name, setName] = useState("");
   const [status, setStatus] = useState("");
   const workspace_icon = name[0] ?? "N";
-
-
 
   const saveData = () => {
     name != "" &&
@@ -38,107 +31,6 @@ function Worspacemodal() {
 
   return (
     <>
-      <div
-        className="modal fade"
-        id="column-modal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog modal-dialog-centered modal-right-fixed">
-          <div className="modal-content">
-            <div className="modal-header b-0">
-              <h6 className="modal-title" id="exampleModalLabel">
-                Essentials
-              </h6>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body essen-section">
-              <div className="row">
-                <div className="col-md-6 col-6">
-                  <span className="essen-icon bg-light-gn">
-                    <img src="status.svg" alt="status" />
-                  </span>
-                  <Status/>
-                </div>
-                <div className="col-md-6 col-6">
-                  <span
-                    className="essen-icon"
-                    style={{ background: "rgb(247, 72, 117)" }}
-                  >
-                    {/* <img src="assets/images/essen/dropdown.svg"> */}
-                  </span>
-                  Dropdown
-                </div>
-                <div className="col-md-6 col-6">
-                  <span
-                    className="essen-icon "
-                    style={{ background: "rgb(0, 169, 255)" }}
-                  >
-                    <img src="text.svg" alt="text" />
-                   
-                  </span>
-                  <Text/>
-                
-                </div>
-                <div className="col-md-6 col-6">
-                  <span
-                    className="essen-icon"
-                    style={{ background: "rgb(0, 207, 244)" }}
-                  >
-                    {/* <img src="assets/images/essen/date.svg"> */}
-                  </span>
-                  Date
-                </div>
-                <div className="col-md-6 col-6">
-                  <span
-                    className="essen-icon bg-light-gn"
-                    style={{ background: "rgb(255, 204, 0)" }}
-                  >
-                    {/* <img src="assets/images/essen/person.svg"> */}
-                  </span>
-                  <Person/>
-                </div>
-                <div className="col-md-6 col-6">
-                  <span
-                    className="essen-icon bg-light-gn"
-                    style={{ background: "rgb(255, 204, 0)" }}
-                  >
-                    {/* <img src="assets/images/essen/numeric.svg"> */}
-                  </span>
-                  <Number/>
-                </div>
-
-                
-                <div className="row">
-                  <div className="col-md-12">
-                    <br />
-                    <h6>Super Useful</h6>
-                    <br />
-                  </div>
-                 
-                  <div className="col-md-6 col-6">
-                    <span
-                      className="essen-icon"
-                      style={{ background: "rgb(0, 169, 255)" }}
-                    >
-                      {/* <img src="assets/images/essen/subitem.svg"> */}
-                    </span>
-                    Formula
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Workspace Modal */}
 
       <div

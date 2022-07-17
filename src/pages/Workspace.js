@@ -12,13 +12,13 @@ import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
 
 function Workspace() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  
-  const workspace_id_tbl = localStorage.getItem("workspace")??1;
+  const user_data = JSON.parse(localStorage.getItem("user"));  
+  const workspace_id_tbl = localStorage.getItem("workspace");
+
   const [list, setList] = useState([]);
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user.id, {
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
         "Content-Type": "application/json",
       })
       .then((res) => {
@@ -26,14 +26,25 @@ function Workspace() {
       });
   }, []);
 
-  const saveData = () => {
+  const [wslist, setWslist] = useState([]);
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/workspace/" + workspace_id_tbl, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setWslist(res.data);
+      });
+  }, []);
+
+  const addNewGroup = () => {
     axios
       .post(
         process.env.REACT_APP_LOCAL_API + "/group/save",
         {
-          // name: "",
+          total_rows: 1,
           workspace_id: workspace_id_tbl,
-          user_id: user.id,
+          user_id: user_data.id,
         },
         {
           "Content-Type": "application/json",
@@ -56,14 +67,14 @@ function Workspace() {
                 className="col-12 col-lg-2 col-md-2 col-sm-12 bg-lightgray custom-user-sidebar"
                 style={{ background: "rgb(233 236 240 / 25%)" }}
               >
-                <Worksidebar />
+                <Worksidebar workspace={wslist} />
               </div>
 
               <div className="col-12 col-lg-10 col-md-10 col-sm-12">
                 <div className="row">
                   <div className="col-12 col-lg-12 col-md-12 col-sm-12 inbox">
                     <div className="board-section">
-                      <Topheader />
+                      <Topheader workspace={wslist} />
 
                       <div
                         className="card-body"
@@ -82,7 +93,7 @@ function Workspace() {
                                   </Dropdown.Toggle>
 
                                   <Dropdown.Menu>
-                                    <Dropdown.Item onClick={saveData}>
+                                    <Dropdown.Item onClick={addNewGroup}>
                                       New group of Items
                                     </Dropdown.Item>
                                   </Dropdown.Menu>
@@ -244,6 +255,7 @@ function Workspace() {
                                 workspace_id={workspace_id.workspace_id}
                                 group_id={workspace_id.id}
                                 group_data={workspace_id}
+                                user_data={user_data}
                               />
                             );
                           })}

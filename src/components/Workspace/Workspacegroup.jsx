@@ -54,7 +54,7 @@ function Workspacegroup() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Another Drop
+                        Another Group Drop
                       </a>
                     </li>
                     <li>
@@ -77,7 +77,7 @@ function Workspacegroup() {
                     <input
                       className="value first-col first-text pink-text font-16 border-0"
                       type="text"
-                      placeholder="NEW GROUP"
+                      placeholder="NEW GROUP1"
                       onChange={(e) => setName(e.target.value)}
                       defaultValue={name}
                       onKeyPress={(e) => saveData(e)}
@@ -159,7 +159,7 @@ function Workspacegroup() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        Another Drop
+                        Another Group Drop
                       </a>
                     </li>
                     <li>
@@ -279,7 +279,7 @@ function Workspacegroup() {
                   <input
                     className="value first-col first-text pink-text font-16 border-0"
                     type="text"
-                    placeholder="NEW GROUP"
+                    placeholder="NEW GROUP2"
                     onChange={(e) => setName(e.target.value)}
                     defaultValue={name}
                     onKeyPress={(e) => saveData(e)}
