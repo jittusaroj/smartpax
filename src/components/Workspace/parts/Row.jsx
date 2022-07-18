@@ -24,30 +24,73 @@ function Row(props) {
       });
   }, []);
 
-  // For Columns First title.
-  const gName = props.group_data.name;
-  const [name, setName] = useState("");
+  // For cells.
+  const [cell, setCell] = useState([]);
+  const [cellId, setCellId] = useState([]);
   useEffect(() => {
-    setName(gName);
-  }, [gName]);
-  const saveGroup = (e) => {
-    if (e.key === "Enter") {
+    getCell(true);
+  }, []);
+
+  // For Columns First title.
+  const getCell = (setData) => {
+    let dt = "";
+    axios
+    .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + props.workspace_id + "/" + props.group_data.id + "/0/" + props.id, {
+      "Content-Type": "application/json",
+    })
+    .then((res) => {
+      let cellData = res.data[0]?res.data[0].name:"";
+      if(setData) {
+        setCell(cellData);
+        setCellId(res.data[0]?res.data[0].id:"");
+      }
+      dt = cellData;
+    });
+    return dt;
+  };
+  const saveCell = (value) => {
+    if (cell!="" && cellId!="") {
       axios
         .put(
-          process.env.REACT_APP_LOCAL_API + "/group/" + props.group_id,
+          process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
           {
-            name: name,
-            user_id: user_data.id,
-            workspace_id: workspace_id,
-            isActive: 1,
+            name: value,
+            user_id: props.user_data.id,
+            workspace_id: props.workspace_id,
+            group_id: props.group_data.id,
+            column_id: 0,
+            row_id: props.id,
+            isRow: true,
+            isActive: true,
           },
           {
             "Content-Type": "application/json",
           }
         )
         .then((data) => {
-          console.log(data);
-          //window.location.reload();
+          setCell(value);
+        });
+    } else {
+      axios
+        .post(
+          process.env.REACT_APP_LOCAL_API + "/cells/save",
+          {
+            name: value,
+            user_id: props.user_data.id,
+            workspace_id: props.workspace_id,
+            group_id: props.group_data.id,
+            column_id: 0,
+            row_id: props.id,
+            isRow: true,
+            isActive: true,
+          },
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((data) => {
+          setCell(value);
+          setCellId(data.data.uData.id);
         });
     }
   };
@@ -122,21 +165,18 @@ function Row(props) {
                 className="value first-col first-text border-0"
                 type="text"
                 placeholder="New Item"
-                onChange={(e) => setName(e.target.value)}
-                defaultValue={name}
-                onKeyPress={(e) => saveGroup(e)}
+                onChange={(e) => saveCell(e.target.value)}
+                defaultValue={cell}
               />
             </span>
           </div>
           {columns.map((column, i) => {
             return (
-              <>
               <div key={i} className="body1">
                 <span className="value">
-                  <Cells type={column.type}/>
+                  <Cells type={column.type} row_id={props.id} workspace_id={props.workspace_id} group_id={props.group_data.id} column_id={column.id} user_data={props.user_data}/>
                 </span>
               </div>
-              </>
             );
           })}
 

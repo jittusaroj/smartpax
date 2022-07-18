@@ -45,7 +45,7 @@ function Workspacetable(props) {
           {tableCallback(() => {
             const row = [];
             for (var i = 1; i <= total_rows; i++) {
-              row.push(<Row key={props.group_data.id+"row"+i} workspace_id={workspace_id} group_data={props.group_data} user_data={user_data} />);
+              row.push(<Row key={i} id={i} workspace_id={workspace_id} group_data={props.group_data} user_data={user_data} />);
             }
             return row;
           })}

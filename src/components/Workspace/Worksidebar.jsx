@@ -3,16 +3,16 @@ import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 import { notify } from "../../utils/services";
-import Newfolder from "./parts/Newfolder";
+// import Newfolder from "./parts/Newfolder";
 
 function Worksidebar(props) {
-  const data = JSON.parse(localStorage.getItem("user"));
+  const user_data = props.user_data;
   const [list, setList] = useState([]);
   const workspace_id_tbl = props.workspace.id;
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_LOCAL_API + "/workspace/list/" + data.id, {
+      .get(process.env.REACT_APP_LOCAL_API + "/workspace/list/" + user_data.id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
@@ -20,10 +20,12 @@ function Worksidebar(props) {
       });
   }, []);
 
-  const changeData = (event) => {
-      localStorage.setItem("workspace", event.target.value);
+  const changeData = (value) => {
+    if(value!="") {
+      localStorage.setItem("workspace", value);
       notify("Workspace Successfully changed.", "success");
       window.location.reload();
+    }
   };
 
   return (
@@ -33,8 +35,8 @@ function Worksidebar(props) {
       </p>
       <div>
         <Form>
-          <Form.Select aria-label="Workspace selection" onChange={changeData} value={workspace_id_tbl}>
-            {/* <option className="mt-2" value="">Select</option> */}
+          <Form.Select aria-label="Workspace selection" onChange={(e) => changeData(e.target.value)} value={workspace_id_tbl}>
+            <option className="mt-2" value="">Select</option>
             {list.map((wspace, i) => {
               return <option value={wspace.id} key={i}>{wspace.name}</option>
             })}
@@ -55,10 +57,10 @@ function Worksidebar(props) {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-          <Dropdown.Item href="#">New Folder</Dropdown.Item>
+            <Dropdown.Item href="#">New Folder</Dropdown.Item>
             <Dropdown.Item href="#">New Board</Dropdown.Item>
-           
-      {/* <Dropdown.Item href="#">New Dashboard</Dropdown.Item>  */}
+            
+        {/* <Dropdown.Item href="#">New Dashboard</Dropdown.Item>  */}
           </Dropdown.Menu>
         </Dropdown>
       </div>
@@ -74,8 +76,8 @@ function Worksidebar(props) {
           Add Workspace
         </a>
       </p>
-      <Newfolder id="folder_id"/>
-      <Newfolder/>
+      {/* <Newfolder id="folder_id"/>
+      <Newfolder/> */}
     </>
   );
 }

@@ -31,6 +31,7 @@ const App = () => {
             <Route path='/profile' element={<Profile />} />
             <Route path='/userlist' element={<Userlist />} />
             <Route path='/Workspace' element={<Workspace />} />
+            <Route path='/Workspace/:workspace_id' element={<Workspace />} />
             {/* <Route path="/ticket" element={<TicketPage />} /> */}
             {/* <Route path="/ticket/:id" element={<TicketPage editMode={true} />} /> */}
           </Routes>

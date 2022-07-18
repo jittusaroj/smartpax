@@ -11,9 +11,10 @@ import Topheader from "../components/Workspace/Topheader";
 import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
 
-function Workspace() {
-  const user_data = JSON.parse(localStorage.getItem("user"));  
+function Workspace(props) {
+  const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
+  // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
 
   const [list, setList] = useState([]);
   useEffect(() => {
@@ -67,7 +68,7 @@ function Workspace() {
                 className="col-12 col-lg-2 col-md-2 col-sm-12 bg-lightgray custom-user-sidebar"
                 style={{ background: "rgb(233 236 240 / 25%)" }}
               >
-                <Worksidebar workspace={wslist} />
+                <Worksidebar workspace={wslist} user_data={user_data} />
               </div>
 
               <div className="col-12 col-lg-10 col-md-10 col-sm-12">

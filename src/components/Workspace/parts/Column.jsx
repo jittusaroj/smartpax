@@ -21,6 +21,18 @@ function Column(props) {
       });
   }, []);
 
+  // For columns.
+  const [cells, setCells] = useState([]);
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + workspace_id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setCells(res.data);
+      });
+  }, []);
+
   // For Group Name.
   const gName = props.group_data.name;
   const [name, setName] = useState("");
