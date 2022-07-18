@@ -12,7 +12,7 @@ function Topheader(props) {
               <span className="heading-icon">
                 <i className="fa fa-lock"></i> &nbsp;
               </span>
-              <span className="fs-6">{props.workspace.name}</span>
+              <span className="fs-6 mt-1">{props.workspace.name}</span>
               <div className="other-option">
                 {/* <span>
                   <a
@@ -41,7 +41,7 @@ function Topheader(props) {
           <div className="col-md-7">
             <div className="right-option">
               <ul className="ul-menu">
-                <li>
+                {/* <li>
                   <button
                     className="dropdown-toggle no-btn"
                     type="button"
@@ -91,7 +91,7 @@ function Topheader(props) {
                     + Add to board
                   </button>
                
-                </li>
+                </li> */}
                 <li>
                   <button
                     className="btn dropdown-toggle no-dropdown ellipsis"
@@ -107,7 +107,7 @@ function Topheader(props) {
               </ul>
             </div>
           </div>
-          <div className="col-md-12">
+          {/* <div className="col-md-12">
             <ul
               className="nav nav-tabs work-space m-0"
               id="myTab"
@@ -122,7 +122,7 @@ function Topheader(props) {
                   type="button"
                   role="tab"
                   aria-controls="home"
-                  aria-selected="true"
+                  aria-selected="true" style={{borderRight:"0px solid"}}
                 >
                   <i className="fa fa-home"></i> Main Table
                 </button>
@@ -187,7 +187,7 @@ function Topheader(props) {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

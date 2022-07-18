@@ -100,7 +100,9 @@ function Row(props) {
       <div className="d-flex">
         <div className="dropdown-sec">
           <div className="dropdown">
-            <a
+          <i class="fa fa-trash" aria-hidden="true" style={{color:"red"}}></i>
+            {/* <a>Text</a> */}
+            {/* <a
               className="btn btn-primary btn-xs dropdown-toggle"
               href="#"
               role="button"
@@ -109,50 +111,18 @@ function Row(props) {
               aria-expanded="false"
             >
               {" "}
-            </a>
-            <ul
+            </a> */}
+            {/* <ul
               className="dropdown-menu"
               aria-labelledby="dropdownMenuLink"
             >
+            
               <li>
                 <a className="dropdown-item" href="#">
-                  Collapse this group
+                  Remove Group
                 </a>
               </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Collapse All group
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Select all items
-                </a>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Add Group
-                </a>
-              </li>
-              <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Another Drop
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Rename Group
-                </a>
-              </li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="d-flex body-section blue-section">

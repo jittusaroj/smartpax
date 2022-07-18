@@ -81,7 +81,7 @@
     .board-section .nav-tabs .nav-link {
     margin-bottom: 2px;
     border-radius: 0px!important;
-    border-right: 1px solid lightgray!important;
+    border-right: 0px solid lightgray!important;
     }
     .board-section table tr th{
     width: 300px!important;

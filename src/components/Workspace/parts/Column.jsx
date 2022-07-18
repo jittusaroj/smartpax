@@ -79,42 +79,10 @@ function Column(props) {
               {" "}
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            
               <li>
                 <a className="dropdown-item" href="#">
-                  Collapse this group
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Collapse All group
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Select all items
-                </a>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Add Group
-                </a>
-              </li>
-              {/* <li>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Another Drop
-                </a>
-              </li> */}
-              <li>
-                <a className="dropdown-item" href="#">
-                  Rename Group
+                  Remove Group
                 </a>
               </li>
             </ul>

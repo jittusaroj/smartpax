@@ -74,7 +74,8 @@ function Cells(props) {
           console.log(data);
           setCell(value);
           setCellId(data.data.uData.id);
-          //window.location.reload();
+
+          // window.location.reload();
         });
     }
   };
@@ -164,7 +165,7 @@ function Cells(props) {
           placeholder={props.type}
           id="textfield1"
           defaultValue={cell}
-          onChange={(e) => saveCell(e.target.value)}
+          onMouseOut={(e) => saveCell(e.target.value)}
         />
         {/* <Form.Control
           type="text"
