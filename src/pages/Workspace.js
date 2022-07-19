@@ -89,7 +89,7 @@ function Workspace(props) {
                               <i className="fa fa-home fs-6"></i> Main Table
                               </li> */}
                               <li className="me-5">
-                              <Button variant="primary" onClick={addNewGroup}>Add New Group</Button>
+                              <Button variant="primary" onClick={addNewGroup}>New Group</Button>
                                
                                 {/* <Dropdown>
                                   <Dropdown.Toggle
