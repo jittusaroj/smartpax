@@ -6,6 +6,10 @@ import { useAccordionButton } from "react-bootstrap/AccordionButton";
 import Textmodal from "../Header/Textmodal";
 import Modal from 'react-bootstrap/Modal';
 import Invitemodal from "../Header/Invitemodal";
+import {FaTrash } from "react-icons/fa";
+import {FaLock } from "react-icons/fa";
+
+
 
 // import '../Css/Workspace.css';
 
@@ -24,7 +28,7 @@ function Topheader(props) {
               <span className="heading-icon">
                 <i className="fa fa-lock"></i> &nbsp;
               </span>
-              <Form.Control defaultValue={props.workspace.name}></Form.Control>
+              <Form.Control defaultValue={props.workspace.name} className="border-0" style={{marginTop: "-6px",}}></Form.Control>
               {/* <span className="fs-6 mt-1" >{props.workspace.name}</span> */}
              
               
@@ -130,12 +134,12 @@ function Topheader(props) {
                                     <i className="fa fa-ellipsis-h font-14"></i>
                                   </Dropdown.Toggle>
 
-                                  <Dropdown.Menu style={{transform: "translate(-111px, 45px)"}}>
-                                    <Dropdown.Item >
-                                     DataSets Permissions
+                                  <Dropdown.Menu  style={{minWidth: '13rem', marginLeft: "-127px " }}> 
+                                   <Dropdown.Item >
+                                  <FaLock/>  DataSets Permissions
                                     </Dropdown.Item>
                                     <Dropdown.Item >
-                                    Delete DataSets
+                                    <FaTrash />   Delete DataSets
                                     </Dropdown.Item>
                                   </Dropdown.Menu>
                                 </Dropdown>

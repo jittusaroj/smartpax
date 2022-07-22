@@ -6,11 +6,15 @@ import Sidebar from "../components/Sidebar";
 import "../Css/Main.css";
 import "../Css/Workspace.css";
 import Dropdown from "react-bootstrap/Dropdown";
+import Collapse from "react-bootstrap/Collapse";
 import Workspacetable from "../components/Workspace/Workspacetable";
 import Topheader from "../components/Workspace/Topheader";
 import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
 import Button from 'react-bootstrap/Button';
+import Personmodal from "../components/Header/Personmodal";
+import Sortmodal from "../components/Header/Sortmodal";
+import Filtermodal from "../components/Header/Filtermodal";
 
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
@@ -135,7 +139,7 @@ function Workspace(props) {
                                   <i className="fa fa-user-circle"></i> Person
                                 </a>
                               </li>
-                              <li className="">
+                              {/* <li className="">
                                 <a
                                   data-bs-toggle="collapse"
                                   href="#megamenu"
@@ -148,15 +152,21 @@ function Workspace(props) {
                                   </span>{" "}
                                   Filter{" "}
                                 </a>
-                              </li>
+                              </li> */}
+
+                                <li>
+                                  <Filtermodal/> 
+
+                                    </li>
                               <li className="mx-4">
                                 <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
                                   <i className="fa fa-filter font-20"></i>
-                                </span>{" "}
-                                Sort
+                                  Sort
+                                </span>
+                              
                               </li>
 
 
@@ -186,6 +196,9 @@ function Workspace(props) {
             </div>
           </div>
         </div>
+
+        <Personmodal/>
+        <Sortmodal/>
 
         <Worspacemodal />
 
