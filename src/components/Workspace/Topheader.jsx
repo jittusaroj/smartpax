@@ -1,8 +1,24 @@
 import { React } from "react";
+import { useState } from 'react';
+import { Form , Dropdown} from "react-bootstrap";
+import Accordion from "react-bootstrap/Accordion";
+import { useAccordionButton } from "react-bootstrap/AccordionButton";
+import Textmodal from "../Header/Textmodal";
+import Modal from 'react-bootstrap/Modal';
+import Invitemodal from "../Header/Invitemodal";
+import {FaTrash } from "react-icons/fa";
+import {FaLock } from "react-icons/fa";
+
+
 
 // import '../Css/Workspace.css';
 
 function Topheader(props) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   return (
     <>
       <div className="top-card-section">
@@ -12,8 +28,24 @@ function Topheader(props) {
               <span className="heading-icon">
                 <i className="fa fa-lock"></i> &nbsp;
               </span>
-              <span className="fs-6">{props.workspace.name}</span>
+              <Form.Control defaultValue={props.workspace.name} className="border-0" style={{marginTop: "-6px",}}></Form.Control>
+              {/* <span className="fs-6 mt-1" >{props.workspace.name}</span> */}
+             
+              
               <div className="other-option">
+
+              <i
+                      className="fa fa-exclamation-circle"
+                      aria-hidden="true" onClick={handleShow}
+                    ></i>
+                   <Modal show={show} onHide={handleClose} animation={false}>
+                   <Textmodal/>
+                   </Modal>
+
+                 
+                   <Invitemodal/>
+                  
+                   
                 {/* <span>
                   <a
                     data-bs-toggle="collapse"
@@ -41,7 +73,7 @@ function Topheader(props) {
           <div className="col-md-7">
             <div className="right-option">
               <ul className="ul-menu">
-                <li>
+                {/* <li>
                   <button
                     className="dropdown-toggle no-btn"
                     type="button"
@@ -63,24 +95,24 @@ function Topheader(props) {
                     </li>
                   </ul>
                 </li>
-                <li>
+                 <li>
                   <a>
                     Last seen <span className="name-icon">K</span>
                   </a>
-                </li>
+                </li> */}
                 <li>
-                  <a data-bs-toggle="modal" data-bs-target="#invite_modal">
-                    <i className="fa fa-user-plus"></i> invite /5
-                  </a>
+                   <a data-bs-toggle="modal" data-bs-target="#invite_modal">
+                     <i className="fa fa-user-plus" ></i> invite /5
+                   </a>
                 </li>
 
-                <li>
+                {/* <li>
                   <a data-bs-toggle="modal" data-bs-target="#activity_modal">
                     <i className="fa fa-chart"></i> Activity
                   </a>
-                </li>
+                </li>  */}
 
-                <li>
+                 {/* <li>
                   <button
                     className="btn btn-sm add-board-btn dropdown-toggle no-dropdown"
                     type="button"
@@ -91,9 +123,60 @@ function Topheader(props) {
                     + Add to board
                   </button>
                
-                </li>
+                </li> */}
                 <li>
-                  <button
+
+                                <Dropdown>
+                                  <Dropdown.Toggle
+                                    variant=""
+                                    id="dropdown-basic"
+                                  >
+                                    <i className="fa fa-ellipsis-h font-14"></i>
+                                  </Dropdown.Toggle>
+
+                                  <Dropdown.Menu  style={{minWidth: '13rem', marginLeft: "-127px " }}> 
+                                   <Dropdown.Item >
+                                  <FaLock/>  DataSets Permissions
+                                    </Dropdown.Item>
+                                    <Dropdown.Item >
+                                    <FaTrash />   Delete DataSets
+                                    </Dropdown.Item>
+                                  </Dropdown.Menu>
+                                </Dropdown>
+
+                {/* <a
+                    className="btn dropdown-toggle add-dropdown"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <i className="fa fa-ellipsis-h font-14"></i>
+                  </a> */}
+                  {/* <ul
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuLink"
+                  >
+                    <li>
+                      <a className="dropdown-item" href="#">
+                     DataSets
+                      </a>
+                    </li>
+
+
+                  
+                    <li>
+                      <a className="dropdown-item" href="#">
+                      Datasets7
+
+
+              
+                      </a>
+                    </li>
+    
+                  </ul> */}
+                  {/* <button
                     className="btn dropdown-toggle no-dropdown ellipsis"
                     type="button"
                     id="dropdownMenuButton2"
@@ -101,10 +184,10 @@ function Topheader(props) {
                     aria-expanded="false"
                   >
                     <i className="fa fa-ellipsis-h"></i>
-                  </button>
+                  </button> */}
                  
                 </li>
-              </ul>
+              </ul> 
             </div>
           </div>
           <div className="col-md-12">
@@ -122,12 +205,12 @@ function Topheader(props) {
                   type="button"
                   role="tab"
                   aria-controls="home"
-                  aria-selected="true"
+                  aria-selected="true" style={{borderRight:"0px solid"}}
                 >
                   <i className="fa fa-home"></i> Main Table
                 </button>
               </li>
-              <li className="nav-item" role="presentation">
+              {/* <li className="nav-item" role="presentation">
                 <button
                   className="nav-link"
                   id="profile-tab"
@@ -185,7 +268,7 @@ function Topheader(props) {
     
                   </ul>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

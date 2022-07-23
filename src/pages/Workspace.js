@@ -6,10 +6,15 @@ import Sidebar from "../components/Sidebar";
 import "../Css/Main.css";
 import "../Css/Workspace.css";
 import Dropdown from "react-bootstrap/Dropdown";
+import Collapse from "react-bootstrap/Collapse";
 import Workspacetable from "../components/Workspace/Workspacetable";
 import Topheader from "../components/Workspace/Topheader";
 import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
+import Button from 'react-bootstrap/Button';
+import Personmodal from "../components/Header/Personmodal";
+import Sortmodal from "../components/Header/Sortmodal";
+import Filtermodal from "../components/Header/Filtermodal";
 
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
@@ -84,8 +89,13 @@ function Workspace(props) {
                         <div>
                           <div className="top-filter-section">
                             <ul className="filter">
-                              <li>
-                                <Dropdown>
+                              {/* <li className="mt-1 mx-4">
+                              <i className="fa fa-home fs-6"></i> Main Table
+                              </li> */}
+                              <li className="me-5">
+                              <Button variant="primary" onClick={addNewGroup}>New Group</Button>
+                               
+                                {/* <Dropdown>
                                   <Dropdown.Toggle
                                     variant="primary"
                                     id="dropdown-basic"
@@ -98,16 +108,16 @@ function Workspace(props) {
                                       New group of Items
                                     </Dropdown.Item>
                                   </Dropdown.Menu>
-                                </Dropdown>
+                                </Dropdown> */}
                               </li>
-                              <li>
+                              <li className=" ms-5" >
                                 <div className="d-lg-none d-md-none d-sm-block d-xs-block mb-d-inline">
                                   <button className="btn ms-4 border-1">
                                     <i className="fa fa-search"></i>
                                   </button>
                                 </div>
                               </li>
-                              <li className="d-none d-lg-block d-md-block">
+                              <li className="d-none d-lg-block d-md-block  " style={{marginLeft:"18rem"}}>
                                 <div className="d-flex search-field  ms-4">
                                   <div className="search-btn">
                                     <i className="fa fa-search"></i>
@@ -121,7 +131,7 @@ function Workspace(props) {
                                   />
                                 </div>
                               </li>
-                              <li>
+                              <li className="">
                                 <a
                                   data-bs-toggle="modal"
                                   data-bs-target="#person_modal"
@@ -129,7 +139,7 @@ function Workspace(props) {
                                   <i className="fa fa-user-circle"></i> Person
                                 </a>
                               </li>
-                              <li>
+                              {/* <li className="">
                                 <a
                                   data-bs-toggle="collapse"
                                   href="#megamenu"
@@ -142,108 +152,25 @@ function Workspace(props) {
                                   </span>{" "}
                                   Filter{" "}
                                 </a>
-                              </li>
-                              <li>
+                              </li> */}
+
+                                <li>
+                                  <Filtermodal/> 
+
+                                    </li>
+                              <li className="mx-4">
                                 <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
                                   <i className="fa fa-filter font-20"></i>
-                                </span>{" "}
-                                Sort
+                                  Sort
+                                </span>
+                              
                               </li>
-                              <li>
-                                <a
-                                  data-bs-toggle="collapse"
-                                  href="#pin"
-                                  role="button"
-                                  aria-expanded="false"
-                                  aria-controls="collapseExample"
-                                >
-                                  <span>
-                                    {" "}
-                                    <i className="fa fa-map-pin"></i>
-                                  </span>{" "}
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  data-bs-toggle="collapse"
-                                  href="#hide"
-                                  role="button"
-                                  aria-expanded="false"
-                                  aria-controls="collapseExample"
-                                >
-                                  <span>
-                                    {" "}
-                                    <i
-                                      className="fa fa-eye-slash"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </span>{" "}
-                                </a>
-                              </li>
-                              <li>
-                                <div className="dropdown">
-                                  <a
-                                    className="dropdown-toggle btn-sm"
-                                    href="#"
-                                    role="button"
-                                    id="dropdownMenuLink"
-                                    data-bs-toggle="dropdown"
-                                    aria-expanded="false"
-                                  >
-                                    Item height
-                                  </a>
-                                  <ul
-                                    className="dropdown-menu"
-                                    aria-labelledby="dropdownMenuLink"
-                                  >
-                                    <li>
-                                      <a className="dropdown-item" href="#">
-                                        Single
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a className="dropdown-item" href="#">
-                                        Double
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a className="dropdown-item" href="#">
-                                        Triple
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </li>
-                              <li>
-                                <a
-                                  data-bs-toggle="collapse"
-                                  href="#color-megamenu"
-                                  role="button"
-                                  aria-expanded="false"
-                                  aria-controls="collapseExample"
-                                >
-                                  <span>
-                                    <i
-                                      className="fa fa-paint-brush"
-                                      aria-hidden="true"
-                                    ></i>
-                                  </span>
-                                </a>
-                              </li>
-                              <li>
-                                <a
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#exampleModal"
-                                >
-                                  <i
-                                    className="fa fa-pencil-square-o"
-                                    style={{ fontSize: "18px" }}
-                                  ></i>
-                                </a>
-                              </li>
+
+
+                             
                             </ul>
                           </div>
 
@@ -269,6 +196,9 @@ function Workspace(props) {
             </div>
           </div>
         </div>
+
+        <Personmodal/>
+        <Sortmodal/>
 
         <Worspacemodal />
 

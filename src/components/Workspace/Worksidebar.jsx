@@ -3,7 +3,7 @@ import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 import { notify } from "../../utils/services";
-// import Newfolder from "./parts/Newfolder";
+import Newfolder from "./parts/Newfolder";
 
 function Worksidebar(props) {
   const user_data = props.user_data;
@@ -31,7 +31,7 @@ function Worksidebar(props) {
   return (
     <>
       <p className="fs-6 mt-5">
-        <b>WORKSPACE</b>
+        <b>DATA SETS</b>
       </p>
       <div>
         <Form>
@@ -64,20 +64,20 @@ function Worksidebar(props) {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      <p className="team-font ms-3">
+      {/* <p className="team-font ms-3">
         <i className="bx bx-filter-alt"></i> Filter
       </p>
       <p className="team-font ms-3">
         <i className="bx bx-search"></i> Search
-      </p>
+      </p> */}
       <p className="team-font ms-3">
         <i className="bx bx-add"></i>{" "}
         <a data-bs-toggle="modal" data-bs-target="#addworkspace">
-          Add Workspace
+          Add Data Sets
         </a>
       </p>
-      {/* <Newfolder id="folder_id"/>
-      <Newfolder/> */}
+      <Newfolder id="folder_id"/>
+      {/* <Newfolder/> */}
     </>
   );
 }

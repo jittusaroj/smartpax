@@ -44,7 +44,7 @@ function Worspacemodal() {
           <div className="modal-content">
             <div className="modal-header b-0">
               <h6 className="modal-title" id="exampleModalLabel">
-                ADD WORKSPACE
+                ADD DATASETS
               </h6>
               <button
                 type="button"
@@ -70,15 +70,15 @@ function Worspacemodal() {
                 </div>
               </center>
 
-              <Form.Label>Workspace Name</Form.Label>
+              <Form.Label>DataSets Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Workspace Name"
+                placeholder="Datasets Name"
                 required="required"
                 onChange={(e) => setName(e.target.value)}
               />
 
-              <p className="mt-4">Privacy</p>
+              {/* <p className="mt-4">Privacy</p>
               {["radio"].map((type) => (
                 <div key={`inline-${type}`} className="mb-2 mt-2">
                   <Form.Check
@@ -102,7 +102,8 @@ function Worspacemodal() {
                 </div>
               ))}
 
-              <p>Every team member in the account can join.</p>
+              <p>Every team member in the account can join.</p> */}
+              <br/><br/>
 
               <div className="float-right">
                 <span
@@ -113,7 +114,7 @@ function Worspacemodal() {
                   Cancel
                 </span>
                 <button className="btn btn-primary" onClick={saveData}>
-                  Create Workspace
+                  Create Data Sets
                 </button>
               </div>
             </div>
