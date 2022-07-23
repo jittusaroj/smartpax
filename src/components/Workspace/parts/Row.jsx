@@ -48,50 +48,53 @@ function Row(props) {
     });
     return dt;
   };
-  const saveCell = (value) => {
-    if (cell!="" && cellId!="") {
-      axios
-        .put(
-          process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
-          {
-            name: value,
-            user_id: props.user_data.id,
-            workspace_id: props.workspace_id,
-            group_id: props.group_data.id,
-            column_id: 0,
-            row_id: props.id,
-            isRow: true,
-            isActive: true,
-          },
-          {
-            "Content-Type": "application/json",
-          }
-        )
-        .then((data) => {
-          setCell(value);
-        });
-    } else {
-      axios
-        .post(
-          process.env.REACT_APP_LOCAL_API + "/cells/save",
-          {
-            name: value,
-            user_id: props.user_data.id,
-            workspace_id: props.workspace_id,
-            group_id: props.group_data.id,
-            column_id: 0,
-            row_id: props.id,
-            isRow: true,
-            isActive: true,
-          },
-          {
-            "Content-Type": "application/json",
-          }
-        )
-        .then((data) => {
-          setCell(value);
-          setCellId(data.data.uData.id);
-        });
+  const saveCell = (e) => {
+    let value = e.target.value;
+    if (e.key === "Enter") {
+      if (cell!="" && cellId!="") {
+        axios
+          .put(
+            process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
+            {
+              name: value,
+              user_id: props.user_data.id,
+              workspace_id: props.workspace_id,
+              group_id: props.group_data.id,
+              column_id: 0,
+              row_id: props.id,
+              isRow: true,
+              isActive: true,
+            },
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((data) => {
+            setCell(value);
+          });
+      } else {
+        axios
+          .post(
+            process.env.REACT_APP_LOCAL_API + "/cells/save",
+            {
+              name: value,
+              user_id: props.user_data.id,
+              workspace_id: props.workspace_id,
+              group_id: props.group_data.id,
+              column_id: 0,
+              row_id: props.id,
+              isRow: true,
+              isActive: true,
+            },
+            {
+              "Content-Type": "application/json",
+            }
+          )
+          .then((data) => {
+            setCell(value);
+            setCellId(data.data.uData.id);
+          });
+      }
     }
   };
 
@@ -165,7 +168,7 @@ function Row(props) {
                 className="value first-col first-text border-0"
                 type="text"
                 placeholder="New Item"
-                onChange={(e) => saveCell(e.target.value)}
+                onKeyDown={(e) => saveCell(e)}
                 defaultValue={cell}
               />
             </span>

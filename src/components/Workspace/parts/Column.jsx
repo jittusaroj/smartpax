@@ -146,7 +146,7 @@ function Column(props) {
             );
           })}
 
-          <a  data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
+          <a data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
             <i className="fa fa-plus-circle"></i>
           </a>
         </div>

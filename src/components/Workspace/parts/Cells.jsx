@@ -74,7 +74,7 @@ function Cells(props) {
           console.log(data);
           setCell(value);
           setCellId(data.data.uData.id);
-          //window.location.reload();
+          window.location.reload();
         });
     }
   };
