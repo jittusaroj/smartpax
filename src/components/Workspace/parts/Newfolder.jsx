@@ -32,7 +32,9 @@ function Newfolder() {
 
   return (
     <>
-      <Accordion defaultActiveKey="0">
+    
+      <Accordion defaultActiveKey="0" >
+      
         <>
           <>
             <CustomToggle eventKey="0"></CustomToggle>
@@ -57,7 +59,7 @@ function Newfolder() {
         </>
       </Accordion>
 
-      <div className="accordion" id="port-accordion">
+      {/* <div className="accordion" id="port-accordion">
   <div className="accordion-item">
     <h2 className="accordion-header" id="accordion-header-one">
       <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-one" aria-expanded="false" aria-controls="collapse-one">
@@ -103,7 +105,8 @@ function Newfolder() {
   </div>
 
  
-</div>
+</div> */}
+
     </>
   );
 }

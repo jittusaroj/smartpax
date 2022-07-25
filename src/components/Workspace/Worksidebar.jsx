@@ -52,7 +52,7 @@ function Worksidebar(props) {
   return (
     <>
       <p className="fs-6 mt-3">
-        <b>DATA SETS</b>
+        <b>DATASETS</b>
       </p>
       <div>
         <Form>
@@ -99,6 +99,14 @@ function Worksidebar(props) {
       </p> */}
       <Newfolder id="folder_id"/>
       {/* <Newfolder/> */}
+
+      <div aria-label="Workspace selection" onClick={(e) => changeData(e.target.value)} value={props.workspace.id}>
+          
+            {workspaceList.map((wspace, i) => {
+              return <p value={wspace.id} key={i}>{wspace.name}</p>
+            })}
+          </div>
+          
     </>
   );
 }

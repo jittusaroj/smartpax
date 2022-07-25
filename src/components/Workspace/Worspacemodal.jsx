@@ -29,6 +29,9 @@ function Worspacemodal() {
         });
   };
 
+
+ 
+
   return (
     <>
       {/* Workspace Modal */}
@@ -70,13 +73,23 @@ function Worspacemodal() {
                 </div>
               </center>
 
-              <Form.Label>DataSets Name</Form.Label>
+              <Form.Label>Datasets Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Datasets Name"
+                placeholder=""
                 required="required"
                 onChange={(e) => setName(e.target.value)}
               />
+
+
+<Form className="mt-4">
+          <Form.Select aria-label="Folder selection" >
+            <option className="mt-2" value="">Select</option>
+            <option className="mt-2" value="">Folder1</option>
+            <option className="mt-2" value="">Folder2</option>
+            
+          </Form.Select>
+        </Form>
 
               {/* <p className="mt-4">Privacy</p>
               {["radio"].map((type) => (
@@ -114,7 +127,7 @@ function Worspacemodal() {
                   Cancel
                 </span>
                 <button className="btn btn-primary" onClick={saveData}>
-                  Create Data Sets
+                  Create Datasets
                 </button>
               </div>
             </div>

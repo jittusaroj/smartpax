@@ -26,7 +26,7 @@ function Topheader(props) {
           <div className="col-md-5">
             <div className="heading">
               <span className="heading-icon">
-                <i className="fa fa-lock"></i> &nbsp;
+                {/* <i className="fa fa-lock"></i> &nbsp; */}
               </span>
               <Form.Control defaultValue={props.workspace.name} className="border-0" style={{marginTop: "-6px",}}></Form.Control>
               {/* <span className="fs-6 mt-1" >{props.workspace.name}</span> */}
@@ -34,10 +34,10 @@ function Topheader(props) {
               
               <div className="other-option">
 
-              <i
+              {/* <i
                       className="fa fa-exclamation-circle"
                       aria-hidden="true" onClick={handleShow}
-                    ></i>
+                    ></i> */}
                    <Modal show={show} onHide={handleClose} animation={false}>
                    <Textmodal/>
                    </Modal>

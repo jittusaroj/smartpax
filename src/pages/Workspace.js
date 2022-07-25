@@ -157,7 +157,15 @@ function Workspace(props) {
                               
 
                                 <li>
-                                  <Filtermodal/> 
+
+                                <span
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#sort"
+                                >
+                                  <i className="fa fa-filter font-20"></i>
+                                  Filter
+                                </span>
+                                  {/* <Filtermodal/>  */}
 
                                     </li>
                               <li className="mx-4">
@@ -199,8 +207,8 @@ function Workspace(props) {
           </div>
         </div>
 
-        <Personmodal/>
-        <Sortmodal/>
+        {/* <Personmodal/>
+        <Sortmodal/> */}
 
         <Worspacemodal />
 
