@@ -1,17 +1,18 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../utils/services";
+import Button from 'react-bootstrap/Button';
+// import Dropdown from "react-bootstrap/Dropdown";
+// import Collapse from "react-bootstrap/Collapse";
+
 import Footer from "./Footer";
 import Sidebar from "../components/Sidebar";
 import "../Css/Main.css";
 import "../Css/Workspace.css";
-import Dropdown from "react-bootstrap/Dropdown";
-import Collapse from "react-bootstrap/Collapse";
 import Workspacetable from "../components/Workspace/Workspacetable";
 import Topheader from "../components/Workspace/Topheader";
 import Worspacemodal from "../components/Workspace/Worspacemodal";
 import Worksidebar from "../components/Workspace/Worksidebar";
-import Button from 'react-bootstrap/Button';
 import Personmodal from "../components/Header/Personmodal";
 import Sortmodal from "../components/Header/Sortmodal";
 import Filtermodal from "../components/Header/Filtermodal";
@@ -65,7 +66,7 @@ function Workspace(props) {
   return (
     <>
       <div className="wrapper">
-        <Sidebar />
+        <Sidebar user_data={user_data} />
         <div className="page-wrapper ">
           <div className="page-content">
             <div className="row">

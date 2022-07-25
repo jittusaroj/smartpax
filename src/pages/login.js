@@ -15,6 +15,7 @@ const Login = () => {
   const [password, setPassowrd] = useState("");
 
   const login = () => {
+    // e.preventDefault();
     var data = {
       email: email,
       password: password,
@@ -66,7 +67,7 @@ const Login = () => {
             </h1>
           </div>
 
-          <form className="form-horizontal1 mt-4" method="post" action="#">
+          <form className="form-horizontal1 mt-4" method="post" action="#" onSubmit={(e) => e.preventDefault() && login()}>
             <div className="form-group">
               <label
                 htmlFor="username"
@@ -110,12 +111,12 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <Link
+            {/* <Link
               className="form-group float-right mr-2"
               to={{ pathname: "/forgot_password" }}
             >
               Forgot your password?
-            </Link>
+            </Link> */}
 
             <div className="form-group ">
               <button

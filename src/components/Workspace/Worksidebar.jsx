@@ -7,37 +7,58 @@ import Newfolder from "./parts/Newfolder";
 
 function Worksidebar(props) {
   const user_data = props.user_data;
-  const [list, setList] = useState([]);
-  const workspace_id_tbl = props.workspace.id;
+  const [workspaceList, setWorkspaceList] = useState([]);
+  const [workspaceId, setWorkspaceId] = useState(props.workspace.id);
 
   useEffect(() => {
+    // setWorkspaceId(props.workspace.id);
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/workspace/list/" + user_data.id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
-        setList(res.data);
+        setWorkspaceList(res.data);
+        // if(!props.workspace.id && res.data && res.data[0] && res.data[0].id) {
+        //   changeData(res.data[0].id);
+        // }
       });
   }, []);
 
   const changeData = (value) => {
     if(value!="") {
       localStorage.setItem("workspace", value);
-      notify("Workspace Successfully changed.", "success");
+      setWorkspaceId(value);
+      notify("Datasets Successfully changed.", "success");
       window.location.reload();
     }
   };
 
+  const addNewFolder = () => {
+    axios
+      .post(
+        process.env.REACT_APP_LOCAL_API + "/folder/save",
+        {
+          user_id: user_data.id
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        notify("New Folder added.", "success");
+      });
+  };
+
   return (
     <>
-      <p className="fs-6 mt-5">
+      <p className="fs-6 mt-3">
         <b>DATA SETS</b>
       </p>
       <div>
         <Form>
-          <Form.Select aria-label="Workspace selection" onChange={(e) => changeData(e.target.value)} value={workspace_id_tbl}>
+          <Form.Select aria-label="Workspace selection" onChange={(e) => changeData(e.target.value)} value={props.workspace.id}>
             <option className="mt-2" value="">Select</option>
-            {list.map((wspace, i) => {
+            {workspaceList.map((wspace, i) => {
               return <option value={wspace.id} key={i}>{wspace.name}</option>
             })}
           </Form.Select>
@@ -58,7 +79,7 @@ function Worksidebar(props) {
 
           <Dropdown.Menu>
             <Dropdown.Item href="#">New Folder</Dropdown.Item>
-            <Dropdown.Item href="#">New Board</Dropdown.Item>
+            <Dropdown.Item href="#"><a data-bs-toggle="modal" data-bs-target="#addworkspace">New Datasets</a></Dropdown.Item>
             
         {/* <Dropdown.Item href="#">New Dashboard</Dropdown.Item>  */}
           </Dropdown.Menu>
@@ -70,12 +91,12 @@ function Worksidebar(props) {
       <p className="team-font ms-3">
         <i className="bx bx-search"></i> Search
       </p> */}
-      <p className="team-font ms-3">
+      {/* <p className="team-font ms-3">
         <i className="bx bx-add"></i>{" "}
         <a data-bs-toggle="modal" data-bs-target="#addworkspace">
           Add Data Sets
         </a>
-      </p>
+      </p> */}
       <Newfolder id="folder_id"/>
       {/* <Newfolder/> */}
     </>
