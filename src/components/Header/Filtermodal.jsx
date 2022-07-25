@@ -46,7 +46,7 @@ function Filtermodal() {
                       type="date"
                       className="form-control mt-1"
                       name=""
-                      value=""
+                      defaultValue=""
                     />
                   </div>
                   <div className="col-md-3">

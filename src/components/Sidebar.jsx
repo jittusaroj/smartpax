@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
-
 import { Link } from "react-router-dom";
 import "../Css/Main.css";
 import Invite from "./Invite";
@@ -10,7 +9,7 @@ import { Image } from "react-bootstrap";
 import { Modal } from "react-bootstrap";
 
 function Sidebar(props) {
-  const cdata = JSON.parse(localStorage.getItem("user"));
+  const user_data = props.user_data??JSON.parse(localStorage.getItem("user"));
 
   const [show, setShow] = useState(false);
 
@@ -22,7 +21,7 @@ function Sidebar(props) {
 
   useEffect(() => {
     axios
-      .get(url + "/users/" + cdata.id, {
+      .get(url + "/users/" + user_data.id, {
         "Content-Type": "application/json",
       })
       .then((user) => {
