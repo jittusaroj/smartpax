@@ -30,6 +30,7 @@ function Cells(props) {
     return dt;
   };
   const saveCell = (value) => {
+    getCell(true);
     if (cell!="" && cellId!="") {
       axios
         .put(

@@ -7,6 +7,7 @@ import Newfolder from "./parts/Newfolder";
 
 function Worksidebar(props) {
   const user_data = props.user_data;
+  const folderList = props.folderList;
   const [workspaceList, setWorkspaceList] = useState([]);
   const [workspaceId, setWorkspaceId] = useState(props.workspace.id);
 
@@ -45,6 +46,13 @@ function Worksidebar(props) {
         }
       )
       .then((data) => {
+        axios
+          .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
+            "Content-Type": "application/json",
+          })
+          .then((res) => {
+            props.setFolderList(res.data);
+          });
         notify("New Folder added.", "success");
       });
   };
@@ -78,7 +86,7 @@ function Worksidebar(props) {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#">New Folder</Dropdown.Item>
+            <Dropdown.Item onClick={addNewFolder}>New Folder</Dropdown.Item>
             <Dropdown.Item href="#"><a data-bs-toggle="modal" data-bs-target="#addworkspace">New Datasets</a></Dropdown.Item>
             
         {/* <Dropdown.Item href="#">New Dashboard</Dropdown.Item>  */}
@@ -97,16 +105,10 @@ function Worksidebar(props) {
           Add Data Sets
         </a>
       </p> */}
-      <Newfolder id="folder_id"/>
-      {/* <Newfolder/> */}
-
-      <div aria-label="Workspace selection" onClick={(e) => changeData(e.target.value)} value={props.workspace.id}>
-          
-            {workspaceList.map((wspace, i) => {
-              return <p value={wspace.id} key={i}>{wspace.name}</p>
-            })}
-          </div>
-          
+      {folderList.map((folder, key) => {
+        return <Newfolder user_data={user_data} changeData={changeData} key={key} folder_data={folder} />
+      })}
+      {/* <Newfolder/> */}          
     </>
   );
 }

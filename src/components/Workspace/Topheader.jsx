@@ -1,5 +1,6 @@
-import { React } from "react";
-import { useState } from 'react';
+import { React, useState } from 'react';
+import axios from "axios";
+import { notify } from "../../utils/services";
 import { Form , Dropdown} from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
@@ -10,15 +11,52 @@ import {FaTrash } from "react-icons/fa";
 import {FaLock } from "react-icons/fa";
 
 
-
 // import '../Css/Workspace.css';
 
 function Topheader(props) {
+  const user_data = props.user_data;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+  const saveWorkspace = (value) => {
+    axios
+      .put(
+        process.env.REACT_APP_LOCAL_API + "/workspace/" + props.workspace.id,
+        {
+          name: value,
+          user_id: user_data.id,
+          isActive: 1,
+        },
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        // console.log(data);
+        // notify("Successfully updated", "success");
+        //window.location.reload();
+      });
+  };
+
+  const deleteWorkspace = (value) => {
+    // window.confirm("Are you sure");
+    axios
+      .delete(
+        process.env.REACT_APP_LOCAL_API + "/workspace/" + props.workspace.id,
+        {},
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        // console.log(data);
+        localStorage.removeItem("workspace");
+        notify("Deleted successfully", "success");
+        window.location.reload();
+      });
+  };
+
   return (
     <>
       <div className="top-card-section">
@@ -28,7 +66,7 @@ function Topheader(props) {
               <span className="heading-icon">
                 {/* <i className="fa fa-lock"></i> &nbsp; */}
               </span>
-              <Form.Control defaultValue={props.workspace.name} className="border-0" style={{marginTop: "-6px",}}></Form.Control>
+              <Form.Control defaultValue={props.workspace.name} onChange={(e) => saveWorkspace(e.target.value)} className="border-0" style={{marginTop: "-6px",}}></Form.Control>
               {/* <span className="fs-6 mt-1" >{props.workspace.name}</span> */}
              
               
@@ -102,7 +140,7 @@ function Topheader(props) {
                 </li> */}
                 <li>
                    <a data-bs-toggle="modal" data-bs-target="#invite_modal">
-                     <i className="fa fa-user-plus" ></i> invite /5
+                     <i className="fa fa-user-plus" ></i> invite
                    </a>
                 </li>
 
@@ -138,7 +176,7 @@ function Topheader(props) {
                                    <Dropdown.Item >
                                   <FaLock/>  DataSets Permissions
                                     </Dropdown.Item>
-                                    <Dropdown.Item >
+                                    <Dropdown.Item onClick={deleteWorkspace} >
                                     <FaTrash />   Delete DataSets
                                     </Dropdown.Item>
                                   </Dropdown.Menu>

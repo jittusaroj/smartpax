@@ -62,6 +62,21 @@ function Column(props) {
         });
     }
   };
+  const deleteGroup = () => {
+    axios
+      .delete(
+        process.env.REACT_APP_LOCAL_API + "/group/" + props.group_data.id,
+        {},
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        // console.log(data);
+        notify("Deleted successfully", "success");
+        // window.location.reload();
+      });
+  };
 
   return (
     <>
@@ -81,7 +96,7 @@ function Column(props) {
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
             
               <li>
-                <a className="dropdown-item" href="#">
+                <a className="dropdown-item" href="#" onClick={deleteGroup}>
                   Remove Group
                 </a>
               </li>

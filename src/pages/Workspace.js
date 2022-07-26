@@ -21,8 +21,19 @@ function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
-
+  const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
+  
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setFolderList(res.data);
+      });
+  }, []);
+
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
@@ -74,14 +85,14 @@ function Workspace(props) {
                 className="col-12 col-lg-2 col-md-2 col-sm-12 bg-lightgray custom-user-sidebar"
                 style={{ background: "rgb(233 236 240 / 25%)" }}
               >
-                <Worksidebar workspace={wslist} user_data={user_data} />
+                <Worksidebar folderList={folderList} setFolderList={setFolderList} workspace={wslist} user_data={user_data} />
               </div>
 
               <div className="col-12 col-lg-10 col-md-10 col-sm-12">
                 <div className="row">
                   <div className="col-12 col-lg-12 col-md-12 col-sm-12 inbox">
                     <div className="board-section">
-                      <Topheader workspace={wslist} />
+                      <Topheader workspace={wslist} user_data={user_data} />
 
                       <div
                         className="card-body"
@@ -186,13 +197,13 @@ function Workspace(props) {
 
                           <br />
 
-                          {list.map((workspace_id, i) => {
+                          {list.map((group, i) => {
                             return (
                               <Workspacetable
                                 key={i}
-                                workspace_id={workspace_id.workspace_id}
-                                group_id={workspace_id.id}
-                                group_data={workspace_id}
+                                workspace_id={group.workspace_id}
+                                group_id={group.id}
+                                group_data={group}
                                 user_data={user_data}
                               />
                             );
@@ -210,7 +221,7 @@ function Workspace(props) {
         {/* <Personmodal/>
         <Sortmodal/> */}
 
-        <Worspacemodal />
+        <Worspacemodal folderList={folderList} user_data={user_data} />
 
         <Footer />
       </div>

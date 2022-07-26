@@ -2,22 +2,45 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import Row from "./parts/Row";
 import Column from "./parts/Column";
+import { notify } from "../../utils/services";
 
 function Workspacetable(props) {
   const user_data = props.user_data;
   const workspace_id = props.workspace_id;
   const group_id = props.group_id;
 
-  const total_rows = props.group_data.total_rows??1; //localStorage.getItem("rows" + group_id) ?? 1;
+  // const total_rows = props.group_data.total_rows??1;
+  const [total_rows, setTotal_rows] = useState(props.group_data.total_rows??1);
+  const [rows, setRows] = useState([]);
+  const [new_rows, setNewRows] = useState([]);
   const tableCallback = (cb) => {
     return cb();
   };
+  useEffect(() => {
+    let dt = "";
+    axios
+    .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + props.workspace_id + "/" + props.group_data.id + "/0", {
+      "Content-Type": "application/json",
+    })
+    .then((res) => {
+      let cellData = res.data;
+      let newRow = 1;
+      if(cellData.length == 0)
+        newRow = 1;
+      else
+        newRow = parseInt(cellData[cellData.length-1].row_id)+1;
+      setNewRows(newRow);
+      setRows(cellData);
+    });
+  });
   const addNewRow = () => {
+    let new_total_rows = parseInt(total_rows)+1;
+    setTotal_rows(new_total_rows);
     axios
     .put(
       process.env.REACT_APP_LOCAL_API + "/group/" + group_id,
       {
-        total_rows: parseInt(total_rows) + 1,
+        total_rows: parseInt(new_total_rows),
         user_id: user_data.id,
         workspace_id: workspace_id,
         isActive: 1,
@@ -27,10 +50,52 @@ function Workspacetable(props) {
       }
     )
     .then((data) => {
-      console.log(data)
+      axios
+        .post(
+          process.env.REACT_APP_LOCAL_API + "/cells/save",
+          {
+            name: "",
+            user_id: user_data.id,
+            workspace_id: workspace_id,
+            group_id: group_id,
+            column_id: 0,
+            row_id: new_rows,
+            isRow: true,
+            isActive: true,
+          },
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((data) => {
+          notify("Successfully updated", "success");
+        });
+
       // localStorage.setItem("rows" + group_id, parseInt(total_rows) + 1);
-      window.location.reload();
+      // window.location.reload();
     });
+  };
+  const deleteNewRow = () => {
+    let new_total_rows = parseInt(total_rows)-1;
+    setTotal_rows(new_total_rows);
+    axios
+    .put(
+      process.env.REACT_APP_LOCAL_API + "/group/" + group_id,
+      {
+        total_rows: parseInt(new_total_rows),
+        user_id: user_data.id,
+        workspace_id: workspace_id,
+        isActive: 1,
+      },
+      {
+        "Content-Type": "application/json",
+      }
+    )
+      .then((data) => {
+        // console.log(data);
+        total_rows = (total_rows>0)?parseInt(total_rows) - 1:0;
+        window.location.reload();
+      });
   };
   return (
     <>
@@ -42,12 +107,10 @@ function Workspacetable(props) {
           user_data={user_data}
         />
         <div id="sortable">
-          {tableCallback(() => {
-            const row = [];
-            for (var i = 1; i <= total_rows; i++) {
-              row.push(<Row key={i} id={i} workspace_id={workspace_id} group_data={props.group_data} user_data={user_data} />);
-            }
-            return row;
+          {rows.map((row, i) => {
+            return (
+            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} />
+            )
           })}
         </div>
 

@@ -3,21 +3,23 @@ import axios from "axios";
 import { notify } from "../../utils/services";
 import { Form } from "react-bootstrap";
 
-function Worspacemodal() {
-  const data = JSON.parse(localStorage.getItem("user"));
-  const [name, setName] = useState("");
-  const [status, setStatus] = useState("");
+function Worspacemodal(props) {
+  const user_data = props.user_data;
+  const folderList = props.folderList;
+  const [name, setName] = useState(false);
+  const [folder, setFolder] = useState(false);
   const workspace_icon = name[0] ?? "N";
 
   const saveData = () => {
-    name != "" &&
+    name != "" && folder != "" &&
       axios
         .post(
           process.env.REACT_APP_LOCAL_API + "/workspace/save",
           {
             name: name,
-            isActive: status,
-            user_id: data.id,
+            isActive: 1,
+            user_id: user_data.id,
+            folder_id: folder
           },
           {
             "Content-Type": "application/json",
@@ -80,16 +82,14 @@ function Worspacemodal() {
                 required="required"
                 onChange={(e) => setName(e.target.value)}
               />
-
-
-<Form className="mt-4">
-          <Form.Select aria-label="Folder selection" >
-            <option className="mt-2" value="">Select</option>
-            <option className="mt-2" value="">Folder1</option>
-            <option className="mt-2" value="">Folder2</option>
-            
-          </Form.Select>
-        </Form>
+              <Form className="mt-4">
+                <Form.Select aria-label="Folder selection" onChange={(e) => setFolder(e.target.value)}>
+                  <option className="mt-2" value="">Select</option>
+                  {folderList.map((folder, key) => {
+                    return <option key={key} className="mt-2" value={folder.id}>{folder.name}</option>
+                  })}
+                  </Form.Select>
+              </Form>
 
               {/* <p className="mt-4">Privacy</p>
               {["radio"].map((type) => (

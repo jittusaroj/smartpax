@@ -3,14 +3,60 @@ import axios from "axios";
 // import Dropdown from "react-bootstrap/Dropdown";
 // import { Form } from "react-bootstrap";
 import Cells from "./Cells";
+import { notify } from "../../../utils/services";
 
 function Row(props) {
+  // const popupBox = ({ handleDeleteTrue }) => {
+  //   return (
+  //     <div className="modal">
+  //       <div className="modal_box">
+  //         <p>You sure you wanna delete?</p>
+  //         <button className="modal_buttonCancel">Cancel</button>
+  //         <button onClick={handleDeleteTrue} className="modal_buttoDelete">
+  //           Confirm
+  //         </button>
+  //       </div>
+  //     </div>
+  //   );
+  // }
+
   const workspace_id = props.workspace_id;
   const user_data = props.user_data;
   // const total_columns = localStorage.getItem("columns" + workspace_id); 
   // const rowCallback = (cb) => {
   //   return cb();
   // };
+
+  // const [popup, setPopup] = useState({
+  //   show: false, // initial values set to false and null
+  //   id: null,
+  // });
+  // // This will show the Cofirmation Box
+  // const handleDelete = () => {
+  //   setPopup({
+  //     show: true,
+  //     id: "1",
+  //   });
+  // };
+  // // This will perform the deletion and hide the Confirmation Box
+  // const handleDeleteTrue = () => {
+  //   if (popup.show && popup.id) {
+  //     // let filteredData = todos.filter((todo) => todo.id !== popup.id);
+  //     // setToDos(filteredData);
+  //     setPopup({
+  //       show: false,
+  //       id: null,
+  //     });
+  //   }
+  // };
+  // // This will just hide the Confirmation Box when user clicks "No"/"Cancel"
+  // const handleDeleteFalse = () => {
+  //   setPopup({
+  //     show: false,
+  //     id: null,
+  //   });
+  // };
+
 
   // For columns.
   const [columns, setColumns] = useState([]);
@@ -30,7 +76,7 @@ function Row(props) {
   useEffect(() => {
     getCell(true);
   }, []);
-
+  
   // For Columns First title.
   const getCell = (setData) => {
     let dt = "";
@@ -50,8 +96,35 @@ function Row(props) {
   };
   const saveCell = (e) => {
     let value = e.target.value;
-    if (e.key === "Enter") {
-      if (cell!="" && cellId!="") {
+    // axios
+    // .put(
+    //   process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
+    //   {
+    //     name: value,
+    //     user_id: props.user_data.id,
+    //     workspace_id: props.workspace_id,
+    //     group_id: props.group_data.id,
+    //     column_id: 0,
+    //     row_id: props.id,
+    //     isRow: true,
+    //     isActive: true,
+    //   },
+    //   {
+    //     "Content-Type": "application/json",
+    //   }
+    // )
+    // .then((data) => {
+    //   setCell(value);
+    // });
+    axios
+    .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + props.workspace_id + "/" + props.group_data.id + "/0/" + props.id, {
+      "Content-Type": "application/json",
+    })
+    .then((res) => {
+      let cellData = res.data;
+
+      // if (cell!="" && cellId!="") {
+      if(cellData.length != 0) {
         axios
           .put(
             process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
@@ -72,30 +145,31 @@ function Row(props) {
           .then((data) => {
             setCell(value);
           });
-      } else {
-        axios
-          .post(
-            process.env.REACT_APP_LOCAL_API + "/cells/save",
-            {
-              name: value,
-              user_id: props.user_data.id,
-              workspace_id: props.workspace_id,
-              group_id: props.group_data.id,
-              column_id: 0,
-              row_id: props.id,
-              isRow: true,
-              isActive: true,
-            },
-            {
-              "Content-Type": "application/json",
-            }
-          )
-          .then((data) => {
-            setCell(value);
-            setCellId(data.data.uData.id);
-          });
+      // } else {
+        // axios
+        //   .post(
+        //     process.env.REACT_APP_LOCAL_API + "/cells/save",
+        //     {
+        //       name: value,
+        //       user_id: props.user_data.id,
+        //       workspace_id: props.workspace_id,
+        //       group_id: props.group_data.id,
+        //       column_id: 0,
+        //       row_id: props.id,
+        //       isRow: true,
+        //       isActive: true,
+        //     },
+        //     {
+        //       "Content-Type": "application/json",
+        //     }
+        //   )
+        //   .then((data) => {
+        //     setCell(value);
+        //     setCellId(data.data.uData.id);
+        //   });
       }
-    }
+
+    });
   };
 
   return (
@@ -103,7 +177,13 @@ function Row(props) {
       <div className="d-flex">
         <div className="dropdown-sec">
           <div className="dropdown">
-          <i class="fa fa-trash" aria-hidden="true" style={{color:"red"}}></i>
+          <i className="fa fa-trash" onClick={props.deleteNewRow} aria-hidden="true" style={{color:"red"}}></i>
+          {/* {popup.show && (
+            <popupBox
+              handleDeleteTrue={handleDeleteTrue}
+              handleDeleteFalse={handleDeleteFalse}
+            />
+          )} */}
             {/* <a>Text</a> */}
             {/* <a
               className="btn btn-primary btn-xs dropdown-toggle"
