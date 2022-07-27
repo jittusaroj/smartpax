@@ -3394,7 +3394,7 @@ border-color: #dee0e2 !important;
     box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%) !important;
 }
 .modal-backdrop.show {
-    opacity: .2;
+    opacity: 0 !important;
     display: contents !important;
 }
 .text-blue{

@@ -90,7 +90,7 @@ function Workspace(props) {
 
               <div className="col-12 col-lg-10 col-md-10 col-sm-12">
                 <div className="row">
-                  <div className="col-12 col-lg-12 col-md-12 col-sm-12 inbox">
+                  <div className="col-12 col-lg-12 col-md-12 col-sm-12 inbox1">
                     <div className="board-section">
                       <Topheader workspace={wslist} user_data={user_data} />
 
@@ -101,36 +101,22 @@ function Workspace(props) {
                         <div>
                           <div className="top-filter-section">
                             <ul className="filter">
-                              {/* <li className="mt-1 mx-4">
-                              <i className="fa fa-home fs-6"></i> Main Table
-                              </li> */}
-                              <li className="me-5">
-                              <Button variant="primary" onClick={addNewGroup}>New Group</Button>
+                           
+                              <li className="">
+                              <Button variant="primary" onClick={addNewGroup} style={{marginTop:'-5px'}}>New Group</Button>
                                
-                                {/* <Dropdown>
-                                  <Dropdown.Toggle
-                                    variant="primary"
-                                    id="dropdown-basic"
-                                  >
-                                    New item
-                                  </Dropdown.Toggle>
-
-                                  <Dropdown.Menu>
-                                    <Dropdown.Item onClick={addNewGroup}>
-                                      New group of Items
-                                    </Dropdown.Item>
-                                  </Dropdown.Menu>
-                                </Dropdown> */}
                               </li>
-                              <li className=" ms-5" >
+                              <li className=" ms-1" >
                                 <div className="d-lg-none d-md-none d-sm-block d-xs-block mb-d-inline">
                                   <button className="btn ms-4 border-1">
                                     <i className="fa fa-search"></i>
                                   </button>
                                 </div>
                               </li>
-                              <li className="d-none d-lg-block d-md-block  " style={{marginLeft:"18rem"}}>
-                                <div className="d-flex search-field  ms-4">
+                              <li className="d-none d-lg-block d-md-block  " style={{}}>
+                              
+                                
+                                <div className="d-flex search-field ">
                                   <div className="search-btn">
                                     <i className="fa fa-search"></i>
                                   </div>
@@ -139,16 +125,18 @@ function Workspace(props) {
                                     defaultValue=""
                                     placeholder="search.."
                                     name=""
-                                    style={{ marginTop: "-10px" }}
+                                    style={{ marginTop: "-10px"  }}
                                   />
                                 </div>
+                              
                               </li>
                               <li className="">
                                 <a
                                   data-bs-toggle="modal"
                                   data-bs-target="#person_modal"
                                 >
-                                  <i className="fa fa-user-circle"></i> Person
+                                  <i className="fa fa-user-circle f-color"></i>
+                                  <span className="ms-2 f-color">Person</span> 
                                 </a>
                               </li>
                               {/* <li className="">
@@ -168,15 +156,15 @@ function Workspace(props) {
                               
 
                                 <li>
-
+{/* 
                                 <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
-                                  <i className="fa fa-filter font-20"></i>
-                                  Filter
-                                </span>
-                                  {/* <Filtermodal/>  */}
+                                  <i className="fa fa-filter f-color"></i>
+                                  <span className="ms-2 f-color">Filter</span>
+                                </span> */}
+                                  <Filtermodal/> 
 
                                     </li>
                               <li className="mx-4">
@@ -184,8 +172,8 @@ function Workspace(props) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
-                                  <i className="fa fa-filter font-20"></i>
-                                  Sort
+                                  <i className="fa fa-filter f-color"></i>
+                                  <span className="ms-2 f-color">Sort</span>
                                 </span>
                               
                               </li>
@@ -218,8 +206,8 @@ function Workspace(props) {
           </div>
         </div>
 
-        {/* <Personmodal/>
-        <Sortmodal/> */}
+       <Personmodal/>
+        <Sortmodal/>
 
         <Worspacemodal folderList={folderList} user_data={user_data} />
 

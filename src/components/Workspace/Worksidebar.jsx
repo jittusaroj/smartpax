@@ -74,7 +74,7 @@ function Worksidebar(props) {
       </div>
       <div className="team-font mt-2">
         <Dropdown className="d-inline mx-2">
-          <Dropdown.Toggle
+          <Dropdown.Toggle 
             id="dropdown-autoclose-true"
             style={{
               backgroundColor: "transparent",
@@ -93,6 +93,7 @@ function Worksidebar(props) {
           </Dropdown.Menu>
         </Dropdown>
       </div>
+      <hr style={{width:"100%"}}/>
       {/* <p className="team-font ms-3">
         <i className="bx bx-filter-alt"></i> Filter
       </p>

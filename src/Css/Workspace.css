@@ -275,10 +275,15 @@
     border: 0px solid lightgray;
     height: 30px;
     border-radius: 5px;
-    width: 180px;
+    width: 100px;
     box-shadow: none!important;
     outline: 1px solid lightgrey!important;
     }
+    .search-field:hover {
+      
+      width: 200px !important;
+      outline: 1px solid lightgrey!important;
+      }
     .search-field input{
     border:0px;
     box-shadow: none!important;
@@ -656,6 +661,7 @@
     box-shadow:none;
     width:100%;
     text-align:center;
+    border-radius:0px !important;
     }
     .body1 .value:hover input{
     border:1px solid lightgray;
@@ -739,3 +745,58 @@
   .nav-tabs {
     border-bottom: 1px solid #dee2e6 !important;
   }
+  .filter li{
+    margin-left: 20px !important;
+  }
+  .f-color{
+    color: #636161 !important;
+  }
+  .f-bg{
+    background-color: #636161 !important;
+  }
+  .table-icon-header{
+    border-radius: 50%;
+    border: 1px solid;
+    height: 30px !important;
+    width: 30px;
+    position: absolute;
+    right: 4%;
+    top: 26%;
+  }
+  .shadow-0{
+    box-shadow: 0 0 0 0rem rgb(13 110 253 / 0%) !important;
+
+  }
+  .custom-user-sidebar p, .custom-user-sidebar span, .custom-user-sidebar i, 
+  .custom-user-sidebar div , .custom-user-sidebar input , .custom-user-sidebar button,
+  .custom-user-sidebar select option{
+    font-size: 15px !important;
+  }
+
+  .blue-section {
+   border-bottom: 1px solid lightgray !important;
+ 
+}
+
+.body-section .body1 {
+ border-right: 1px solid lightgray;
+}
+
+.head-section .head {
+ 
+  border-top: 1px solid lightgray !important;
+  border-right: 1px solid lightgray !important;
+  padding: 11px 0px 0px 0px;
+}
+
+  /* .search-field .search-btn:hover{
+    display: none !important;
+  }
+  .search-field .search-btn  input :hover{
+    display: block !important;
+  }
+  .search-field  input, input::-webkit-input-placeholder {
+  width: 100% !important;
+  height: 61px !important;
+  background-color: #CAB641 !important;
+} */

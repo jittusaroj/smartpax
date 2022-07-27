@@ -27,7 +27,7 @@ function Personmodal() {
                         <div className="persone-icon">
                            <ul>
                               <li>
-                                 {/* <a><img src="assets/images/per.png" /> </a> */}
+                                 <a><img src="blank-profile.png" /> </a>
                               </li>
                            </ul>
                         </div>
