@@ -1,12 +1,26 @@
 import { React, useEffect, useState } from "react";
+import axios from "axios";
 import { Form, Text, Button } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import Collapse from "react-bootstrap/Collapse";
+import ColumnData from "../Workspace/parts/ColumnData";
 
-function Filtermodal() {
-//   const [open, setOpen] = useState(false);
+function Filtermodal(props) {
+  const filterGroup = props.groupList;
+  //const [filterGroup, setFilterGroup] = useState(props.groupList);
+  const applyFilter = (groupID) => {
+    props.setgroupList(props.groupList.filter(group => group.id==groupID));
+  }
+  // useEffect(() => {
+  //   setFilterGroup(props.groupList);
+  // });
 
+  const filterName = props.nameList;
+
+  const applynameFilter = (nameID) => {
+    props.setnameList(props.nameList.filter(groupname => groupname.id==nameID));
+  }
   return (
     <>
       <span data-bs-toggle="modal" data-bs-target="#filter-modal">
@@ -20,6 +34,7 @@ function Filtermodal() {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
+
         <div className="modal-dialog  modal-lg">
           <div className="modal-content">
             <div className="modal-body">
@@ -46,53 +61,28 @@ function Filtermodal() {
                       <div className="filter-options">
                         <div className="filter-heading">Group</div>
                         <ul>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
+                    
+                          {filterGroup.map((group, i) => {
+                            return (
+                              <li onClick={(e) => applyFilter(group.id)}>
+                                {group.name??"New Group"}
+                              </li>
+                            );
+                          })}
+                         
                         </ul>
                       </div>
                       <div className="filter-options">
-                        <div className="filter-heading">Group</div>
+                        <div className="filter-heading">Name</div>
                         <ul>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
-                          <li>
-                            Top group <span className="right">17</span>
-                          </li>
+                        {filterName.map((groupname, i) => {
+                            return (
+                              <li onClick={(e) => applynameFilter(groupname.id)}>
+                                {groupname.name??"Name"}
+                              </li>
+                            );
+                          })}
+                          
                         </ul>
                       </div>
                       <div className="filter-options">

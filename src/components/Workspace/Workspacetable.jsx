@@ -105,6 +105,7 @@ function Workspacetable(props) {
           group_id={group_id}
           group_data={props.group_data}
           user_data={user_data}
+          columns={props.columns}
         />
         <div id="sortable">
           {rows.map((row, i) => {

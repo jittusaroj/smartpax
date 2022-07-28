@@ -3,25 +3,15 @@ import axios from "axios";
 import { notify } from "../../../utils/services";
 import ColumnModal from "./ColumnModal";
 import ColumnData from "./ColumnData";
+import { FaWeight } from "react-icons/fa";
+
 
 function Column(props) {
   const user_data = props.user_data;
   const workspace_id = props.workspace_id;
   // const total_columns = localStorage.getItem("columns" + workspace_id) ?? 0;
 
-  // For columns.
-  const [columns, setColumns] = useState([]);
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
-        "Content-Type": "application/json",
-      })
-      .then((res) => {
-        setColumns(res.data);
-      });
-  }, []);
-
-  // For columns.
+  // For cells.
   const [cells, setCells] = useState([]);
   useEffect(() => {
     axios
@@ -123,14 +113,14 @@ function Column(props) {
               />
             </span>
           </div>
-          {columns.map((column, i) => {
+          {props.columns.map((column, i) => {
             return (
               <ColumnData columnData={column} workspace_id={workspace_id} column_id={column.id} key={i} />
             );
           })}
 
           <a data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
-            <i className="fa fa-plus-circle"></i>
+            <i className="fa f-20" style={{color:"lightgray",margin:'12px' , fontWeight:'500'}}>+</i>
           </a>
         </div>
       </div>

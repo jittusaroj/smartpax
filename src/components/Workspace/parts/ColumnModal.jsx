@@ -6,11 +6,13 @@ import { Form } from "react-bootstrap";
 // import Person from "../Columnmodal/Person";
 // import Status from "../Columnmodal/Status";
 // import Number from "../Columnmodal/Number";
+
 import ColumnType from "../Columnmodal/ColumnType";
 
 function ColumnModal(props) {
   const user = JSON.parse(localStorage.getItem("user"));
   // const total_columns = props.total_columns;
+
 
   const addNewColumn = (type) => {
     // localStorage.setItem("columns" + props.workspace_id, parseInt(total_columns) + 1);
@@ -62,7 +64,7 @@ function ColumnModal(props) {
                   <span className="essen-icon bg-light-gn">
                     <img src="status.svg" alt="status" />
                   </span>
-                  <ColumnType type="status" addNewColumn={addNewColumn} />
+                  <ColumnType type="status" addNewColumn={addNewColumn}  />
                 </div>
                 <div className="col-md-6 col-6">
                   <span

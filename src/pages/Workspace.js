@@ -20,10 +20,23 @@ import Filtermodal from "../components/Header/Filtermodal";
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
+  const workspace_id = props.workspace_id;
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
   
+  // For columns.
+  const [columns, setColumns] = useState([]);
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setColumns(res.data);
+      });
+  }, []);
+ 
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
@@ -164,7 +177,7 @@ function Workspace(props) {
                                   <i className="fa fa-filter f-color"></i>
                                   <span className="ms-2 f-color">Filter</span>
                                 </span> */}
-                                  <Filtermodal/> 
+                                  <Filtermodal groupList={list} setgroupList={setList} nameList={list} setnameList={setList} columns={columns} setColumns={setColumns} /> 
 
                                     </li>
                               <li className="mx-4">
@@ -193,6 +206,7 @@ function Workspace(props) {
                                 group_id={group.id}
                                 group_data={group}
                                 user_data={user_data}
+                                columns={columns}
                               />
                             );
                           })}
