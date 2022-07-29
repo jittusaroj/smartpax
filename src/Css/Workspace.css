@@ -767,6 +767,10 @@
     box-shadow: 0 0 0 0rem rgb(13 110 253 / 0%) !important;
 
   }
+
+  .custom-user-sidebar{
+    height: 790px !important;
+  }
   .custom-user-sidebar p, .custom-user-sidebar span, .custom-user-sidebar i, 
   .custom-user-sidebar div , .custom-user-sidebar input , .custom-user-sidebar button,
   .custom-user-sidebar select option{

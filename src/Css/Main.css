@@ -2801,15 +2801,16 @@ margin-left: 10px;
 margin-top: 15rem !important;
 }
 ::-webkit-scrollbar {
-width: 10px;
+width: 6px;
 }
 ::-webkit-scrollbar-track {
-background: #f1f1f1; 
+background: #fff; 
 }
 ::-webkit-scrollbar-thumb {
-background: #888; 
-border-radius:10px;
+background: #8888884d; 
+border-radius:0px;
 }
+
 
 .sidebar-wrapper .metismenu li:first-child {
 margin-top: 50px;

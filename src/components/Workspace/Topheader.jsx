@@ -9,6 +9,7 @@ import Modal from "react-bootstrap/Modal";
 import Invitemodal from "../Header/Invitemodal";
 import {
   FaArrowAltCircleDown,
+  FaEllipsisH,
   FaExclamationCircle,
   FaExternalLinkSquareAlt,
   FaTrash,
@@ -125,8 +126,9 @@ function Topheader(props) {
 
                 <li>
                   <Dropdown>
-                    <Dropdown.Toggle variant="" id="dropdown-basic">
-                      <i className="fa fa-ellipsis-h font-14"></i>
+                    <Dropdown.Toggle variant="" id="dropdown-basic" style={{marginTop:'-6px'}}>
+                      <FaEllipsisH/>
+                      {/* <i className="fa fa-ellipsis-h font-14"></i> */}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu

@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 import { notify } from "../../../utils/services";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import { FaFolder } from "react-icons/fa";
+import { FaEllipsisH, FaEllipsisV, FaFolder } from "react-icons/fa";
 // import Card from "react-bootstrap/Card";
 // import { FaChevronDown } from "react-icons/fa";
 
@@ -31,6 +31,8 @@ function Newfolder(props) {
         });
     // }
   };
+
+  
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/workspace/list/" + props.user_data.id + "/" + folder_data.id, {
@@ -44,6 +46,21 @@ function Newfolder(props) {
   if(workspaceList.length==0) {
     no_ws = <p><i>No Workspace</i></p>
   }
+
+
+  const deleteFolder = () => {
+    axios
+      .delete(
+        process.env.REACT_APP_LOCAL_API + "/folder/" + folder_data.id,
+        {},
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((data) => {
+        notify("Deleted successfully", "success");
+     });
+  };
   // function CustomToggle({ children, eventKey }) {
   //   const decoratedOnClick = useAccordionButton(eventKey, () =>
   //     console.log("totally custom!")
@@ -79,6 +96,29 @@ function Newfolder(props) {
               style={{ background: "transparent", color: "black"}}
             />
           
+          <div className="dropdown-sec">
+          <div className="dropdown">
+           
+            <span
+              
+              href="#"
+           
+              id="dropdownMenuLink"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+           <FaEllipsisH/>
+            </span>
+            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            
+              <li>
+                <a className="dropdown-item" href="#"  onClick={deleteFolder}>
+                 Delete Folder
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
               </div>
           <div aria-label="Workspace selection" className="border-0 ms-2">
             {no_ws}
