@@ -10,9 +10,9 @@ function Workspacetable(props) {
   const group_id = props.group_id;
 
   // const total_rows = props.group_data.total_rows??1;
-  const [total_rows, setTotal_rows] = useState(props.group_data.total_rows??1);
-  const [rows, setRows] = useState([]);
-  const [new_rows, setNewRows] = useState([]);
+  let [total_rows, setTotal_rows] = useState(props.group_data.total_rows??1);
+  let [rows, setRows] = useState([]);
+  let [new_rows, setNewRows] = useState([]);
   const tableCallback = (cb) => {
     return cb();
   };
@@ -94,7 +94,7 @@ function Workspacetable(props) {
       .then((data) => {
         // console.log(data);
         total_rows = (total_rows>0)?parseInt(total_rows) - 1:0;
-        window.location.reload();
+        // window.location.reload();
       });
   };
   return (
@@ -110,7 +110,7 @@ function Workspacetable(props) {
         <div id="sortable">
           {rows.map((row, i) => {
             return (
-            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} />
+            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} columns={props.columns} />
             )
           })}
         </div>
