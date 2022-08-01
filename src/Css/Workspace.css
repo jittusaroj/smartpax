@@ -759,9 +759,9 @@
     border: 1px solid;
     height: 30px !important;
     width: 30px;
-    position: absolute;
+    position: fixed;
     right: 4%;
-    top: 26%;
+    top: 16%;
   }
   .shadow-0{
     box-shadow: 0 0 0 0rem rgb(13 110 253 / 0%) !important;
