@@ -20,7 +20,7 @@ import Filtermodal from "../components/Header/Filtermodal";
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
-  const workspace_id = props.workspace_id;
+  const workspace_id = workspace_id_tbl;//props.workspace_id;
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
