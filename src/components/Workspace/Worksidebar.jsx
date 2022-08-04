@@ -4,6 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { Form } from "react-bootstrap";
 import { notify } from "../../utils/services";
 import Newfolder from "./parts/Newfolder";
+import { FaFile } from "react-icons/fa";
 
 function Worksidebar(props) {
   const user_data = props.user_data;
@@ -65,7 +66,9 @@ function Worksidebar(props) {
       <div>
         <Form>
           <Form.Select aria-label="Workspace selection" onChange={(e) => changeData(e.target.value)} value={props.workspace.id}>
-            <option className="mt-2" value="">Select</option>
+            <option className="mt-2" value="">Add</option>
+            <option className="mt-2" onClick={addNewFolder}>New Folder</option>
+            <option className="mt-2" value="">New Datasets</option>
             {workspaceList.map((wspace, i) => {
               return <option value={wspace.id} key={i}>{wspace.name}</option>
             })}

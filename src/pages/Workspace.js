@@ -17,7 +17,7 @@ import Worksidebar from "../components/Workspace/Worksidebar";
 import Personmodal from "../components/Header/Personmodal";
 import Sortmodal from "../components/Header/Sortmodal";
 import Filtermodal from "../components/Header/Filtermodal";
-import { FaCheckSquare, FaEyeSlash } from "react-icons/fa";
+import { FaCheckSquare, FaExchangeAlt, FaEyeSlash, FaStackExchange } from "react-icons/fa";
 
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
@@ -208,7 +208,8 @@ function Workspace(props) {
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
-                                  <i className="fa fa-filter f-color"></i>
+                                  <FaExchangeAlt className="f-color" style={{transform:'rotate(90deg)'}}/>
+                                  {/* <i className="fa fa-filter f-color"></i> */}
                                   <span className="ms-2 f-color">Sort</span>
                                 </span>
                               </li>

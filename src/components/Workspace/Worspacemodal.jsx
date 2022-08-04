@@ -7,6 +7,7 @@ function Worspacemodal(props) {
   const user_data = props.user_data;
   const folderList = props.folderList;
   const [name, setName] = useState(false);
+  const [description, setDescription] = useState(false);
   const [folder, setFolder] = useState(false);
   const workspace_icon = name[0] ?? "N";
 
@@ -81,6 +82,11 @@ function Worspacemodal(props) {
                 placeholder=""
                 required="required"
                 onChange={(e) => setName(e.target.value)}
+              />
+              <Form.Label className="mt-2">Datasets Description</Form.Label>
+              <Form.Control as="textarea" rows={4}
+                
+                onChange={(e) => setDescription(e.target.value)}
               />
               <Form className="mt-4">
                 <Form.Select aria-label="Folder selection" onChange={(e) => setFolder(e.target.value)}>

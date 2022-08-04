@@ -19,9 +19,9 @@ function Personmodal() {
                            <div className="col-md-8 col-7">
                               <h5>Quick person filter</h5>
                            </div>
-                           <div className="col-md-4 col-5">
+                           {/* <div className="col-md-4 col-5">
                               <button className="btn btn-add-group">Save as new View</button>
-                           </div>
+                           </div> */}
                         </div>
                         <p>Filter items and subitems by person</p>
                         <div className="persone-icon">

@@ -99,18 +99,18 @@ function Workspacetable(props) {
   };
   return (
     <>
-      <div className="overflow-scroll1 penicillium-section">
+      <div className="overflow-scroll1 penicillium-section ">
         <Column
           workspace_id={workspace_id}
           group_id={group_id}
           group_data={props.group_data}
           user_data={user_data}
-          columns={props.columns}
+          columns={props.columns} 
         />
         <div id="sortable">
           {rows.map((row, i) => {
             return (
-            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} columns={props.columns} />
+            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} columns={props.columns}  />
             )
           })}
         </div>

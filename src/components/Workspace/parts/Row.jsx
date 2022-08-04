@@ -175,8 +175,8 @@ function Row(props) {
 
   return (
     <>
-      <div className="d-flex">
-        <div className="dropdown-sec">
+      <div className="d-flex dropdown-sec">
+        <div className="dropdown-sec1">
           <div className="dropdown">
           <i className="fa fa-trash" onClick={props.deleteNewRow} aria-hidden="true" style={{color:"red"}}></i>
           {/* {popup.show && (

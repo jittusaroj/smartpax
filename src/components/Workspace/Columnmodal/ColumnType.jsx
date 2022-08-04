@@ -7,6 +7,7 @@ function ColumnType(props) {
           <a onClick={(e) => props.addNewColumn(props.type)} className="plus-right1" >
            <span>{props.type.toUpperCase()}</span>
           </a>
+       
     </>
   );
 }

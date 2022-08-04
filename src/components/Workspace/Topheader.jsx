@@ -66,20 +66,20 @@ function Topheader(props) {
     <>
       <div className="top-card-section">
         <div className="row">
-          <div className="col-md-5">
+          <div className="col-md-9">
             <div className="heading">
               <span className="heading-icon">
                 {/* <i className="fa fa-lock"></i> &nbsp; */}
               </span>
-              <input
-                value={props.workspace.name}
+              <Form.Control
+                defaultValue={props.workspace.name}
                 onChange={(e) => saveWorkspace(e.target.value)}
-                className="border-0"
+                className="border-0 shadow-0 fs-5"
                 style={{ marginTop: "-6px" }}
               />
 
               <div className="other-option">
-                <span
+                {/* <span
                   className="mt-2"
                   onClick={handleShow}
                   style={{ transform: "rotate(180deg)" }}
@@ -88,7 +88,7 @@ function Topheader(props) {
                 </span>
                 <Modal show={show} onHide={handleClose} animation={false}>
                   <Textmodal />
-                </Modal>
+                </Modal> */}
 
                 <Invitemodal />
 
@@ -113,9 +113,16 @@ function Topheader(props) {
               </div>
             </div>
 
-            <p className="ms-2">{props.workspace.name}</p>
+            <Form.Control
+                defaultValue={props.workspace.name}
+                onChange={(e) => saveWorkspace(e.target.value)}
+                className="border-0 shadow-0"
+                style={{ marginTop: "-6px" }}
+              />
+
+            {/* <p className="ms-2">{props.workspace.name}</p> */}
           </div>
-          <div className="col-md-7">
+          <div className="col-md-3">
             <div className="right-option">
               <ul className="ul-menu">
                 <li>
@@ -168,11 +175,11 @@ function Topheader(props) {
                   <i className="fa fa-home"></i> Main Table
                 </button>
 
-                <span className="table-icon-header">
+                {/* <span className="table-icon-header">
                   <span style={{ marginLeft: "6px" }}>
                     <FaArrowAltCircleDown />
                   </span>
-                </span>
+                </span> */}
               </li>
             </ul>
           </div>

@@ -56,6 +56,8 @@ function ColumnData(props) {
                 onKeyPress={(e) => saveGroup(e)}
                 />
             </span>
+
+       
         </div>
         {/* <div className="head">
             <span className="value">Week</span>

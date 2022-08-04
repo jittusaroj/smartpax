@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Accordion from "react-bootstrap/Accordion";
 import { notify } from "../../../utils/services";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import { FaArrowDown, FaCaretDown, FaChevronDown, FaEdit, FaEllipsisH, FaEllipsisV, FaFile, FaFolder, FaPlus, FaTrash } from "react-icons/fa";
+import { FaArrowDown, FaEdit, FaEllipsisH, FaEllipsisV, FaFolder, FaTrash } from "react-icons/fa";
 // import Card from "react-bootstrap/Card";
 // import { FaChevronDown } from "react-icons/fa";
 
@@ -61,27 +61,23 @@ function Newfolder(props) {
         notify("Deleted successfully", "success");
      });
   };
-  function CustomToggle({ children, eventKey }) {
-    const decoratedOnClick = useAccordionButton(eventKey, () =>
-      console.log("totally custom!")
-    );
-
-   {/* <FaChevronDown size='15'/> */}
-    return (
-    
-         <>
-      <div style={{display: "flex"}} className="dropdown-sec">
   
-      <span className="f-color my-2" onClick={decoratedOnClick}><FaCaretDown/></span>
+
+  return (
+    <>
+    
+    <div style={{display: "flex"}} className="dropdown-sec">
+  
+      <span className="f-color my-2"><FaFolder/></span>
             <Form.Control
               type="text"
               placeholder="New Folder"
               defaultValue={folder_data.name}
               className="border-0 shadow-0"
-              onChange={(e) => saveFolder(e.target.value)} 
+              onChange={(e) => saveFolder(e.target.value)}
               style={{ background: "transparent", color: "black"}}
             />
-              <div className="dropdown-sec mt-2">
+              <div className="dropdown-sec">
           <div className="dropdown">
            
             <span
@@ -103,54 +99,25 @@ function Newfolder(props) {
                 <FaTrash/>  Delete Folder
                 </a>
               </li>
-              <li>
-                
-                <a className="dropdown-item" href="#"  data-bs-toggle="modal" data-bs-target="#addworkspace">
-                <FaPlus/>  Add Datasets
-                </a>
-              </li>
             </ul>
           </div>
         </div>
          
-        {children}
+          
         
               </div>
-        </>
+          
+             
 
-
-       
-   
-      
-    
-    );
-  }
-
-  return (
-    <>
-    
- 
-
-
-
-          <Accordion defaultActiveKey="0">
-        <>
-          <>
-            <CustomToggle eventKey="0"></CustomToggle>
-          </>
-          <Accordion.Collapse eventKey="0">
-            <>
-            <div aria-label="Workspace selection" className="border-0 ms-5">
+          <div aria-label="Workspace selection" className="border-0 ms-2">
             {no_ws}
             {workspaceList.map((wspace, i) => {
-              return <p onClick={(e) => props.changeData(wspace.id)} value={wspace.id} key={i}>{<FaFile className="f-color"/>} {wspace.name}</p>
+              return <p onClick={(e) => props.changeData(wspace.id)} value={wspace.id} key={i}>{wspace.name}</p>
             })}
           </div>
-            </>
-            
-          </Accordion.Collapse>
-        </>
-      </Accordion>
+
+
+
          
         
 

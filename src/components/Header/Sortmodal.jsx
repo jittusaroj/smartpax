@@ -45,9 +45,9 @@ function Sortmodal(props) {
                  <div className="col-md-8 col-6">
                     <h5>Sort By</h5>
                  </div>
-                 <div className="col-md-4 col-6">
+                 {/* <div className="col-md-4 col-6">
                     <button className="btn btn-add-group">Save as new View</button>
-                 </div>
+                 </div> */}
               </div>
               <br/>
               <p className="mb-2">Sort your items by priority, creation date, price or</p>

@@ -70,8 +70,8 @@ function Column(props) {
 
   return (
     <>
-      <div className="d-flex">
-        <div className="dropdown-sec">
+      <div className="d-flex dropdown-sec">
+        <div className="dropdown-sec1">
           <div className="dropdown">
             <a
               className="btn btn-primary btn-xs dropdown-toggle"
@@ -112,6 +112,7 @@ function Column(props) {
                 onKeyPress={(e) => saveGroup(e)}
               />
             </span>
+         
           </div>
           {props.columns.map((column, i) => {
             return (
@@ -120,8 +121,10 @@ function Column(props) {
           })}
 
           <a data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
-            <i className="fa f-20" style={{color:"lightgray",margin:'12px' , fontWeight:'500'}}>+</i>
+            <i className="fa f-20" style={{color:"lightgray",margin:'12px' , fontWeight:'600'}}>+</i>
           </a>
+
+        
         </div>
       </div>
       <ColumnModal workspace_id={workspace_id} />
