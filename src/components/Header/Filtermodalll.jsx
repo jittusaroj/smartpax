@@ -5,142 +5,24 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import Collapse from "react-bootstrap/Collapse";
 import ColumnData from "../Workspace/parts/ColumnData";
-import { FaFilter } from "react-icons/fa";
-import Select from "react-select";
 
 function Filtermodal(props) {
+  const filterGroup = props.groupList;
 
-  const options = [
-    { value: 'Column', label: 'Column' },
-    { value: 'Group', label: 'Group' },
-    { value: 'Name', label: 'Name' },
-    { value: 'Status', label: 'Status' }
-  ]
-  const value = [
-    { value: 'Value', label: 'Value' },
-    { value: 'Group', label: 'Group' },
-    { value: 'Name', label: 'Name' },
-    { value: 'Status', label: 'Status' }
-  ]
-  const condition = [
-    { value: 'Condition', label: 'Condition' },
-    { value: 'Group', label: 'Group' },
-    { value: 'Name', label: 'Name' },
-    { value: 'Status', label: 'Status' }
-  ]
- 
+  const applyFilter = (groupID) => {
+    props.setgroupList(props.groupList.filter((group) => group.id == groupID));
+  };
+
+  const filterName = props.nameList;
+
+  const applynameFilter = (nameID) => {
+    props.setnameList(
+      props.nameList.filter((groupname) => groupname.id == nameID)
+    );
+  };
   return (
     <>
-
-<Dropdown>
-                                  <Dropdown.Toggle
-                                    variant=""
-                                    id="dropdown-basic"
-                                  >
-                                   <FaFilter className="f-color" style={{fontSize:'12px'}} />
-                                    <span className="ms-1 f-color">   Filter</span>
-                                  </Dropdown.Toggle>
-
-                                  <Dropdown.Menu style={{ width: "max-content" }}>
-                                    <div style={{ padding: "2px 25px" }}>
-                                    <div className="row">
-                <div className="col-md-8 col-6">
-                  <h6>Advanced filters</h6>
-                </div>
-              </div>
-
-              <div className="d-flex mb-2 my-4">
-                <div className="col-md-1 me-2">
-                  <span class="f-color">Where</span>
-                </div>
-                <div className="col-md-3 me-2 ms-1">
-                
-                  <Select options={options} className="select" />
-                </div>
-                <div className="col-md-3 me-2">
-                 
-                  <Select options={value} className="select"  />
-                </div>
-                <div className="col-md-4 me-2">
-                  
-                  <Select options={condition}  className="select"  /> 
-                </div>
-                <div className="col-md-2 me-2">
-                  <div className="">
-                    {" "}
-                    <i className="fa fa-times"></i>
-                  </div>
-                </div>
-              </div>
-
-              <div className="d-flex mb-2 my-4">
-                <div className="col-md-1 me-2">
-                  <span class="f-color">Where</span>
-                </div>
-                <div className="col-md-3 me-2 ms-1">
-                
-                  <Select options={options} className="select" />
-                </div>
-                <div className="col-md-3 me-2">
-                 
-                  <Select options={value} className="select"  />
-                </div>
-                <div className="col-md-4 me-2">
-                  
-                  <Select options={condition}  className="select"  /> 
-                </div>
-                <div className="col-md-2 me-2">
-                  <div className="">
-                    {" "}
-                    <i className="fa fa-times"></i>
-                  </div>
-                </div>
-              </div>
-
-           
-
-              {/* <div className="row mb-2 my-4">
-                <div className="col-md-2">
-                  <select className="form-control">
-                    <option> Where</option>
-                    <option> Date</option>
-                  </select>
-                </div>
-                <div className="col-md-3">
-                  <select className="form-control">
-                    <option> Group</option>
-                    <option> Date</option>
-                  </select>
-                </div>
-                <div className="col-md-3">
-                  <select className="form-control">
-                    <option> </option>
-                    <option> is </option>
-                    <option> is not</option>
-                    <option> contain</option>
-                    <option>doesn't contain</option>
-                  </select>
-                </div>
-                <div className="col-md-3">
-                  <select className="form-control">
-                    <option></option>
-                    <option>Top Group</option>
-                  </select>
-                </div>
-                <div className="col-md-1">
-                  <div className="mt-2">
-                    {" "}
-                    <i className="fa fa-times"></i>
-                  </div>
-                </div>
-              </div> */}
-
-                                    
-                                      
-                                    </div>
-                                  </Dropdown.Menu>
-                                </Dropdown>
-      {/* <span data-bs-toggle="modal" data-bs-target="#filter-modal">
+      <span data-bs-toggle="modal" data-bs-target="#filter-modal">
         <i className="fa fa-filter f-color"></i>
         <span className="ms-2 f-color">Filter</span>
       </span>
@@ -266,7 +148,7 @@ function Filtermodal(props) {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

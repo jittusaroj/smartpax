@@ -803,6 +803,37 @@
   padding: 11px 0px 0px 0px;
 }
 
+.css-1hb7zxy-IndicatorsContainer {
+  margin-top: -20px;
+}
+
+.css-319lph-ValueContainer {
+  margin-top: -17px;
+}
+.css-1s2u09g-control , .css-1pahdxg-control {
+  min-height:25px !important;
+  height:25px !important;
+  font-size: 13px;
+}
+.css-1okebmr-indicatorSeparator {
+  display: none;
+}
+.css-tj5bde-Svg {
+
+  line-height: .5;
+
+  width: 15px !important;
+}
+
+.css-1pahdxg-control .css-2613qy-menu {
+  font-size: 13px !important;
+}
+.css-1pahdxg-control:hover {
+  border-color: #fff !important;
+  min-height:25px !important;
+  height:25px !important;
+}
+
   /* .search-field .search-btn:hover{
     display: none !important;
   }

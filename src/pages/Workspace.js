@@ -159,6 +159,7 @@ function Workspace(props) {
                                     name=""
                                     style={{ marginTop: "-10px" }}
                                   />
+
                                 </div>
                               </li>
                               <li className="">
@@ -185,15 +186,8 @@ function Workspace(props) {
                                 </a>
                               </li> */}
 
-                              <li>
-                                {/* 
-                                <span
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#sort"
-                                >
-                                  <i className="fa fa-filter f-color"></i>
-                                  <span className="ms-2 f-color">Filter</span>
-                                </span> */}
+                              <li style={{marginTop:'-7px'}}>
+                               
                                 <Filtermodal
                                   groupList={list}
                                   setgroupList={setList}
