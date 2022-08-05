@@ -1,17 +1,6 @@
-import { React,  } from "react";
-
-
-
+import { React } from "react";
 
 function Chart() {
-   
-    return (
-    <>
-    
-
-   
-
-    </>
-       );
-    }
-    export default Chart;
+  return <></>;
+}
+export default Chart;

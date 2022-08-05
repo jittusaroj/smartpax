@@ -5,11 +5,9 @@ import ColumnModal from "./ColumnModal";
 import ColumnData from "./ColumnData";
 import { FaWeight } from "react-icons/fa";
 
-
 function Column(props) {
   const user_data = props.user_data;
   const workspace_id = props.workspace_id;
-  // const total_columns = localStorage.getItem("columns" + workspace_id) ?? 0;
 
   // For cells.
   const [cells, setCells] = useState([]);
@@ -48,7 +46,6 @@ function Column(props) {
           console.log(data);
 
           notify("Successfully updated", "success");
-          //window.location.reload();
         });
     }
   };
@@ -62,9 +59,7 @@ function Column(props) {
         }
       )
       .then((data) => {
-        // console.log(data);
         notify("Deleted successfully", "success");
-        // window.location.reload();
       });
   };
 
@@ -84,7 +79,6 @@ function Column(props) {
               {" "}
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            
               <li>
                 <a className="dropdown-item" href="#" onClick={deleteGroup}>
                   Remove Group
@@ -112,19 +106,30 @@ function Column(props) {
                 onKeyPress={(e) => saveGroup(e)}
               />
             </span>
-         
           </div>
           {props.columns.map((column, i) => {
             return (
-              <ColumnData columnData={column} workspace_id={workspace_id} column_id={column.id} key={i} />
+              <ColumnData
+                columnData={column}
+                workspace_id={workspace_id}
+                column_id={column.id}
+                key={i}
+              />
             );
           })}
 
-          <a data-bs-toggle="modal"  data-bs-target="#column-modal" className="plus-right1">
-            <i className="fa f-20" style={{color:"lightgray",margin:'12px' , fontWeight:'600'}}>+</i>
+          <a
+            data-bs-toggle="modal"
+            data-bs-target="#column-modal"
+            className="plus-right1"
+          >
+            <i
+              className="fa f-20"
+              style={{ color: "lightgray", margin: "12px", fontWeight: "600" }}
+            >
+              +
+            </i>
           </a>
-
-        
         </div>
       </div>
       <ColumnModal workspace_id={workspace_id} />

@@ -183,7 +183,8 @@ function Workstatus(props) {
                     className="form-check-input"
                     type="checkbox"
                     value=""
-                    id="disable_notifivation" defaultChecked
+                    id="disable_notifivation"
+                    defaultChecked
                   />
                   <label
                     className="form-check-label"
@@ -201,7 +202,8 @@ function Workstatus(props) {
                     className="form-check-input"
                     type="checkbox"
                     value=""
-                    id="user_activity" defaultChecked
+                    id="user_activity"
+                    defaultChecked
                   />
                   <label className="form-check-label" htmlFor="user_activity">
                     User Activity Indication Control
