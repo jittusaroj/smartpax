@@ -2748,6 +2748,10 @@ margin: auto;
 height: 600px;
 overflow-y: scroll;
 }
+.inbox1{
+
+	overflow-x: scroll;
+	}
 .inbox-card{
 border: 1px solid lightgray;
 }

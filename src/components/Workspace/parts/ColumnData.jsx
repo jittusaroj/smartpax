@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../../../utils/services";
+import { FaEllipsisH, FaTrash } from "react-icons/fa";
+import Removecolumn from "./Removecolumn";
 
 function ColumnData(props) {
   const data = JSON.parse(localStorage.getItem("user"));
@@ -37,7 +39,7 @@ function ColumnData(props) {
 
   return (
     <>
-      <div className="head">
+      <div className="head dropdown-column">
         <span
           className="value"
           style={{
@@ -53,7 +55,10 @@ function ColumnData(props) {
             defaultValue={name}
             onKeyPress={(e) => saveGroup(e)}
           />
+
+
         </span>
+       <Removecolumn/>
       </div>
     </>
   );

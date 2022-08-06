@@ -222,6 +222,12 @@
     .dropdown-sec:hover .dropdown{
     display:block;
     }
+    .dropdown-column .dropdown{
+      display:none;
+      }
+      .dropdown-column:hover .dropdown{
+      display:block;
+      }
     /* .first-head{
     } */
     .status-bg{
@@ -746,6 +752,7 @@
       padding: 8px 10px;
       /* text-align: center; */
       flex: 0 0 162px !important;
+      height: 50px;
   }
   .nav-tabs {
     border-bottom: 1px solid #dee2e6 !important;
@@ -832,6 +839,21 @@
   border-color: #fff !important;
   min-height:25px !important;
   height:25px !important;
+}
+.column-icon{
+  margin-top: -36%;
+    margin-left: 90%;
+}
+.custom-select{
+  font-size: 13px !important;
+  padding: 2px 12px !important;
+}
+.check .form-check-input{
+  border-radius: 4px !important;
+}
+.h-30{
+  height: 30px !important;
+  border-radius: 4px !important;
 }
 
   /* .search-field .search-btn:hover{

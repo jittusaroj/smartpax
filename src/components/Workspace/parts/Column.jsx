@@ -67,7 +67,7 @@ function Column(props) {
     <>
       <div className="d-flex dropdown-sec">
         <div className="dropdown-sec1">
-          <div className="dropdown">
+          <div className="dropdown" >
             <a
               className="btn btn-primary btn-xs dropdown-toggle"
               href="#"
@@ -115,7 +115,9 @@ function Column(props) {
                 column_id={column.id}
                 key={i}
               />
+              
             );
+           
           })}
 
           <a

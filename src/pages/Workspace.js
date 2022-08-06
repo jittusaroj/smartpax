@@ -18,6 +18,7 @@ import Personmodal from "../components/Header/Personmodal";
 import Sortmodal from "../components/Header/Sortmodal";
 import Filtermodal from "../components/Header/Filtermodal";
 import { FaCheckSquare, FaExchangeAlt, FaEyeSlash, FaStackExchange } from "react-icons/fa";
+import Hide from "../components/Header/Hide";
 
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
@@ -163,13 +164,14 @@ function Workspace(props) {
                                 </div>
                               </li>
                               <li className="">
-                                <a
+                                <Personmodal/>
+                                {/* <a
                                   data-bs-toggle="modal"
                                   data-bs-target="#person_modal"
                                 >
                                   <i className="fa fa-user-circle f-color"></i>
                                   <span className="ms-2 f-color">Person</span>
-                                </a>
+                                </a> */}
                               </li>
                               {/* <li className="">
                                 <a
@@ -198,52 +200,20 @@ function Workspace(props) {
                                 />
                               </li>
                               <li className="mx-4">
-                                <span
+                                <Sortmodal/>
+                                {/* <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
                                 >
                                   <FaExchangeAlt className="f-color" style={{transform:'rotate(90deg)'}}/>
-                                  {/* <i className="fa fa-filter f-color"></i> */}
+                                
                                   <span className="ms-2 f-color">Sort</span>
-                                </span>
+                                </span> */}
                               </li>
 
-                              <li className="" style={{marginTop:'-7px'}}>
-                                <Dropdown>
-                                  <Dropdown.Toggle
-                                    variant=""
-                                    id="dropdown-basic"
-                                  >
-                                    <FaEyeSlash className="f-color" />
-                                    <span className="ms-2 f-color">Hide</span>
-                                  </Dropdown.Toggle>
-
-                                  <Dropdown.Menu style={{ width: "15rem" }}>
-                                    <div style={{ padding: "2px 5px" }}>
-                                      <Form.Control
-                                        className=""
-                                        defaultValue=""
-                                        placeholder="Search.."
-                                        name=""
-                                        style={{ height: "32px" }}
-                                      />
-
-                                      <p className="mt-1">
-                                        All Columns
-                                        <span className="float-end">
-                                          <Form.Check type="checkbox" />
-                                        </span>
-                                      </p>
-                                    
-                                      <p className="mt-1">
-                                        Person{" "}
-                                        <span className="float-end">
-                                          <Form.Check type="checkbox" />
-                                        </span>{" "}
-                                      </p>
-                                    </div>
-                                  </Dropdown.Menu>
-                                </Dropdown>
+                              <li className="mx-4" >
+                                <Hide/>
+                               
                               </li>
                             </ul>
                           </div>
