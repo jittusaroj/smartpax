@@ -5,7 +5,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import Collapse from "react-bootstrap/Collapse";
 import ColumnData from "../Workspace/parts/ColumnData";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaPlus } from "react-icons/fa";
 import Select from "react-select";
 
 function Filtermodal(props) {
@@ -30,6 +30,21 @@ function Filtermodal(props) {
     { value: "New Group", label: "New Group" },
   ];
 
+  const filterGroup = props.groupList;
+  //const [filterGroup, setFilterGroup] = useState(props.groupList);
+  const applyFilter = (groupID) => {
+    props.setgroupList(props.groupList.filter(group => group.id==groupID));
+  }
+  // useEffect(() => {
+  //   setFilterGroup(props.groupList);
+  // });
+
+  const filterName = props.nameList;
+
+  const applynameFilter = (nameID) => {
+    props.setnameList(props.nameList.filter(groupname => groupname.id==nameID));
+  }
+
   return (
     <>
       <Dropdown>
@@ -48,7 +63,7 @@ function Filtermodal(props) {
 
             <div className="d-flex mb-2 my-4">
               <div className="col-md-1 me-2">
-                <span class="f-color">Where</span>
+                <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
                 <Select options={options} className="select" />
@@ -69,7 +84,7 @@ function Filtermodal(props) {
 
             <div className="d-flex mb-2 my-4">
               <div className="col-md-1 me-2">
-                <span class="f-color">Where</span>
+                <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
                 <Select options={options} className="select" />
@@ -87,6 +102,8 @@ function Filtermodal(props) {
                 </div>
               </div>
             </div>
+
+            <Button style={{background:'white' , border:'0px'}}> <FaPlus/> <b className="f-color">Add  New Filter</b> </Button>
 
             {/* <div className="row mb-2 my-4">
                 <div className="col-md-2">

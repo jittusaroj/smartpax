@@ -24,7 +24,7 @@ function ColumnModal(props) {
       .then((data) => {
         console.log(data);
         notify("New column added.", "success");
-        window.location.reload();
+        // window.location.reload();
       });
   };
 

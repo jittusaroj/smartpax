@@ -1,4 +1,10 @@
-import { React, useEffect, useState } from "react";
+import {
+  React,
+  useEffect,
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import axios from "axios";
 import { Form, Text } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -18,11 +24,18 @@ import {
   FaTrash,
 } from "react-icons/fa";
 
-function Newfolder(props) {
+const Newfolder = forwardRef((props, ref) => {
   const folder_data = props.folder_data;
+  const [reload, setReload] = useState();
   const [workspaceList, setWorkspaceList] = useState([]);
   let no_ws = "";
+  useImperativeHandle(ref, () => ({
+    secondAlert() {
+      setReload(true);
+    },
+  }));
   const saveFolder = (title) => {
+    // if (e.key === "Enter") {
     axios
       .put(
         process.env.REACT_APP_LOCAL_API + "/folder/" + folder_data.id,
@@ -34,26 +47,30 @@ function Newfolder(props) {
           "Content-Type": "application/json",
         }
       )
-      .then((data) => {});
+      .then((data) => {
+        // notify("Successfully updated", "success");
+      });
     // }
   };
 
   useEffect(() => {
-    axios
-      .get(
-        process.env.REACT_APP_LOCAL_API +
-          "/workspace/list/" +
-          props.user_data.id +
-          "/" +
-          folder_data.id,
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((res) => {
-        setWorkspaceList(res.data);
-      });
-  }, []);
+    setInterval(() => {
+      axios
+        .get(
+          process.env.REACT_APP_LOCAL_API +
+            "/workspace/list/" +
+            props.user_data.id +
+            "/" +
+            folder_data.id,
+          {
+            "Content-Type": "application/json",
+          }
+        )
+        .then((res) => {
+          setWorkspaceList(res.data);
+        });
+    }, 1000);
+  }, [reload]);
 
   if (workspaceList.length == 0) {
     no_ws = (
@@ -72,10 +89,11 @@ function Newfolder(props) {
           "Content-Type": "application/json",
         }
       )
-      .then((data) => {
+      .then((data, e) => {
         notify("Deleted successfully", "success");
       });
   };
+
   function CustomToggle({ children, eventKey }) {
     const decoratedOnClick = useAccordionButton(eventKey, () =>
       console.log("accordion!")
@@ -170,5 +188,5 @@ function Newfolder(props) {
       </Accordion>
     </>
   );
-}
+});
 export default Newfolder;

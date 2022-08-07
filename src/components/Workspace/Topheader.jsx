@@ -16,8 +16,6 @@ import {
 } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 
-// import '../Css/Workspace.css';
-
 function Topheader(props) {
   const user_data = props.user_data;
   const [show, setShow] = useState(false);
@@ -37,11 +35,7 @@ function Topheader(props) {
           "Content-Type": "application/json",
         }
       )
-      .then((data) => {
-        // console.log(data);
-        // notify("Successfully updated", "success");
-        //window.location.reload();
-      });
+      .then((data) => {});
   };
 
   const deleteWorkspace = (value) => {
@@ -58,7 +52,9 @@ function Topheader(props) {
         // console.log(data);
         localStorage.removeItem("workspace");
         notify("Deleted successfully", "success");
-        window.location.reload();
+        // localStorage.removeItem("workspace");
+        // notify("Deleted successfully", "success");
+        // window.location.reload();
       });
   };
 
@@ -91,36 +87,15 @@ function Topheader(props) {
                 </Modal> */}
 
                 <Invitemodal />
-
-                {/* <span>
-                  <a
-                    data-bs-toggle="collapse"
-                    href="#collapseExample"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseExample"
-                  >
-                    <i
-                      className="fa fa-exclamation-circle"
-                      aria-hidden="true"
-                    ></i>
-                  </a>
-                  <a>
-                    {" "}
-                    <i className="fa fa-star-o" aria-hidden="true"></i>
-                  </a>
-                </span> */}
               </div>
             </div>
 
             <Form.Control
-                defaultValue={props.workspace.name}
-                onChange={(e) => saveWorkspace(e.target.value)}
-                className="border-0 shadow-0"
-                style={{ marginTop: "-6px" }}
-              />
-
-            {/* <p className="ms-2">{props.workspace.name}</p> */}
+              defaultValue={props.workspace.name}
+              onChange={(e) => saveWorkspace(e.target.value)}
+              className="border-0 shadow-0"
+              style={{ marginTop: "-6px" }}
+            />
           </div>
           <div className="col-md-3">
             <div className="right-option">
@@ -133,8 +108,12 @@ function Topheader(props) {
 
                 <li>
                   <Dropdown>
-                    <Dropdown.Toggle variant="" id="dropdown-basic" style={{marginTop:'-6px'}}>
-                      <FaEllipsisH/>
+                    <Dropdown.Toggle
+                      variant=""
+                      id="dropdown-basic"
+                      style={{ marginTop: "-6px" }}
+                    >
+                      <FaEllipsisH />
                       {/* <i className="fa fa-ellipsis-h font-14"></i> */}
                     </Dropdown.Toggle>
 

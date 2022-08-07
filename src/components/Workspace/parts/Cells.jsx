@@ -16,22 +16,33 @@ function Cells(props) {
   const getCell = (setData) => {
     let dt = "";
     axios
-    .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + props.workspace_id + "/" + props.group_id + "/" + props.column_id + "/" + props.row_id, {
-      "Content-Type": "application/json",
-    })
-    .then((res) => {
-      let cellData = res.data[0]?res.data[0].name:"";
-      if(setData) {
-        setCell(cellData);
-        setCellId(res.data[0]?res.data[0].id:"");
-      }
-      dt = cellData;
-    });
+      .get(
+        process.env.REACT_APP_LOCAL_API +
+          "/cells/list/" +
+          props.workspace_id +
+          "/" +
+          props.group_id +
+          "/" +
+          props.column_id +
+          "/" +
+          props.row_id,
+        {
+          "Content-Type": "application/json",
+        }
+      )
+      .then((res) => {
+        let cellData = res.data[0] ? res.data[0].name : "";
+        if (setData) {
+          setCell(cellData);
+          setCellId(res.data[0] ? res.data[0].id : "");
+        }
+        dt = cellData;
+      });
     return dt;
   };
   const saveCell = (value) => {
     getCell(true);
-    if (cell!="" && cellId!="") {
+    if (cell != "" && cellId != "") {
       axios
         .put(
           process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
@@ -51,13 +62,12 @@ function Cells(props) {
         .then((data) => {
           console.log(data);
           setCell(value);
-         
         });
     } else {
       axios
-      .post(
-        process.env.REACT_APP_LOCAL_API + "/cells/save",
-        {
+        .post(
+          process.env.REACT_APP_LOCAL_API + "/cells/save",
+          {
             name: value,
             user_id: props.user_data.id,
             workspace_id: props.workspace_id,
@@ -75,7 +85,6 @@ function Cells(props) {
           console.log(data);
           setCell(value);
           setCellId(data.data.uData.id);
-        
         });
     }
   };
@@ -85,30 +94,36 @@ function Cells(props) {
     ["green", "DONE"],
     ["orange", "WORKING ON IT"],
     ["red", "STUCK"],
-    ["black", "NO GO"]
+    ["black", "NO GO"],
   ];
 
-  if(props.type=="status") {
-    let bg_class = "bg-secondary"; 
+  if (props.type == "status") {
+    let bg_class = "bg-secondary";
     selection_options.map((selected_data, i) => {
-      if(selected_data[1]==cell){
+      if (selected_data[1] == cell) {
         bg_class = "bg-" + selected_data[0];
       }
     });
     return (
       <>
         <Form>
-          <Form.Select value={cell} aria-label="" className={bg_class} onChange={(e) => saveCell(e.target.value)}>
+          <Form.Select
+            value={cell}
+            aria-label=""
+            className={bg_class}
+            onChange={(e) => saveCell(e.target.value)}
+          >
             {selection_options.map((select_data, i) => {
-              select_data_class = "mt-2 bg-"+select_data[0]+" text-white";
+              select_data_class = "mt-2 bg-" + select_data[0] + " text-white";
               return (
-                <option key={i} className={select_data_class}> {select_data[1]}</option>
+                <option key={i} className={select_data_class}>
+                  {" "}
+                  {select_data[1]}
+                </option>
               );
             })}
-            
           </Form.Select>
         </Form>
-        
       </>
     );
   } else {
@@ -121,7 +136,6 @@ function Cells(props) {
           defaultValue={cell}
           onMouseOut={(e) => saveCell(e.target.value)}
         />
-      
       </>
     );
   }

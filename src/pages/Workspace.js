@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 // import Collapse from "react-bootstrap/Collapse";
-
+import { useRef } from "react";
 import Footer from "./Footer";
 import Sidebar from "../components/Sidebar";
 import "../Css/Main.css";
@@ -17,30 +17,50 @@ import Worksidebar from "../components/Workspace/Worksidebar";
 import Personmodal from "../components/Header/Personmodal";
 import Sortmodal from "../components/Header/Sortmodal";
 import Filtermodal from "../components/Header/Filtermodal";
-import { FaCheckSquare, FaExchangeAlt, FaEyeSlash, FaStackExchange } from "react-icons/fa";
+import {
+  FaCheckSquare,
+  FaExchangeAlt,
+  FaEyeSlash,
+  FaStackExchange,
+} from "react-icons/fa";
 import Hide from "../components/Header/Hide";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
-  const workspace_id = workspace_id_tbl; //props.workspace_id;
+  const workspace_id = props.workspace_id;
+ 
+ 
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
-
+  const [gid, setGID] = useState([]);
+  const [reload, setReload] = useState(false);
+  const [add, setAdd] = useState(false);
+  const [se, setSE] = useState();
+  const childRef=useRef();
   // For columns.
   const [columns, setColumns] = useState([]);
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
-        "Content-Type": "application/json",
-      })
-      .then((res) => {
-        setColumns(res.data);
-      });
-  }, []);
+  const navigate = useNavigate();
 
   useEffect(() => {
+
+   
+      axios
+        .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
+          "Content-Type": "application/json",
+        })
+        .then((res) => {
+          setColumns(res.data);
+        }
+        )
+   
+  
+  }, [reload]);
+ 
+  useEffect(() => {
+
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
         "Content-Type": "application/json",
@@ -48,27 +68,28 @@ function Workspace(props) {
       .then((res) => {
         setFolderList(res.data);
       });
-  }, []);
+
+ // },1000);
+  }, [reload]);
 
   useEffect(() => {
+  
     axios
-      .get(
-        process.env.REACT_APP_LOCAL_API +
-          "/group/list/" +
-          user_data.id +
-          "/" +
-          workspace_id_tbl,
-        {
-          "Content-Type": "application/json",
-        }
-      )
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
+        "Content-Type": "application/json",
+      })
       .then((res) => {
         setList(res.data);
+        
+      
+       
       });
-  }, []);
+
+  }, [reload]);
 
   const [wslist, setWslist] = useState([]);
   useEffect(() => {
+
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/workspace/" + workspace_id_tbl, {
         "Content-Type": "application/json",
@@ -76,9 +97,10 @@ function Workspace(props) {
       .then((res) => {
         setWslist(res.data);
       });
-  }, []);
+   
+  }, [reload]);
 
-  const addNewGroup = () => {
+  const addNewGroup = (e) => {
     axios
       .post(
         process.env.REACT_APP_LOCAL_API + "/group/save",
@@ -86,17 +108,74 @@ function Workspace(props) {
           total_rows: 1,
           workspace_id: workspace_id_tbl,
           user_id: user_data.id,
+         
         },
         {
           "Content-Type": "application/json",
         }
       )
       .then((data) => {
-        console.log(data);
+      
         notify("New Item Group added.", "success");
-        window.location.reload();
+        reload==false?setReload(true):setReload(false);
+       // window.location.reload();
+
+  
+
+
+        
       });
+     
   };
+const reloader=(a)=>{
+childRef.current.getAlert();
+
+
+
+}
+
+const reloaded=(a)=>{
+  reload==false?setReload(true):setReload(false);
+
+  
+
+  
+  }
+  const location = useLocation();
+
+  const nextpage = location.state?.nextpage || '/';
+  var handleKeyPress=(e)=>{
+  
+    if (e.key === "Enter") 
+     {
+      axios
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+       
+        if(e.target.value==""){
+        
+          setList(res.data);
+      
+   
+        }
+        else
+        for(var i=0;i<res.data.length;i++)
+        if(res.data[i].name==e.target.value){
+        
+          setList(res.data.filter(id => id.name==e.target.value));
+      
+   
+        }
+
+    
+     
+      });
+
+     }
+    }
+  
   return (
     <>
       <div className="wrapper">
@@ -109,8 +188,11 @@ function Workspace(props) {
                 style={{ background: "rgb(233 236 240 / 25%)" }}
               >
                 <Worksidebar
+                  ref={childRef}
+                  
                   folderList={folderList}
                   setFolderList={setFolderList}
+                  setReloader={reloaded}
                   workspace={wslist}
                   user_data={user_data}
                 />
@@ -153,18 +235,19 @@ function Workspace(props) {
                                   <div className="search-btn">
                                     <i className="fa fa-search"></i>
                                   </div>
-                                  <input
+                                 
+                                   <input
                                     className="form-control"
                                     defaultValue=""
                                     placeholder="search.."
-                                    name=""
-                                    style={{ marginTop: "-10px" }}
+                                    onKeyPress={handleKeyPress}
+                                
+                                    style={{ marginTop: "-10px"  }}
                                   />
-
                                 </div>
                               </li>
                               <li className="">
-                                <Personmodal/>
+                                <Personmodal />
                                 {/* <a
                                   data-bs-toggle="modal"
                                   data-bs-target="#person_modal"
@@ -188,8 +271,7 @@ function Workspace(props) {
                                 </a>
                               </li> */}
 
-                              <li style={{marginTop:'-7px'}}>
-                               
+                              <li style={{ marginTop: "-7px" }}>
                                 <Filtermodal
                                   groupList={list}
                                   setgroupList={setList}
@@ -200,7 +282,7 @@ function Workspace(props) {
                                 />
                               </li>
                               <li className="mx-4">
-                                <Sortmodal/>
+                                <Sortmodal />
                                 {/* <span
                                   data-bs-toggle="modal"
                                   data-bs-target="#sort"
@@ -211,27 +293,30 @@ function Workspace(props) {
                                 </span> */}
                               </li>
 
-                              <li className="mx-4" >
-                                <Hide/>
-                               
+                              <li className="mx-4">
+                                <Hide />
                               </li>
                             </ul>
                           </div>
 
                           <br />
-
-                          {list.map((group, i) => {
-                            return (
-                              <Workspacetable
-                                key={i}
-                                workspace_id={group.workspace_id}
-                                group_id={group.id}
-                                group_data={group}
-                                user_data={user_data}
-                                columns={columns}
-                              />
-                            );
-                          })}
+                          {list
+                            .map((group, i) => {
+                              return (
+                                <Workspacetable
+                                  key={i}
+                                  workspace_id={group.workspace_id}
+                                  group_id={group.id}
+                                  group_data={group}
+                                  user_data={user_data}
+                                  columns={columns}
+                                  add={add}
+                                  gid={list[0].id}
+                                  reload={setReload}
+                                />
+                              );
+                            })
+                            .reverse()}
                         </div>
                       </div>
                     </div>
@@ -245,7 +330,11 @@ function Workspace(props) {
         <Personmodal />
         <Sortmodal />
 
-        <Worspacemodal folderList={folderList} user_data={user_data} />
+        <Worspacemodal
+          folderList={folderList}
+          user_data={user_data}
+          setReloader={reloader}
+        />
 
         <Footer />
       </div>

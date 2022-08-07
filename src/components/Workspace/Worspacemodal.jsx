@@ -2,22 +2,25 @@ import { React, useEffect, useState } from "react";
 import axios from "axios";
 import { notify } from "../../utils/services";
 import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function Worspacemodal(props) {
   const user_data = props.user_data;
   const folderList = props.folderList;
   const [name, setName] = useState(false);
+  const Navigate= useNavigate();
   const [description, setDescription] = useState(false);
   const [folder, setFolder] = useState(false);
   const workspace_icon = name[0] ?? "N";
 
-  const saveData = () => {
+  const saveData = (e) => {
     name != "" && folder != "" &&
       axios
         .post(
           process.env.REACT_APP_LOCAL_API + "/workspace/save",
           {
             name: name,
+            description: description,
             isActive: 1,
             user_id: user_data.id,
             folder_id: folder
@@ -28,8 +31,12 @@ function Worspacemodal(props) {
         )
         .then((data) => {
           notify("Successfully updated", "success");
-          window.location.reload();
+       
+        
+          props.setReloader("H");
         });
+      
+      
   };
 
 

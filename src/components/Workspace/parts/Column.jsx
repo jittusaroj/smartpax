@@ -8,9 +8,11 @@ import { FaWeight } from "react-icons/fa";
 function Column(props) {
   const user_data = props.user_data;
   const workspace_id = props.workspace_id;
+  // const total_columns = localStorage.getItem("columns" + workspace_id) ?? 0;
 
   // For cells.
   const [cells, setCells] = useState([]);
+  const [reload, setReload] = useState(false);
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + workspace_id, {
@@ -19,14 +21,20 @@ function Column(props) {
       .then((res) => {
         setCells(res.data);
       });
-  }, []);
+  }, [reload, props.reload, workspace_id]);
 
+  /* useEffect(() => {
+    setInterval((e) =>e,1000)
+  });
+*/
   // For Group Name.
   const gName = props.group_data.name;
   const [name, setName] = useState("");
+
   useEffect(() => {
     setName(gName);
   }, [gName]);
+
   const saveGroup = (e) => {
     if (e.key === "Enter") {
       axios
@@ -46,6 +54,7 @@ function Column(props) {
           console.log(data);
 
           notify("Successfully updated", "success");
+          reload == false ? setReload(true) : setReload(false);
         });
     }
   };
@@ -59,7 +68,10 @@ function Column(props) {
         }
       )
       .then((data) => {
+        // console.log(data);
         notify("Deleted successfully", "success");
+        reload == false ? setReload(true) : setReload(false);
+        props.setReload(true);
       });
   };
 
@@ -67,7 +79,7 @@ function Column(props) {
     <>
       <div className="d-flex dropdown-sec">
         <div className="dropdown-sec1">
-          <div className="dropdown" >
+          <div className="dropdown">
             <a
               className="btn btn-primary btn-xs dropdown-toggle"
               href="#"
@@ -115,9 +127,7 @@ function Column(props) {
                 column_id={column.id}
                 key={i}
               />
-              
             );
-           
           })}
 
           <a

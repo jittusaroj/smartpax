@@ -7,12 +7,12 @@ import Removecolumn from "./Removecolumn";
 function ColumnData(props) {
   const data = JSON.parse(localStorage.getItem("user"));
   const workspace_id = props.workspace_id;
-
+  const [reload, setReload] = useState(false);
   const gName = props.columnData.name ?? props.columnData.type;
   const [name, setName] = useState("");
   useEffect(() => {
     setName(gName);
-  }, [gName]);
+  }, [gName, reload]);
 
   const saveGroup = (e) => {
     if (e.key === "Enter") {
@@ -33,10 +33,10 @@ function ColumnData(props) {
           console.log(data);
 
           notify("Successfully updated", "success");
+          setReload(true);
         });
     }
   };
-
   return (
     <>
       <div className="head dropdown-column">
@@ -55,10 +55,8 @@ function ColumnData(props) {
             defaultValue={name}
             onKeyPress={(e) => saveGroup(e)}
           />
-
-
         </span>
-       <Removecolumn/>
+        <Removecolumn />
       </div>
     </>
   );

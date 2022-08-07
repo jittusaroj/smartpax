@@ -3,6 +3,7 @@ import axios from "axios";
 import Row from "./parts/Row";
 import Column from "./parts/Column";
 import { notify } from "../../utils/services";
+// import { forwardRef, useImperativeHandle , ref , refW , rowRef , columnSort , setColSort  }from "react";
 
 function Workspacetable(props) {
   const user_data = props.user_data;
@@ -10,9 +11,9 @@ function Workspacetable(props) {
   const group_id = props.group_id;
 
   // const total_rows = props.group_data.total_rows??1;
-  let [total_rows, setTotal_rows] = useState(props.group_data.total_rows??1);
-  let [rows, setRows] = useState([]);
-  let [new_rows, setNewRows] = useState([]);
+  const [total_rows, setTotal_rows] = useState(props.group_data.total_rows??1);
+  const [rows, setRows] = useState([]);
+  const [new_rows, setNewRows] = useState([]);
   const tableCallback = (cb) => {
     return cb();
   };
@@ -69,10 +70,11 @@ function Workspacetable(props) {
         )
         .then((data) => {
           notify("Successfully updated", "success");
+          props.reload(true);
         });
 
       // localStorage.setItem("rows" + group_id, parseInt(total_rows) + 1);
-      // window.location.reload();
+   
     });
   };
   const deleteNewRow = () => {
@@ -92,11 +94,24 @@ function Workspacetable(props) {
       }
     )
       .then((data) => {
-        // console.log(data);
+        alert();
         total_rows = (total_rows>0)?parseInt(total_rows) - 1:0;
-        // window.location.reload();
+      
       });
   };
+
+  //   ref={refW}
+  //   const Workspacetable=forwardRef((props, ref)=> {
+
+  //      const [columnSort, setColSort] = useState("Asc");
+
+  //       },[columnSort]);
+
+  //  useImperativeHandle(ref, () => ({  doSort(s) { setColSort(s) }}), [ ])
+
+  //   const doSort = (s) => {
+  //     refW.current.doSort(s);
+  //   };
   return (
     <>
       <div className="overflow-scroll1 penicillium-section ">
@@ -105,14 +120,56 @@ function Workspacetable(props) {
           group_id={group_id}
           group_data={props.group_data}
           user_data={user_data}
-          columns={props.columns} 
+          columns={props.columns}
+          add={props.add}
+          gid={props.gid}
         />
+
+        {/* <Column
+          workspace_id={workspace_id}
+          group_id={group_id}
+          group_data={props.group_data}
+          user_data={user_data}
+          columns={props.columns}
+        /> */}
         <div id="sortable">
+          {/* {columnSort=="Desc"?rows.map((row, i) => {
+            return (
+            <Row  ref={rowRef} key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} reload={props.reload}/>
+            )
+          }).reverse():rows.map((row, i) => {
+            return (
+            <Row  ref={rowRef} key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} reload={props.reload}/>
+            )
+          })} */}
+
           {rows.map((row, i) => {
             return (
-            <Row key={i} id={row.row_id} workspace_id={workspace_id} deleteNewRow={deleteNewRow} group_data={props.group_data} user_data={user_data} columns={props.columns}  />
-            )
+              <Row
+                key={i}
+                id={row.row_id}
+                workspace_id={workspace_id}
+                deleteNewRow={deleteNewRow}
+                group_data={props.group_data}
+                user_data={user_data}
+                reload={props.reload}
+              />
+            );
           })}
+
+          {/* {rows.map((row, i) => {
+            return (
+              <Row
+                key={i}
+                id={row.row_id}
+                workspace_id={workspace_id}
+                deleteNewRow={deleteNewRow}
+                group_data={props.group_data}
+                user_data={user_data}
+                columns={props.columns}
+              />
+            );
+          })} */}
         </div>
 
         <a onClick={addNewRow} className="plus-left">
