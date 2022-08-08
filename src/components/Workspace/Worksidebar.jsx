@@ -55,11 +55,24 @@ const Worksidebar = forwardRef((props, ref) => {
   //     window.location.reload();
   //   }
   // };
-  const changeData = (value) => {
-    if (value != "") {
-      props.setWorkspaceId(value);
+  
+  // const changeData = (value) => {
+  //   if (value != "") {
+  //     props.setWorkspaceId(value);
 
+  //     props.setReloader(true);
+  //   }
+  // };
+
+  const changeData = ( value) => {
+    if(value!="") {
+      localStorage.setItem("workspace", value);
+      setWorkspaceId(value);
+      notify("Datasets Successfully changed.", "success");
       props.setReloader(true);
+     
+
+   //  props.setReloader(true);
     }
   };
 
@@ -91,9 +104,9 @@ const Worksidebar = forwardRef((props, ref) => {
 
   return (
     <>
-      <p className="fs-6 mt-3">
+      <h6 className="fs-6 mt-3">
         <b>DATASETS</b>
-      </p>
+      </h6>
       <div>
         <Form>
           <Form.Select

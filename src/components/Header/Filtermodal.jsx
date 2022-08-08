@@ -9,6 +9,31 @@ import { FaFilter, FaPlus } from "react-icons/fa";
 import Select from "react-select";
 
 function Filtermodal(props) {
+
+  const customStyles = {
+    option: (provided, state) => ({
+      ...provided,
+  
+      color: state.isSelected ? 'black' : 'black',
+      fontSize: '13px',
+    }),
+    control: () => ({
+     
+      border: '1px solid hsl(0, 0%, 70%)',
+      borderRadius:'4px',
+      height:'25px',
+      fontSize: '13px',
+    }),
+
+    indicatorsContainer : () => ({
+      display:'none'
+    }),
+    input : () => ({
+      marginTop:'-13px'
+    }),
+   
+  }
+  
   const options = [
     { value: "Column", label: "Column" },
     { value: "Group", label: "Group" },
@@ -66,13 +91,13 @@ function Filtermodal(props) {
                 <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
-                <Select options={options} className="select" />
+                <Select options={options} className="select" styles={customStyles} />
               </div>
               <div className="col-md-3 me-2">
-                <Select options={value} className="select" />
+                <Select options={value} className="select" styles={customStyles} />
               </div>
               <div className="col-md-4 me-2">
-                <Select options={condition} className="select" />
+                <Select options={condition} className="select" styles={customStyles} />
               </div>
               <div className="col-md-2 me-2">
                 <div className="">
@@ -87,13 +112,13 @@ function Filtermodal(props) {
                 <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
-                <Select options={options} className="select" />
+                <Select options={options} className="select" styles={customStyles} />
               </div>
               <div className="col-md-3 me-2">
-                <Select options={value} className="select" />
+                <Select options={value} className="select" styles={customStyles} />
               </div>
               <div className="col-md-4 me-2">
-                <Select options={condition} className="select" />
+                <Select options={condition} className="select" styles={customStyles} />
               </div>
               <div className="col-md-2 me-2">
                 <div className="">

@@ -31,6 +31,7 @@ function Workspace(props) {
   const workspace_id_tbl = localStorage.getItem("workspace");
   const workspace_id = props.workspace_id;
  
+
  
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
@@ -273,13 +274,14 @@ const reloaded=(a)=>{
 
                               <li style={{ marginTop: "-7px" }}>
                                 <Filtermodal
-                                  groupList={list}
+                                 
+                                />
+                                 {/* groupList={list}
                                   setgroupList={setList}
                                   nameList={list}
                                   setnameList={setList}
                                   columns={columns}
-                                  setColumns={setColumns}
-                                />
+                                  setColumns={setColumns} */}
                               </li>
                               <li className="mx-4">
                                 <Sortmodal />
@@ -327,7 +329,7 @@ const reloaded=(a)=>{
           </div>
         </div>
 
-        <Personmodal />
+        {/* <Personmodal /> */}
         <Sortmodal />
 
         <Worspacemodal

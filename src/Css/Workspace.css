@@ -810,7 +810,7 @@
   padding: 11px 0px 0px 0px;
 }
 
-.css-1hb7zxy-IndicatorsContainer {
+/* .css-1hb7zxy-IndicatorsContainer {
   margin-top: -20px;
 }
 
@@ -825,7 +825,7 @@
 .css-1okebmr-indicatorSeparator {
   display: none;
 }
-.css-tj5bde-Svg {
+ .css-tj5bde-Svg {
 
   line-height: .5;
 
@@ -839,7 +839,10 @@
   border-color: #fff !important;
   min-height:25px !important;
   height:25px !important;
-}
+} */
+
+
+
 .column-icon{
   margin-top: -36%;
     margin-left: 90%;

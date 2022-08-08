@@ -28,10 +28,10 @@ function Personmodal() {
          
           <div className="row">
                 <div className="col-md-8 col-7">
-                  <h5>Quick person filter</h5>
+                  <h6>Quick person filter</h6>
                 </div>
               </div>
-              <p>Filter items and subitems by person</p>
+              <p className="f-color">Filter items and subitems by person</p>
               <div className="persone-icon">
                 <ul>
                   <li>

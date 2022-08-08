@@ -13,36 +13,26 @@ function Cells(props) {
   }, []);
 
   // For Columns First title.
+
   const getCell = (setData) => {
     let dt = "";
     axios
-      .get(
-        process.env.REACT_APP_LOCAL_API +
-          "/cells/list/" +
-          props.workspace_id +
-          "/" +
-          props.group_id +
-          "/" +
-          props.column_id +
-          "/" +
-          props.row_id,
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((res) => {
-        let cellData = res.data[0] ? res.data[0].name : "";
-        if (setData) {
-          setCell(cellData);
-          setCellId(res.data[0] ? res.data[0].id : "");
-        }
-        dt = cellData;
-      });
+    .get(process.env.REACT_APP_LOCAL_API + "/cells/list/" + props.workspace_id + "/" + props.group_id + "/" + props.column_id + "/" + props.row_id, {
+      "Content-Type": "application/json",
+    })
+    .then((res) => {
+      let cellData = res.data[0]?res.data[0].name:"";
+      if(setData) {
+        setCell(cellData);
+        setCellId(res.data[0]?res.data[0].id:"");
+      }
+      dt = cellData;
+    });
     return dt;
   };
   const saveCell = (value) => {
     getCell(true);
-    if (cell != "" && cellId != "") {
+    if (cell!="" && cellId!="") {
       axios
         .put(
           process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
@@ -60,14 +50,16 @@ function Cells(props) {
           }
         )
         .then((data) => {
-          console.log(data);
+       
           setCell(value);
+        
+     
         });
     } else {
       axios
-        .post(
-          process.env.REACT_APP_LOCAL_API + "/cells/save",
-          {
+      .post(
+        process.env.REACT_APP_LOCAL_API + "/cells/save",
+        {
             name: value,
             user_id: props.user_data.id,
             workspace_id: props.workspace_id,
@@ -82,12 +74,89 @@ function Cells(props) {
           }
         )
         .then((data) => {
-          console.log(data);
+      
           setCell(value);
           setCellId(data.data.uData.id);
+     
         });
     }
   };
+  
+  // const getCell = (setData) => {
+  //   let dt = "";
+  //   axios
+  //     .get(
+  //       process.env.REACT_APP_LOCAL_API +
+  //         "/cells/list/" +
+  //         props.workspace_id +
+  //         "/" +
+  //         props.group_id +
+  //         "/" +
+  //         props.column_id +
+  //         "/" +
+  //         props.row_id,
+  //       {
+  //         "Content-Type": "application/json",
+  //       }
+  //     )
+  //     .then((res) => {
+  //       let cellData = res.data[0] ? res.data[0].name : "";
+  //       if (setData) {
+  //         setCell(cellData);
+  //         setCellId(res.data[0] ? res.data[0].id : "");
+  //       }
+  //       dt = cellData;
+  //     });
+  //   return dt;
+  // };
+  // const saveCell = (value) => {
+  //   getCell(true);
+  //   if (cell != "" && cellId != "") {
+  //     axios
+  //       .put(
+  //         process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
+  //         {
+  //           name: value,
+  //           user_id: props.user_data.id,
+  //           workspace_id: props.workspace_id,
+  //           group_id: props.group_id,
+  //           column_id: props.column_id,
+  //           row_id: props.row_id,
+  //           isActive: 1,
+  //         },
+  //         {
+  //           "Content-Type": "application/json",
+  //         }
+  //       )
+  //       .then((data) => {
+  //         console.log(data);
+  //         setCell(value);
+  //       });
+  //   } else {
+  //     axios
+  //       .post(
+  //         process.env.REACT_APP_LOCAL_API + "/cells/save",
+  //         {
+  //           name: value,
+  //           user_id: props.user_data.id,
+  //           workspace_id: props.workspace_id,
+  //           group_id: props.group_id,
+  //           column_id: props.column_id,
+  //           row_id: props.row_id,
+  //           isRow: false,
+  //           isActive: true,
+  //         },
+  //         {
+  //           "Content-Type": "application/json",
+  //         }
+  //       )
+  //       .then((data) => {
+  //         console.log(data);
+  //         setCell(value);
+  //         setCellId(data.data.uData.id);
+  //       });
+  //   }
+  // };
 
   const selection_options = [
     ["gray", ""],

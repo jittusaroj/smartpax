@@ -28,7 +28,7 @@ function Hide() {
           aria-labelledby="dropdownMenuLink"
           style={{ width: "15rem" }}
         >
-          <span style={{ padding: "2px 15px" }}>
+          <div style={{ padding: "2px 15px" }}>
          
             <Form.Control
               className="custom-select h-30 shadow-0"
@@ -51,7 +51,7 @@ function Hide() {
                 <Form.Check type="checkbox" className="check" />
               </span>{" "}
             </p>
-          </span>
+          </div>
         </div>
       </div>
     </>

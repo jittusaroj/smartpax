@@ -115,7 +115,17 @@ function Workspacetable(props) {
   return (
     <>
       <div className="overflow-scroll1 penicillium-section ">
-        <Column
+      <Column
+          workspace_id={workspace_id}
+          group_id={group_id}
+          group_data={props.group_data}
+          user_data={user_data}
+          columns={props.columns}
+          add={props.add}
+          setReload={props.reload}
+          gid={props.gid}
+        />
+        {/* <Column
           workspace_id={workspace_id}
           group_id={group_id}
           group_data={props.group_data}
@@ -123,7 +133,7 @@ function Workspacetable(props) {
           columns={props.columns}
           add={props.add}
           gid={props.gid}
-        />
+        /> */}
 
         {/* <Column
           workspace_id={workspace_id}
@@ -156,6 +166,7 @@ function Workspacetable(props) {
               />
             );
           })}
+
 
           {/* {rows.map((row, i) => {
             return (
