@@ -29,11 +29,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
-  const workspace_id = props.workspace_id;
- 
+   const workspace_id = workspace_id_tbl;
 
- 
-  // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
+
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
   const [gid, setGID] = useState([]);

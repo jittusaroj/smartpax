@@ -56,9 +56,11 @@ function ColumnData(props) {
             onKeyPress={(e) => saveGroup(e)}
           />
         </span>
-        <Removecolumn />
+
+        {/* <Removecolumn /> */}
       </div>
-    </>
-  );
-}
+     </>
+      );
+     };
+    
 export default ColumnData;
