@@ -70,24 +70,7 @@ const Newfolder = forwardRef((props, ref) => {
     no_ws = <p><i>No Workspace</i></p>
   }
   
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     axios
-  //       .get(
-  //         process.env.REACT_APP_LOCAL_API +
-  //           "/workspace/list/" +
-  //           props.user_data.id +
-  //           "/" +
-  //           folder_data.id,
-  //         {
-  //           "Content-Type": "application/json",
-  //         }
-  //       )
-  //       .then((res) => {
-  //         setWorkspaceList(res.data);
-  //       });
-  //   }, 1000);
-  // }, [reload]);
+
 
   if (workspaceList.length == 0) {
     no_ws = (

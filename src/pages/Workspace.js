@@ -31,7 +31,6 @@ function Workspace(props) {
   const workspace_id_tbl = localStorage.getItem("workspace");
   const workspace_id = workspace_id_tbl;//props.workspace_id;
 
-  // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
   const [gid, setGID] = useState([]);
