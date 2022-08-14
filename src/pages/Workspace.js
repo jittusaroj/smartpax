@@ -29,10 +29,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 function Workspace(props) {
   const user_data = JSON.parse(localStorage.getItem("user"));
   const workspace_id_tbl = localStorage.getItem("workspace");
-  const workspace_id = props.workspace_id;
- 
+  const workspace_id = workspace_id_tbl;//props.workspace_id;
 
- 
   // const workspace_id_tbl = localStorage.getItem("workspace")??props.match.params.workspace_id;
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
@@ -46,53 +44,42 @@ function Workspace(props) {
   const navigate = useNavigate();
 
   useEffect(() => {
-
-   
-      axios
-        .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
-          "Content-Type": "application/json",
-        })
-        .then((res) => {
-          setColumns(res.data);
-        }
-        )
-   
-  
+    axios
+      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
+        "Content-Type": "application/json",
+      })
+      .then((res) => {
+        setColumns(res.data);
+      }
+    )
   }, [reload]);
  
   useEffect(() => {
-
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
         setFolderList(res.data);
-      });
-
- // },1000);
+      }
+    );
   }, [reload]);
 
   useEffect(() => {
-  
     axios
-      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
         setList(res.data);
-        
-      
-       
       });
-
   }, [reload]);
 
   const [wslist, setWslist] = useState([]);
   useEffect(() => {
 
     axios
-      .get(process.env.REACT_APP_LOCAL_API + "/workspace/" + workspace_id_tbl, {
+      .get(process.env.REACT_APP_LOCAL_API + "/workspace/" + workspace_id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
@@ -107,7 +94,7 @@ function Workspace(props) {
         process.env.REACT_APP_LOCAL_API + "/group/save",
         {
           total_rows: 1,
-          workspace_id: workspace_id_tbl,
+          workspace_id: workspace_id,
           user_id: user_data.id,
          
         },
@@ -116,32 +103,19 @@ function Workspace(props) {
         }
       )
       .then((data) => {
-      
         notify("New Item Group added.", "success");
         reload==false?setReload(true):setReload(false);
-       // window.location.reload();
-
-  
-
-
-        
+       // window.location.reload(); 
       });
-     
   };
+
 const reloader=(a)=>{
-childRef.current.getAlert();
-
-
-
+  childRef.current.getAlert();
 }
 
 const reloaded=(a)=>{
   reload==false?setReload(true):setReload(false);
-
-  
-
-  
-  }
+}
   const location = useLocation();
 
   const nextpage = location.state?.nextpage || '/';
@@ -150,7 +124,7 @@ const reloaded=(a)=>{
     if (e.key === "Enter") 
      {
       axios
-      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id_tbl, {
+      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
@@ -190,7 +164,7 @@ const reloaded=(a)=>{
               >
                 <Worksidebar
                   ref={childRef}
-                  
+                  ddddd
                   folderList={folderList}
                   setFolderList={setFolderList}
                   setReloader={reloaded}

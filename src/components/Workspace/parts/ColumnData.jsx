@@ -15,7 +15,7 @@ function ColumnData(props) {
   }, [gName, reload]);
 
   const saveGroup = (e) => {
-    if (e.key === "Enter") {
+    // if (e.key === "Enter") {
       axios
         .put(
           process.env.REACT_APP_LOCAL_API + "/columns/" + props.column_id,
@@ -35,7 +35,7 @@ function ColumnData(props) {
           notify("Successfully updated", "success");
           setReload(true);
         });
-    }
+    // }
   };
   return (
     <>

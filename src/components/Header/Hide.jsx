@@ -6,7 +6,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
 import Collapse from "react-bootstrap/Collapse";
 import { FaFilter, FaExchangeAlt, FaEyeSlash } from "react-icons/fa";
-import Select from "react-select";
+// import Select from "react-select";
 
 function Hide() {
   return (

@@ -161,6 +161,7 @@ function Workspacetable(props) {
                 workspace_id={workspace_id}
                 deleteNewRow={deleteNewRow}
                 group_data={props.group_data}
+                columns={props.columns}
                 user_data={user_data}
                 reload={props.reload}
               />

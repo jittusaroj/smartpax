@@ -7,6 +7,7 @@ import { notify } from "../../../utils/services";
 function Row(props) {
   const workspace_id = props.workspace_id;
   const user_data = props.user_data;
+  const columns = props.columns;
 
   const [popup, setPopup] = useState({
     show: false, // initial values set to false and null
@@ -39,16 +40,16 @@ function Row(props) {
   };
 
   // For columns.
-  const [columns, setColumns] = useState([]);
-  useEffect(() => {
-    axios
-      .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
-        "Content-Type": "application/json",
-      })
-      .then((res) => {
-        setColumns(res.data);
-      });
-  }, []);
+  // const [columns, setColumns] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
+  //       "Content-Type": "application/json",
+  //     })
+  //     .then((res) => {
+  //       setColumns(res.data);
+  //     });
+  // }, []);
 
   // For cells.
   const [cell, setCell] = useState([]);

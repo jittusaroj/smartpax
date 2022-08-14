@@ -119,7 +119,7 @@ function Column(props) {
               />
             </span>
           </div>
-          {props.columns.map((column, i) => {
+          {(props.columns).map((column, i) => {
             return (
               <ColumnData
                 columnData={column}
