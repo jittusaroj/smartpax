@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Collapse from "react-bootstrap/Collapse";
 import ColumnData from "../Workspace/parts/ColumnData";
 import { FaFilter, FaPlus } from "react-icons/fa";
-import Select from "react-select";
+ import Select from "react-select";
 
 function Filtermodal(props) {
 
@@ -91,13 +91,13 @@ function Filtermodal(props) {
                 <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
-                <Select options={options} className="select" styles={customStyles} />
+                <select options={options} className="select" styles={customStyles} />
               </div>
               <div className="col-md-3 me-2">
-                <Select options={value} className="select" styles={customStyles} />
+                <select options={value} className="select" styles={customStyles} />
               </div>
               <div className="col-md-4 me-2">
-                <Select options={condition} className="select" styles={customStyles} />
+                <select options={condition} className="select" styles={customStyles} />
               </div>
               <div className="col-md-2 me-2">
                 <div className="">
@@ -112,13 +112,13 @@ function Filtermodal(props) {
                 <span className="f-color">Where</span>
               </div>
               <div className="col-md-3 me-2 ms-1">
-                <Select options={options} className="select" styles={customStyles} />
+                <select options={options} className="select" styles={customStyles} />
               </div>
               <div className="col-md-3 me-2">
-                <Select options={value} className="select" styles={customStyles} />
+                <select options={value} className="select" styles={customStyles} />
               </div>
               <div className="col-md-4 me-2">
-                <Select options={condition} className="select" styles={customStyles} />
+                <select options={condition} className="select" styles={customStyles} />
               </div>
               <div className="col-md-2 me-2">
                 <div className="">
@@ -127,9 +127,8 @@ function Filtermodal(props) {
                 </div>
               </div>
             </div>
-            
 
-            <Button style={{background:'white' , border:'0px'}}> <FaPlus style={{ color: 'black'}}/> <b className="f-color">Add  New Filter</b> </Button>
+            <Button style={{background:'white' , border:'0px'}}> <FaPlus style={{color: 'black '}}/> <b className="f-color">Add  New Filter</b> </Button>
 
             {/* <div className="row mb-2 my-4">
                 <div className="col-md-2">

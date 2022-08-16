@@ -111,7 +111,7 @@ function Sortmodal(props) {
               onChange={select1}
             >
               {" "}
-              <FaPlus /> <b className="f-color">Add Sort Filter</b>{" "}
+              <FaPlus style={{color: 'black '}} /> <b className="f-color">Add Sort Filter</b>{" "}
             </Button>
           </div>
         </div>
