@@ -49,6 +49,7 @@ const Newfolder = forwardRef((props, ref) => {
       )
       .then((data) => {
         // notify("Successfully updated", "success");
+        props.props.setReloader(true);
       });
     // }
   };
@@ -91,6 +92,7 @@ const Newfolder = forwardRef((props, ref) => {
       )
       .then((data, e) => {
         notify("Deleted successfully", "success");
+        props.props.setReloader(true);
       });
   };
 

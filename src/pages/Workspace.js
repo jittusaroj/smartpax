@@ -119,9 +119,8 @@ const reloaded=(a)=>{
 
   const nextpage = location.state?.nextpage || '/';
   var handleKeyPress=(e)=>{
-  
-    if (e.key === "Enter") 
-     {
+    // if (e.key === "Enter") 
+    //  {
       axios
       .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id, {
         "Content-Type": "application/json",
@@ -147,7 +146,7 @@ const reloaded=(a)=>{
      
       });
 
-     }
+    //  }
     }
   
   return (
@@ -287,7 +286,8 @@ const reloaded=(a)=>{
                                   columns={columns}
                                   add={add}
                                   gid={list[0].id}
-                                  reload={setReload}
+                                  reload={reload}
+                                  setReload={setReload}
                                 />
                               );
                             })

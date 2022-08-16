@@ -77,6 +77,7 @@ function Row(props) {
       .then((res) => {
         let cellData = res.data[0] ? res.data[0].name : "";
         if (setData) {
+          console.log(cellData)
           setCell(cellData);
           setCellId(res.data[0] ? res.data[0].id : "");
         }

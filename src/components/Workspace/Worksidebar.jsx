@@ -30,23 +30,6 @@ const Worksidebar = forwardRef((props, ref) => {
     },
   }));
 
-  useEffect(() => {
-    // setWorkspaceId(props.workspace.id);
-    axios
-      .get(
-        process.env.REACT_APP_LOCAL_API + "/workspace/list/" + user_data.id,
-        {
-          "Content-Type": "application/json",
-        }
-      )
-      .then((res) => {
-        setWorkspaceList(res.data);
-        // if(!props.workspace.id && res.data && res.data[0] && res.data[0].id) {
-        //   changeData(res.data[0].id);
-        // }
-      });
-  }, [reload]);
-
   // const changeData = (value) => {
   //   if(value!="") {
   //     localStorage.setItem("workspace", value);
@@ -68,11 +51,8 @@ const Worksidebar = forwardRef((props, ref) => {
     if(value!="") {
       localStorage.setItem("workspace", value);
       setWorkspaceId(value);
-      notify("Datasets Successfully changed.", "success");
+      // notify("Datasets Successfully changed.", "success");
       props.setReloader(true);
-     
-
-   //  props.setReloader(true);
     }
   };
 
@@ -98,7 +78,8 @@ const Worksidebar = forwardRef((props, ref) => {
           .then((res) => {
             props.setFolderList(res.data);
           });
-        notify("New Folder added.", "success");
+        // notify("New Folder added.", "success");
+        props.setReloader(true);
       });
   };
 
@@ -107,7 +88,7 @@ const Worksidebar = forwardRef((props, ref) => {
       <h6 className="fs-6 mt-3">
         <b>DATASETS</b>
       </h6>
-      <div>
+      {/* <div>
         <Form>
           <Form.Select
             aria-label="Workspace selection"
@@ -117,36 +98,25 @@ const Worksidebar = forwardRef((props, ref) => {
             <option className="mt-2" value="">
               Add
             </option>
-            <option className="mt-2" onClick={addNewFolder}>
+            <option className="mt-2" value="addNewFolder">
               New Folder
             </option>
             <option className="mt-2" value="">
               New Datasets
             </option>
-            {workspaceList.map((wspace, i) => {
-              return (
-                <option value={wspace.id} key={i}>
-                  {wspace.name}
-                </option>
-              );
-            })}
           </Form.Select>
         </Form>
-      </div>
-      <div className="team-font mt-2">
-        <Dropdown className="d-inline mx-2">
+      </div> */}
+      <div>
+        <Dropdown>
           <Dropdown.Toggle
             id="dropdown-autoclose-true"
-            style={{
-              backgroundColor: "transparent",
-              border: "0px solid",
-              color: "black",
-            }}
+            className="form-control"
           >
             <i className="bx bx-plus"></i> Add
           </Dropdown.Toggle>
 
-          <Dropdown.Menu>
+          <Dropdown.Menu style={{ width: "100%" }}>
             <Dropdown.Item onClick={addNewFolder}>New Folder</Dropdown.Item>
             <Dropdown.Item href="#">
               <a data-bs-toggle="modal" data-bs-target="#addworkspace">
@@ -179,6 +149,7 @@ const Worksidebar = forwardRef((props, ref) => {
             changeData={changeData}
             key={key}
             folder_data={folder}
+            props={props}
           />
         );
       })}

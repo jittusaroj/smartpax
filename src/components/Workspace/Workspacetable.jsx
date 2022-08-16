@@ -17,6 +17,7 @@ function Workspacetable(props) {
   const tableCallback = (cb) => {
     return cb();
   };
+
   useEffect(() => {
     let dt = "";
     axios
@@ -33,7 +34,8 @@ function Workspacetable(props) {
       setNewRows(newRow);
       setRows(cellData);
     });
-  });
+  }, [props.reload]);
+
   const addNewRow = () => {
     let new_total_rows = parseInt(total_rows)+1;
     setTotal_rows(new_total_rows);
@@ -69,8 +71,8 @@ function Workspacetable(props) {
           }
         )
         .then((data) => {
-          notify("Successfully updated", "success");
-          props.reload(true);
+          // notify("Successfully updated", "success");
+          props.setReload(true);
         });
 
       // localStorage.setItem("rows" + group_id, parseInt(total_rows) + 1);
@@ -94,9 +96,8 @@ function Workspacetable(props) {
       }
     )
       .then((data) => {
-        alert();
         total_rows = (total_rows>0)?parseInt(total_rows) - 1:0;
-      
+        props.setReload(true);
       });
   };
 
@@ -122,7 +123,7 @@ function Workspacetable(props) {
           user_data={user_data}
           columns={props.columns}
           add={props.add}
-          setReload={props.reload}
+          setReload={props.setReload}
           gid={props.gid}
         />
         {/* <Column
@@ -163,7 +164,7 @@ function Workspacetable(props) {
                 group_data={props.group_data}
                 columns={props.columns}
                 user_data={user_data}
-                reload={props.reload}
+                reload={props.setReload}
               />
             );
           })}
