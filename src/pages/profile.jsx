@@ -48,7 +48,7 @@ function Profile() {
           }
         )
         .then((user) => {
-          console.log(user);
+          console.log(user);    
           notify("Successfully updated", "success");
         });
     }

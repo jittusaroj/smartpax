@@ -19,14 +19,12 @@ const App = () => {
 
   return (
     <div className="app1">
-      <CategoriesContext.Provider value={value}>
-        <BrowserRouter>
-          <Routes>
+      {/* <CategoriesContext.Provider value={value}> */}
+       <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/dashboard" element={<Dashboard />} />
-       
             <Route path='/forgot_password' element={<Forgotpassword />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/userlist' element={<Userlist />} />
@@ -35,8 +33,7 @@ const App = () => {
             {/* <Route path="/ticket" element={<TicketPage />} /> */}
             {/* <Route path="/ticket/:id" element={<TicketPage editMode={true} />} /> */}
           </Routes>
-        </BrowserRouter>
-      </CategoriesContext.Provider>
+      {/* </CategoriesContext.Provider> */}
     </div>
   )
 }

@@ -100,7 +100,7 @@ function Column(props) {
           </div>
         </div>
 
-        <div className="head-section blue-section d-flex">
+        <div className="head-section blue-section d-flex" data-key={name}>
           <div className="head first-head">
             <span
               className="value first-col first-text font-16"

@@ -1,6 +1,8 @@
 import { React, useEffect, useState } from "react";
+
 import axios from "axios";
 import { notify } from "../utils/services";
+
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
@@ -24,35 +26,41 @@ import {
   FaStackExchange,
 } from "react-icons/fa";
 import Hide from "../components/Header/Hide";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 function Workspace(props) {
-  const user_data = JSON.parse(localStorage.getItem("user"));
-  const workspace_id_tbl = localStorage.getItem("workspace");
-  const workspace_id = workspace_id_tbl;//props.workspace_id;
-
+  
+  const { workspace_id } = useParams();
   const [folderList, setFolderList] = useState([]);
   const [list, setList] = useState([]);
   const [gid, setGID] = useState([]);
   const [reload, setReload] = useState(false);
   const [add, setAdd] = useState(false);
+  const user_data = JSON.parse(localStorage.getItem("user"));
+ 
+  // const workspace_id_tbl = workspace_id;
+  // console.log("props.match.params",props.match.params)
+  // const workspace_id = workspace_id_tbl;//props.workspace_id;
+  const [searchKey,setSearchKey]=useState('')
   const [se, setSE] = useState();
-  const childRef=useRef();
+  const childRef = useRef();
   // For columns.
   const [columns, setColumns] = useState([]);
   const navigate = useNavigate();
 
+  
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/columns/list/" + workspace_id, {
         "Content-Type": "application/json",
       })
       .then((res) => {
+       
         setColumns(res.data);
       }
-    )
-  }, [reload]);
- 
+      )
+  }, []);
+
   useEffect(() => {
     axios
       .get(process.env.REACT_APP_LOCAL_API + "/folder/list/" + user_data.id, {
@@ -61,8 +69,8 @@ function Workspace(props) {
       .then((res) => {
         setFolderList(res.data);
       }
-    );
-  }, [reload]);
+      );
+  }, []);
 
   useEffect(() => {
     axios
@@ -72,7 +80,7 @@ function Workspace(props) {
       .then((res) => {
         setList(res.data);
       });
-  }, [reload]);
+  }, []);
 
   const [wslist, setWslist] = useState([]);
   useEffect(() => {
@@ -84,8 +92,8 @@ function Workspace(props) {
       .then((res) => {
         setWslist(res.data);
       });
-   
-  }, [reload]);
+
+  }, []);
 
   const addNewGroup = (e) => {
     axios
@@ -95,7 +103,7 @@ function Workspace(props) {
           total_rows: 1,
           workspace_id: workspace_id,
           user_id: user_data.id,
-         
+
         },
         {
           "Content-Type": "application/json",
@@ -103,52 +111,47 @@ function Workspace(props) {
       )
       .then((data) => {
         notify("New Item Group added.", "success");
-        reload==false?setReload(true):setReload(false);
-       // window.location.reload(); 
+        reload == false ? setReload(true) : setReload(false);
+        // window.location.reload(); 
       });
   };
 
-const reloader=(a)=>{
-  childRef.current.getAlert();
-}
+  const reloader = (a) => {
+    childRef.current.getAlert();
+  }
 
-const reloaded=(a)=>{
-  reload==false?setReload(true):setReload(false);
-}
+  const reloaded = (a) => {
+    reload == false ? setReload(true) : setReload(false);
+  }
   const location = useLocation();
 
   const nextpage = location.state?.nextpage || '/';
-  var handleKeyPress=(e)=>{
-    // if (e.key === "Enter") 
-    //  {
-      axios
-      .get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id, {
-        "Content-Type": "application/json",
-      })
-      .then((res) => {
-       
-        if(e.target.value==""){
-        
-          setList(res.data);
+  
+  const handleKeyPress = (e) => {
+    setSearchKey(e.target.value)
+    
+    if (e.key === "Enter") {
       
-   
-        }
-        else
-        for(var i=0;i<res.data.length;i++)
-        if(res.data[i].name==e.target.value){
-        
-          setList(res.data.filter(id => id.name==e.target.value));
-      
-   
-        }
-
+        axios.get(process.env.REACT_APP_LOCAL_API + "/group/list/" + user_data.id + "/" + workspace_id, {
+          "Content-Type": "application/json",
+        })
+        .then((res) => {
+          if (e.target.value === "") {
+            setList(res.data);
+          }
+          else {
+            for (let i = 0; i < res.data.length; i++) {
+              if (res.data[i].name === e.target.value) {
+            setList(res.data.filter(id => id.name === e.target.value));
+              }
+            }
+          }
+        });
     
      
-      });
-
-    //  }
     }
-  
+  }
+
   return (
     <>
       <div className="wrapper">
@@ -208,14 +211,15 @@ const reloaded=(a)=>{
                                   <div className="search-btn">
                                     <i className="fa fa-search"></i>
                                   </div>
-                                 
-                                   <input
+
+                                  <input
                                     className="form-control"
                                     defaultValue=""
-                                    placeholder="search.."
-                                    onKeyPress={handleKeyPress}
-                                
-                                    style={{ marginTop: "-10px"  }}
+                                    placeholder="search..ffff"
+                                    // onChange={(e) => handleSearch(e)}
+                                    onChange={(e) => handleKeyPress(e)}
+
+                                    style={{ marginTop: "-10px" }}
                                   />
                                 </div>
                               </li>
@@ -246,9 +250,9 @@ const reloaded=(a)=>{
 
                               <li style={{ marginTop: "-7px" }}>
                                 <Filtermodal
-                                 
+
                                 />
-                                 {/* groupList={list}
+                                {/* groupList={list}
                                   setgroupList={setList}
                                   nameList={list}
                                   setnameList={setList}
@@ -279,6 +283,7 @@ const reloaded=(a)=>{
                               return (
                                 <Workspacetable
                                   key={i}
+                                  searchKey={searchKey}
                                   workspace_id={group.workspace_id}
                                   group_id={group.id}
                                   group_data={group}

@@ -30,14 +30,18 @@ function Cells(props) {
     });
     return dt;
   };
-  const saveCell = (value) => {
+  const saveCell = (event) => {
+    if (event.target.value===''){
+      return 
+    }
+
     getCell(true);
-    if (cell!="" && cellId!="") {
+    if (cell != "" && cellId != "") {
       axios
         .put(
           process.env.REACT_APP_LOCAL_API + "/cells/" + cellId,
           {
-            name: value,
+            name: event.target.value,
             user_id: props.user_data.id,
             workspace_id: props.workspace_id,
             group_id: props.group_id,
@@ -51,16 +55,16 @@ function Cells(props) {
         )
         .then((data) => {
        
-          setCell(value);
+          setCell(event.target.value);
         
      
         });
-    } else {
+    } else  {
       axios
       .post(
         process.env.REACT_APP_LOCAL_API + "/cells/save",
         {
-            name: value,
+          name: event.target.value,
             user_id: props.user_data.id,
             workspace_id: props.workspace_id,
             group_id: props.group_id,
@@ -75,7 +79,7 @@ function Cells(props) {
         )
         .then((data) => {
       
-          setCell(value);
+          setCell(event.target.value);
           setCellId(data.data.uData.id);
      
         });
@@ -92,9 +96,9 @@ function Cells(props) {
     ["black", "NO GO"],
   ];
 
-  if (props.type == "status") {
+  if (props.type === "status") {
     let bg_class = "bg-secondary";
-    selection_options.map((selected_data, i) => {
+    selection_options.map((selected_data) => {
       if (selected_data[1] == cell) {
         bg_class = "bg-" + selected_data[0];
       }
@@ -106,7 +110,7 @@ function Cells(props) {
             value={cell}
             aria-label=""
             className={bg_class}
-            onChange={(e) => saveCell(e.target.value)}
+            onBlur={(e) => saveCell(e)}
           >
             {selection_options.map((select_data, i) => {
               select_data_class = "mt-2 bg-" + select_data[0] + " text-white";
@@ -129,7 +133,7 @@ function Cells(props) {
           placeholder={props.type}
           id="textfield1"
           defaultValue={cell}
-          onMouseOut={(e) => saveCell(e.target.value)}
+          onBlur={(e) => saveCell(e)}
         />
       </>
     );

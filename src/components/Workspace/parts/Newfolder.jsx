@@ -5,6 +5,7 @@ import {
   forwardRef,
   useImperativeHandle,
 } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Form, Text } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -174,13 +175,17 @@ const Newfolder = forwardRef((props, ref) => {
                 {no_ws}
                 {workspaceList.map((wspace, i) => {
                   return (
-                    <p
-                      onClick={(e) => props.changeData(wspace.id)}
-                      value={wspace.id}
-                      key={i}
-                    >
-                      {<FaFile className="f-color" />} {wspace.name}
-                    </p>
+                    <>
+                      <Link to={{ pathname: "/Workspace/"+wspace.id }} >
+                      <p
+                        onClick={(e) => props.changeData(wspace.id)}
+                        value={wspace.id}
+                        key={i}
+                      >
+                        {<FaFile className="f-color" />} {wspace.name}
+                      </p>
+                    </Link>
+                    </>
                   );
                 })}
               </div>

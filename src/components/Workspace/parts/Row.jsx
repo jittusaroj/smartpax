@@ -8,11 +8,12 @@ function Row(props) {
   const workspace_id = props.workspace_id;
   const user_data = props.user_data;
   const columns = props.columns;
-
+const[searchShow,setSearchShow]=useState(props.searchKey)
   const [popup, setPopup] = useState({
     show: false, // initial values set to false and null
     id: null,
   });
+  console.log("props.searchKey", props.searchKey)
   // // This will show the Cofirmation Box
   const handleDelete = () => {
     setPopup({
@@ -63,13 +64,7 @@ function Row(props) {
     let dt = "";
     axios
       .get(
-        process.env.REACT_APP_LOCAL_API +
-          "/cells/list/" +
-          props.workspace_id +
-          "/" +
-          props.group_data.id +
-          "/0/" +
-          props.id,
+        `${process.env.REACT_APP_LOCAL_API}/cells/list/${props.workspace_id}/${props.group_data.id}/0/${props.id}`,
         {
           "Content-Type": "application/json",
         }
@@ -91,12 +86,12 @@ function Row(props) {
     axios
       .get(
         process.env.REACT_APP_LOCAL_API +
-          "/cells/list/" +
-          props.workspace_id +
-          "/" +
-          props.group_data.id +
-          "/0/" +
-          props.id,
+        "/cells/list/" +
+        props.workspace_id +
+        "/" +
+        props.group_data.id +
+        "/0/" +
+        props.id,
         {
           "Content-Type": "application/json",
         }
@@ -132,7 +127,7 @@ function Row(props) {
 
   return (
     <>
-      <div className="d-flex dropdown-sec">
+      <div className="d-flex dropdown-sec" data-key={cell}>
         <div className="dropdown-sec1">
           <div className="dropdown">
             <i
@@ -149,7 +144,7 @@ function Row(props) {
             )}
           </div>
         </div>
-        <div className="d-flex body-section blue-section">
+        <div className="d-flex body-section blue-section" data-key={cell}>
           <div className="body1 first-head">
             <span className="value first-col">
               <input
